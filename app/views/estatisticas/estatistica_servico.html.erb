@@ -5,7 +5,7 @@
   <tr bgcolor="#DCDCDC" >
       <td colspan="2">
          <div id="caixa_titulo">
-             <font size="3"><strong>SOLICITAÇÔES DE MANUNTENÇÃO  POR TIPO DE SERVIÇO</strong></font><br/>
+             <font size="3"><strong>O.S. MANUNTENÇÃO POR TIPO DE SERVIÇO</strong></font><br/>
          </div>
 
       </td>
@@ -20,7 +20,7 @@
                 <tr>
                   <th  align="right"> Tipo Serviço:
 
-                    <%= collection_select :contact, :grafico_id, @servicos, :id, :servico%>
+                    <%= collection_select :contact, :grafico_id, @servicos, :id, :servico,:include_blank => ' -- Selecionar -- '%>
                   </th>
                   <td><%= submit_tag 'Filtrar!' %></td>
                 </tr>
@@ -49,6 +49,36 @@
               <%= @static_graph5%>
           <%else%>
               <%= @graph5 %>
+          <%end%>
+      </td>
+    </tr>
+    <tr>
+
+      <td colspan="2" align="center">
+          <% if @static_graph3.present?%>
+              <%= @static_graph3%>
+          <%else%>
+              <%= @graph3 %>
+          <%end%>
+      </td>
+    </tr>
+    <tr>
+
+      <td colspan="2" align="center">
+          <% if @static_graph6.present?%>
+              <%= @static_graph6%>
+          <%else%>
+              <%= @graph6 %>
+          <%end%>
+      </td>
+    </tr>
+    <tr>
+
+      <td colspan="2" align="center">
+          <% if @static_graph7.present?%>
+              <%= @static_graph7%>
+          <%else%>
+              <%= @graph7 %>
           <%end%>
       </td>
     </tr>
