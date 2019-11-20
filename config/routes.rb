@@ -97,6 +97,7 @@ ActionController::Routing::Routes.draw do |map|
   map.estatistica_unidade '/estatistica_unidade', :controller => 'estatisticas', :action => 'estatistica_unidade'
   map.impressao_estatistica_unidade '/impressao_estatistica_unidade', :controller => 'estatisticas', :action => 'impressao_estatistica_unidade'
   map.impressao_estatistica_unidade_aberta '/impressao_estatistica_unidade_aberta', :controller => 'mmanutencaos', :action => 'impressao_estatistica_unidade_aberta'
+  map.impressao_relatorio '/impressao_relatorio', :controller => 'mmanutencaos', :action => 'impressao_relatorio'
 
   map.estatistica_servico '/estatistica_servico', :controller => 'estatisticas', :action => 'estatistica_servico'
 

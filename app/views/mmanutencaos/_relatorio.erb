@@ -87,32 +87,43 @@
 
                       </tr>
                       <tr>
-                        <td align="right" colspan="7">
+                        <td align="right" colspan="8">
                         </td>
                       </tr>
                            <%$cont=$cont+1%>
                     <%end%>
                       <tr>
-                          <td  colspan="12">
-                              <table>
+                          <td  colspan="7">
+                              <%enc=0%>
+                              <%ab=0%>
+                              <table width="100%">
                                   <tr>
-                                     <td  colspan="12"> <b><u>ESTATÍSTICA:</u></b>  </td>
+                                     <td  colspan="8"> <b><u>ESTATÍSTICA:</u></b>  </td>
                                   </tr>
                                   <tr>
                                    <% for situacao in @situacaos %>
-                                      <td> <b>- <%=situacao.situacao%></b> : <%=situacao.contador%> &nbsp&nbsp </td>
-
-
+                                      <td> <b>- <%=situacao.situacao%></b>:<%=situacao.contador%> &nbsp&nbsp </td>
+                                      <% if situacao.situacao_manutencao_id == 2 or situacao.situacao_manutencao_id ==  9%>
+                                          <%enc=enc + situacao.contador.to_i%>
+                                      <%else%>
+                                          <%ab=ab + situacao.contador.to_i%>
+                                      <%end%>
                                    <%end%>
+                                  </tr>
+                                  <tr>
+                                     <td  align="right" colspan="8"><font color="red"> &nbsp&nbsp <b>Total EM ABERTO: <%=ab%>  &nbsp&nbsp&nbsp&nbsp  Total ENCERRADAS: <%=enc%></b>  &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp </td>
                                   </tr>
                               </table>
                           </td>
                      </tr>
                       <tr>
-                        <td  colspan="12">
-                          <b>Total de Ordem de Serviços de <%= session[:servico] %> :  <%= $cont %> </b>
+                        <td  colspan="6">
+                          <b>Total de Ordem de Serviços de xx  <%= session[:servico] %> :  <%= $cont %> </b>
                         </td>
+                        <!--<td align="center" ><%#= button_to ''%><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_relatorio_path}','impressaoxxxx', 'scrollbars=yes , toolbar=yes, status=yes');", :title => "Imprimir" %> </b></td>-->
+                        <td align="center"> <%= link_to image_tag("/stylesheets/images/imprimir1.png"), {:action => "impressao_relatorio", :id =>chamado}, :method => "get", :title => "Imprimir", :target => '_blank' %></td>
                       </tr>
+
                   <%end%>
 
 

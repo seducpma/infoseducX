@@ -45,11 +45,11 @@ end
 
 
 def self.aberto_geral
-    Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id = 2'])
+    Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id <> 2 OR situacao_manutencao_id <> 9'])
 end
 
 def self.encerrado_geral
-    Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id <> 2'])
+    Mmanutencao.find(:all, :conditions => ['situacao_manutencao_id = 2 OR situacao_manutencao_id = 9'])
 end
 
 def self.geral
@@ -60,7 +60,7 @@ end
 
 def self.aberto_unidade(unidade)
     unidade_id = Unidade.find(unidade).id
-    Mmanutencao.find(:all, :conditions => ['unidade_id=? AND (situacao_manutencao_id <> 2 AND situacao_manutencao_id <> 9)',unidade_id])
+    Mmanutencao.find(:all, :conditions => ['unidade_id=? AND (situacao_manutencao_id <> 2 OR situacao_manutencao_id <> 9)',unidade_id])
 end
 
 def self.encerrado_unidade(unidade)

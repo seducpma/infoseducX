@@ -1,0 +1,128 @@
+
+<div id="interno2">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>MANUTENÇÃO GERAL</strong></font><br/>
+ </div>
+   <div class="tabs">
+     <table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: white">
+        <tr style="border-color: white" style="height: 8px" >
+            <td style="border-color: white" align="left"><center><img src="/stylesheets/images/logo.png"   alt=""   /></center></td>
+            <td style="border-color: white" ><center><font size="3"><i><b>Prefeitura Municipal de  Americana </b></i></center>
+                <center><font size="1"><b><i> Secretaria da Educação</i></b><br/></center>
+                <center><font size="1">Secretaria de Educação %>  </font></center>
+                <center><font size="1">Prefeitura Municipal de Americana - SP  </font>
+            </td>
+        </tr>
+        <tr  style="height: 6px">
+            <td style="border-color: white" width ="2%" align="left" class ="invisible_to_print "><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %>
+            </td>
+            <td style="border-color: white"style="font-size: 6px" colspan="2" align="center"><font size="2"><b><br/>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        RELATÓRIO DE ORDEM DE SERVIÇOS - <%=session[:servico]%> &nbsp&nbsp&nbsp&nbsp</b> Período: <%= session[:dataI2]%> à <%=  session[:dataF2]%>
+        <tr  style="font-size: 8px"  style="border-color: white">
+            <td colspan="2"  style="border-color: white">
+               <table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: white">
+                 <tr  style="font-size: 8px"  style="border-color: white">
+                    <td colspan="2"  style="border-color: white">
+                        <table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: white">
+                            <tr  style="font-size: 8px">
+                                <td width ="1%" align="center">Proto- colo</td>
+                                <td width ="5%">Data Solicitação</td>
+                                <td width ="10%">Unidade</td>
+                                <td width ="35%">Solicitação</td>
+                                <td width ="15%">Encaminhanto</td>
+                                <td width="15%">Status</td>
+                             </tr>
+                             <%cont=0%>
+                             <% for chamado in @mmanutencaos %>
+                                 <% if current_user.unidade_id != 53 %>
+                                     <tr  style="font-size: 8px">
+                                         <td align="center"><%=h chamado.id %></td>
+                                         <td><%=h chamado.data_sol.strftime("%d/%m/%y")%></td>
+                                       <td> <%=h truncate(chamado.unidade.nome,  :length => 17,:omission => ".") %></td>
+                                       <td><%=h truncate(chamado.descricao,:length => 150,:omission => "...") %></td>
+                                         <td><%=h chamado.procedimentos %></td>
+                                         <% if chamado.situacao_manutencao.situacao == 'EM ABERTO'  %>
+                                             <td><font color="red"><%=h chamado.situacao_manutencao.situacao %></font></td>
+                                         <% else %>
+                                             <% if (chamado.situacao_manutencao.situacao == 'EM ATENDIMENTO') or (chamado.situacao_manutencao.situacao == 'AGUARDANDO COMPRAS')or (chamado.situacao_manutencao.situacao == 'DEVOLUÇÃO PARA UNIDADE') %>
+                                             <td align="center"><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
+                                             <% else %>
+                                                <td><font color="blue"><b><%=h chamado.situacao_manutencao.situacao %></b></font> <br/>
+                                                  <%if chamado.chefia.nil? %>
+                                                     p/ <%=h chamado.user.login %>
+                                                  <%else%>
+                                                     p/ <%=h chamado.chefia.nome %>
+                                                  <%end%>
+                                                 </td>
+                                                <%end%>
+                                         <% end %>
+                                     </tr>
+                                 <%else%>
+                                     <tr  style="font-size: 8px">
+                                       <td align="center"><%=h chamado.id %></td>
+                                       <td><%=h chamado.data_sol.strftime("%d/%m/%y")%></td>
+                                       <td> <%=h truncate(chamado.unidade.nome,  :length => 17,:omission => ".") %> %></td>
+                                       <td><%=h truncate(chamado.descricao,:length => 150,:omission => "...") %>
+
+        </td>
+                                       <% if chamado.situacao_manutencao.situacao == 'EM ABERTO'  %>
+                                           <td><font color="red"><%=h chamado.situacao_manutencao.situacao %></font></td>
+                                       <% else %>
+                                           <% if (chamado.situacao_manutencao.situacao == 'EM ATENDIMENTO') or (chamado.situacao_manutencao.situacao == 'AGUARDANDO COMPRAS') %>
+                                              <td><font color="green"><%=h chamado.situacao_manutencao.situacao %></font></td>
+                                           <% else %>
+                                              <td align="center"><font color="blue"><b> <%=h chamado.situacao_manutencao.situacao %></b></font> <br/>
+                                                <%if chamado.chefia.nil? %>
+                                                   p/ <%=h chamado.user.login %>
+                                                <%else%>
+                                                   p/ <%=h chamado.chefia.nome %>
+                                                <%end%>
+                                               </td>
+                                              <%end%>
+                                       <% end %>
+                                      </tr>
+                                  <%end%>
+                                       <%cont=cont+1%>
+                              <%end%>
+                      </table>
+                      <table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: white" >
+                           <%enc=0%>
+                           <%ab=0%>
+                           <tr  style="font-size: 8px">
+                                 <td  colspan="8"> <b><u>ESTATÍSTICA:</u></b>  </td>
+                           </tr>
+                           <tr  style="font-size: 8px">
+                                   <% for situacao in @situacaos %>
+                                      <td> <b>-<%= truncate(situacao.situacao,:length => 13,:omission => ".") %> </b>:<%=situacao.contador%></td>
+                                      <% if situacao.situacao_manutencao_id == 2 or situacao.situacao_manutencao_id ==  9%>
+                                          <%enc=enc + situacao.contador.to_i%>
+                                      <%else%>
+                                          <%ab=ab + situacao.contador.to_i%>
+                                      <%end%>
+                                   <%end%>
+                          </tr>
+                          <tr  style="font-size: 8px">
+                              <td align="right" colspan="8"><font color="red"> &nbsp&nbsp <b>Total EM ABERTO: <%=ab%>  &nbsp&nbsp&nbsp&nbsp  Total ENCERRADAS: <%=enc%></b>  </td>
+                           </tr>
+                      </tab1le>
+                      <table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: white">
+                           <tr  style="font-size: 8px"  style="border-color: white">
+                            <td colspan="2"  style="border-color: white">   <%= "Americana, #{Time.now.strftime("%d de %B de %Y")}" %></td>
+                          </tr>
+                           <tr>
+                              <td align="left" class ="invisible_to_print"> <%= button_to("Fechar", home_path, :method => "get", :title => "Fechar") %></td>
+                           </tr>
+                      </table>
+                    </td>
+                 </tr>
+              </table>
+           </td>
+         </tr>
+ </table>
+ <br/>
+</font>
+</div>
+    

@@ -188,12 +188,16 @@ end
  def relatorios_manutencaos
    session[:dataI]=params[:manutecao][:dataI][6,4]+'-'+params[:manutecao][:dataI][3,2]+'-'+params[:manutecao][:dataI][0,2]
    session[:dataF]=params[:manutecao][:dataF][6,4]+'-'+params[:manutecao][:dataF][3,2]+'-'+params[:manutecao][:dataF][0,2]
-     if !params[:manutencao][:tipos_manutencao_id].empty?
+   session[:dataI2]=params[:manutecao][:dataI][0,2]+'/'+ params[:manutecao][:dataI][3,2]+'/'+params[:manutecao][:dataI][6,4]
+   session[:dataF2]=params[:manutecao][:dataF][0,2]+'/'+ params[:manutecao][:dataF][3,2]+'/'+params[:manutecao][:dataF][6,4]
+
+   w=session[:manutencaotipos_manutencao_id]=params[:manutencao][:tipos_manutencao_id]
+     if !session[:manutencaotipos_manutencao_id].empty?
          @servico= TiposManutencao.find(:all, :conditions=> ['id =?',  params[:manutencao][:tipos_manutencao_id]] )
         w= session[:servico]= @servico[0].servico
     @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome AS nome, mma.id, mma.unidade_id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id =  mma.id WHERE  tma.tipos_manutencao_id ="+params[:manutencao][:tipos_manutencao_id]+" AND mma.data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' ORDER BY  mma.data_sol DESC")
     @situacaos = Mmanutencao.find_by_sql("SELECT mma.situacao_manutencao_id, sm.situacao, count( mma.id ) AS contador FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id  INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id = mma.id JOIN situacao_manutencaos sm ON sm.id = mma.situacao_manutencao_id WHERE tma.tipos_manutencao_id ="+params[:manutencao][:tipos_manutencao_id]+" AND mma.data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' GROUP BY mma.situacao_manutencao_id ORDER BY  mma.data_sol DESC")
-     @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome AS nome, mma.id, mma.unidade_id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id =  mma.id WHERE  tma.tipos_manutencao_id ="+params[:manutencao][:tipos_manutencao_id]+" AND mma.data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' ORDEr BY  mma.data_sol DESC")
+     @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome AS nome, mma.id, mma.unidade_id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id =  mma.id WHERE  tma.tipos_manutencao_id ="+params[:manutencao][:tipos_manutencao_id]+" AND mma.data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' ORDER BY  mma.data_sol DESC")
      else
      t=0
       @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome AS nome, mma.id, mma.unidade_id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id =  mma.id WHERE  mma.data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' ORDEr BY  mma.data_sol DESC")
@@ -204,7 +208,7 @@ end
      render :update do |page|
             page.replace_html 'relatorio', :partial => 'relatorio'
      end
-    end
+ end
 
 
  def estatisticasM
@@ -795,7 +799,7 @@ def estatisticasMANTAt
                                                                 session[:nome_manutencao]= "TELHADO"
                                                                 render "estatisticasM"
                                                                 else if (params[:estatisticas].to_i == 13)
-                                                                      @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 12 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4) and created_at > ? and created_at < ?", $datai, $dataf])
+                                Anterior                                      @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 12 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4) and created_at > ? and created_at < ?", $datai, $dataf])
                                                                       session[:nome_manutencao]= "PODA GRAMA"
                                                                       render "estatisticasM"
                                                                       else if (params[:estatisticas].to_i == 14)
@@ -1002,6 +1006,22 @@ t=0
  end
 
 
+ def impressao_relatorio
+     if !session[:manutencaotipos_manutencao_id].empty?
+         session[:servico]=  TiposManutencao.find_by_id(session[:manutencaotipos_manutencao_id]).servico
+
+        #@servico= TiposManutencao.find(:all, :conditions=> ['id =?',  session[:manutencaotipos_manutencao_id]] )
+        #session[:servico]= @servico[0].servico
+        @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome AS nome, mma.id, mma.unidade_id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id =  mma.id WHERE  tma.tipos_manutencao_id ="+session[:manutencaotipos_manutencao_id]+" AND mma.data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' ORDER BY  mma.data_sol DESC")
+        @situacaos = Mmanutencao.find_by_sql("SELECT mma.situacao_manutencao_id, sm.situacao, count( mma.id ) AS contador FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id  INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id = mma.id JOIN situacao_manutencaos sm ON sm.id = mma.situacao_manutencao_id WHERE tma.tipos_manutencao_id ="+session[:manutencaotipos_manutencao_id]+" AND mma.data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' GROUP BY mma.situacao_manutencao_id ORDER BY  mma.data_sol DESC")
+        @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome AS nome, mma.id, mma.unidade_id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id =  mma.id WHERE  tma.tipos_manutencao_id ="+session[:manutencaotipos_manutencao_id]+" AND mma.data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' ORDEr BY  mma.data_sol DESC")
+     else
+      @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome AS nome, mma.id, mma.unidade_id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id =  mma.id WHERE  mma.data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' ORDEr BY  mma.data_sol DESC")
+      @situacaos = Mmanutencao.find_by_sql("SELECT mma.situacao_manutencao_id, sm.situacao, count( mma.id ) AS contador FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id  INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id = mma.id JOIN situacao_manutencaos sm ON sm.id = mma.situacao_manutencao_id WHERE mma.data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' GROUP BY mma.situacao_manutencao_id ORDER BY  mma.data_sol DESC")
+       session[:servico]= 'TODOS'
+   end
+   render :layout => "impressao"
+ end
 
 
 
