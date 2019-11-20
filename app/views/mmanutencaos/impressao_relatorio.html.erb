@@ -43,7 +43,7 @@
                                          <td><%=h chamado.data_sol.strftime("%d/%m/%y")%></td>
                                        <td> <%=h truncate(chamado.unidade.nome,  :length => 17,:omission => ".") %></td>
                                        <td><%=h truncate(chamado.descricao,:length => 150,:omission => "...") %></td>
-                                         <td><%=h chamado.procedimentos %></td>
+                                         <td><%=h truncate(chamado.procedimentos,:length => 150,:omission => "...") %></td>
                                          <% if chamado.situacao_manutencao.situacao == 'EM ABERTO'  %>
                                              <td><font color="red"><%=h chamado.situacao_manutencao.situacao %></font></td>
                                          <% else %>
