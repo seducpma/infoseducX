@@ -53,7 +53,7 @@
 .flexigrid div.hDiv th,div.colCopy{font-weight:400;height:24px;cursor:default;white-space:nowrap;overflow:hidden}
 div.colCopy{font-family:Arial, Helvetica, sans-serif;font-size:11px;background:#fafafa url(images/fhbg.gif) repeat-x bottom;border:1px solid #ccc;border-bottom:0;overflow:hidden}
 .flexigrid div.hDiv th.sorted{background:url(images/wbg.gif) repeat-x 0 -1px;border-bottom:0 solid #ccc}
-.flexigrid div.hDiv th.thOver div,.flexigrid div.hDiv th.sorted.thOver div{border-bottom:1px solid orange;padding-bottom:4px}
+.flexigrid div.hDiv th.thOver div,.flexigrid div.hDiv th.sorted.thOver div{border-bottom:1px solid orangez;padding-bottom:4px}
 .flexigrid div.hDiv th.sorted div{border-bottom:0 solid #ccc;padding-bottom:5px}
 .flexigrid div.hDiv th.thMove{background:#fff;color:#fff}
 .flexigrid div.hDiv th.sorted.thMove div{border-bottom:1px solid #fff;padding-bottom:4px}

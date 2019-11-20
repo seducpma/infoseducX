@@ -3,7 +3,7 @@
 <div class="tabs">
  <table bgcolor="#DCDCDC" width="70%" align="center" >
   <tr bgcolor="#DCDCDC" >
-      <td colspan="2">
+      <td colspan="3">
          <div id="caixa_titulo">
              <font size="3"><strong>O.S. MANUNTENÇÃO POR TIPO DE SERVIÇO</strong></font><br/>
          </div>
@@ -11,7 +11,7 @@
       </td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <%= form_tag({ :method => 'post', :action => 'por_servico' }, :id => 'graph-unit-form')%>
           <%= error_messages_for 'contact' %>
            <% if $uni==1 %>
@@ -20,7 +20,7 @@
                 <tr>
                   <th  align="right"> Tipo Serviço:
 
-                    <%= collection_select :contact, :grafico_id, @servicos, :id, :servico,:include_blank => ' -- Selecionar -- '%>
+                    <%= collection_select :contact, :grafico_id, @servicos, :id, :servico%>
                   </th>
                   <td><%= submit_tag 'Filtrar!' %></td>
                 </tr>
@@ -32,9 +32,9 @@
       </td>
     </tr>
     <tr>
-      
-      <td colspan="2" align="center">
+      <td colspan="3" align="center">
           <% if @static_graph4.present?%>
+          <u><b>ESTATÍSTICA DE TIPO DE SERVIÇOS NO ANO </b></u>
               <%= @static_graph4%>
           <%else%>
               <%= @graph4 %>
@@ -44,8 +44,9 @@
 
     <tr>
 
-      <td colspan="2" align="center">
+      <td colspan="3" align="center">
           <% if @static_graph5.present?%>
+          <u><b>ESTATÍSTICA DE TIPO DE SERVIÇOS EM ABERTO E ENCERRADOS NO ANO </b></u>
               <%= @static_graph5%>
           <%else%>
               <%= @graph5 %>
@@ -54,8 +55,9 @@
     </tr>
     <tr>
 
-      <td colspan="2" align="center">
+      <td colspan="3" align="center">
           <% if @static_graph3.present?%>
+             <u><b>ESTATÍSTICA SERVIÇOS POR TIPO NO ANO NA SEDUC </b></u>
               <%= @static_graph3%>
           <%else%>
               <%= @graph3 %>
@@ -64,8 +66,9 @@
     </tr>
     <tr>
 
-      <td colspan="2" align="center">
+      <td colspan="3" align="center">
           <% if @static_graph6.present?%>
+          <u><b>ESTATÍSTICA SERVIÇOS POR TIPO EM ABERTO NO ANO NA SEDUC </b></u>
               <%= @static_graph6%>
           <%else%>
               <%= @graph6 %>
@@ -74,19 +77,21 @@
     </tr>
     <tr>
 
-      <td colspan="2" align="center">
+      <td colspan="3" align="center">
           <% if @static_graph7.present?%>
+          <u><b>ESTATÍSTICA SERVIÇOS POR TIPO ENCERRADOS NO ANO NA SEDUC </b></u>
               <%= @static_graph7%>
           <%else%>
               <%= @graph7 %>
           <%end%>
+
       </td>
     </tr>
 
 
 
     <tr>
-
+        <td width="1%"<%= button_to ''  %></td>
         <td width="6%"align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
         <td><b><%#= link_to image_tag("/stylesheets/images/imprimir12.png"), onclick="javascript:MM_openBrWindow('#{impressao_geral_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
 

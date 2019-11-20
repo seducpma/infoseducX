@@ -30,7 +30,8 @@ end
             :title => "Demanda Geral - Crianças Cadastradas: #{Crianca.total_demanda.length}",
             :size => '700x350',
             :format => 'image_tag',
-            :labels => ["Matriculadas: #{(Crianca.matriculada).length}", "Demanda: #{(Crianca.na_demanda).length}" , "Canceladas: #{(Crianca.cancelada).length}",])
+            :labels => ["Matriculadas: #{(Crianca.matriculada).length}", "Demanda: #{(Crianca.na_demanda).length}" , "Canceladas: #{(Crianca.cancelada).length}"],
+            :bar_colors => '0A0EEA')
     else
 
       @static_graph = Gchart.pie_3d(
@@ -38,7 +39,8 @@ end
             :title => "Demanda por Unidade: #{Crianca.nome_unidade(session[:input])} - #{(Crianca.todas_crianca_por_unidade(session[:input])).length}" ,
             :size => '700x350',
             :format => 'image_tag',
-            :labels => ["Matriculadas: #{(Crianca.matriculas_crianca_por_unidade(session[:input])).length}", "Demanda: #{(Crianca.nao_matriculas_crianca_por_unidade(session[:input])).length}", "Canceladas: #{(Crianca.cancelada_crianca_por_unidade(session[:input])).length}"])
+            :labels => ["Matriculadas: #{(Crianca.matriculas_crianca_por_unidade(session[:input])).length}", "Demanda: #{(Crianca.nao_matriculas_crianca_por_unidade(session[:input])).length}", "Canceladas: #{(Crianca.cancelada_crianca_por_unidade(session[:input])).length}"],
+            :bar_colors => '0A0EEA')
 
     end
       render :layout => "impressao"
@@ -96,7 +98,8 @@ t=0
         :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input]) ).length} chamados de um total de #{vtotal} " ,
         :size => '600x300',
         :format => 'image_tag',
-        :labels => ["Abertas:  #{vaberto} ", "Encerradas:  #{vencerrado}", "Outras: #{(vtotal-vencerrado-vaberto)}",])
+        :labels => ["Abertas:  #{vaberto} ", "Encerradas:  #{vencerrado}", "Outras: #{(vtotal-vencerrado-vaberto)}"],
+        :bar_colors => '0A0EEA')
 
 
    @static_graph2 = Gchart.pie_3d(
@@ -104,7 +107,8 @@ t=0
         :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} chamados" ,
         :size => '900x450',
         :format => 'image_tag',
-        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}", ])
+        :labels => ["Abertas:  #{vaberto}", "Encerradas:  #{vencerrado}"],
+        :bar_colors => '0A0EEA')
 
 
 
@@ -113,7 +117,8 @@ t=0
         :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} Serviços" ,
         :size => '1000x500',
         :format => 'image_tag',
-        :labels => ["Alvenaria:  #{valvenaria}", "Dedetização:  #{vdedetizacao}", "Eletrodomésticos:  #{veletrodomesticos}","Elétrica:  #{veletrica}", "Equip.Cozinha:  #{vequipamento_cozinha}", "Hidráulica:  #{vhidraulica}","Limp.Cx.Água:  #{vlimpeza}", "Marcenaria:  #{ vmarcenaria}", "Pintura:  #{ vpintura}","Playground:  #{vplayground}", "Poda grama:  #{vpoda_grama}","Serralheria:  #{vserralheria}","Telhado:  #{ vtelhado}","Outros:  #{voutros}",])
+        :labels => ["Alvenaria:  #{valvenaria}", "Dedetização:  #{vdedetizacao}", "Eletrodomésticos:  #{veletrodomesticos}","Elétrica:  #{veletrica}", "Equip.Cozinha:  #{vequipamento_cozinha}", "Hidráulica:  #{vhidraulica}","Limp.Cx.Água:  #{vlimpeza}", "Marcenaria:  #{ vmarcenaria}", "Pintura:  #{ vpintura}","Playground:  #{vplayground}", "Poda grama:  #{vpoda_grama}","Serralheria:  #{vserralheria}","Telhado:  #{ vtelhado}","Outros:  #{voutros}"],
+        :bar_colors => '0A0EEA')
 
         
     
@@ -164,21 +169,23 @@ end
       
     @static_graph = Gchart.pie(
         :data => [vaberto,vencerrado, (vtotal-vencerrado-vaberto)/2],
-        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} chamados de um total de #{vtotal} - (#{(((Mmanutencao.por_unidade(session[:input])).length).to_f/(vtotal).to_f*100).round(2)})% " ,
+        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} Serviços de um total de #{vtotal} - (#{(((Mmanutencao.por_unidade(session[:input])).length).to_f/(vtotal).to_f*100).round(2)})% " ,
         :size => '700x400',
         :format => 'image_tag',
         :labels => ["Abertas: #{vaberto}  (#{((vaberto.to_f)/(vtotal).to_f * 100).round(2)} %)",
                      "Encerrados.:#{vencerrado}  (#{((vencerrado.to_f)/(vtotal).to_f * 100).round(2)} %)",
-                     "Outras Unidades: #{(vtotal-vencerrado-vaberto)}",])
+                     "Outras Unidades: #{(vtotal-vencerrado-vaberto)}"],
+        :bar_colors => '0A0EEA')
         
 
    @static_graph2 = Gchart.pie(
         :data => [vaberto,vencerrado],
-        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} chamados - (#{(((Mmanutencao.por_unidade(session[:input])).length).to_f/(vtotal).to_f*100).round(2)})% " ,
+        :title => "Unidade: #{Mmanutencao.nome_unidade(session[:input])} - #{(Mmanutencao.por_unidade(session[:input])).length} Serviços - (#{(((Mmanutencao.por_unidade(session[:input])).length).to_f/(vtotal).to_f*100).round(2)})% " ,
         :size => '700x400',
         :format => 'image_tag',
         :labels => ["Abertas: #{vaberto} - (#{((vaberto.to_f)/((Mmanutencao.por_unidade(session[:input])).length).to_f * 100).round(2)}) % ",
-                    "Encerrados.: #{vencerrado} - (#{((vencerrado.to_f)/((Mmanutencao.por_unidade(session[:input])).length).to_f * 100).round(2)}) % ", ])
+                    "Encerrados.: #{vencerrado} - (#{((vencerrado.to_f)/((Mmanutencao.por_unidade(session[:input])).length).to_f * 100).round(2)}) % "],
+        :bar_colors => '0A0EEA')
 
     @static_graph3 = Gchart.pie(
         :data => [ valvenaria,
@@ -211,7 +218,8 @@ end
                    "Poda Grama: #{vpoda_grama}  (#{((vpoda_grama.to_f)/(vaberto).to_f * 100).round(2)} %)",
                    "Serralheria:  #{vserralheria}  (#{((vserralheria.to_f)/(vaberto).to_f * 100).round(2)} %)",
                    "Telhado: #{ vtelhado}  (#{((vtelhado.to_f)/(vaberto).to_f * 100).round(2)} %)",
-                   "Outros: #{voutros}  (#{((voutros.to_f)/(vaberto).to_f * 100).round(2)} %)", ])
+                   "Outros: #{voutros}  (#{((voutros.to_f)/(vaberto).to_f * 100).round(2)} %)"],
+           :bar_colors => '0A0EEA')
 
 
       render :action => "estatistica_unidade"
@@ -284,7 +292,8 @@ end
         :title => "Serviço: #{Mmanutencao.servico(session[:input])}  - #{(Mmanutencao.por_servico(session[:input]) ).length} serviços de um total de #{vtotal} (#{ptotal}%) " ,
         :size => '800x350',
         :format => 'image_tag',
-        :labels => ["Aberto: #{vaberto} (#{((vaberto.to_f)/((vtotal).to_f) * 100).round(2)} %)", "Encerrado: #{vencerrado} (#{((vencerrado.to_f)/((vtotal).to_f) * 100).round(2)} %)", "Outros: #{(vtotal-vencerrado-vaberto)}  (#{((vtotal-vencerrado-vaberto.to_f)/((vtotal).to_f) * 100).round(2)} %)",])
+        :labels => ["Aberto: #{vaberto} (#{((vaberto.to_f)/((vtotal).to_f) * 100).round(2)} %)", "Encerrado: #{vencerrado} (#{((vencerrado.to_f)/((vtotal).to_f) * 100).round(2)} %)", "Outros: #{(vtotal-vencerrado-vaberto)}  (#{((vtotal-vencerrado-vaberto.to_f)/((vtotal).to_f) * 100).round(2)} %)"],
+        :bar_colors => '0A0EEA')
 
 
    @static_graph5 = Gchart.pie(
@@ -292,11 +301,11 @@ end
         :title => "Serviço: #{Mmanutencao.servico(session[:input])} - #{(Mmanutencao.por_servico(session[:input])).length} chamados  (#{(((Mmanutencao.por_servico(session[:input]).length).to_f)/((vtotal).to_f) * 100).round(2)} %)" ,
         :size => '800x350',
         :format => 'image_tag',
-        :labels => ["Aberto: #{vaberto}  (#{((vaberto.to_f)/((Mmanutencao.por_servico(session[:input]).length).to_f) * 100).round(2)} %)", "Encerrado: #{vencerrado} (#{((vencerrado.to_f)/((Mmanutencao.por_servico(session[:input]).length).to_f) * 100).round(2)} %)", ])
-
+        :labels => ["Aberto: #{vaberto}  (#{((vaberto.to_f)/((Mmanutencao.por_servico(session[:input]).length).to_f) * 100).round(2)} %)", "Encerrado: #{vencerrado} (#{((vencerrado.to_f)/((Mmanutencao.por_servico(session[:input]).length).to_f) * 100).round(2)} %)" ],
+        :bar_colors => '0A0EEA')
+    vtotal= Mmanutencao.aberto_geral.size + Mmanutencao.encerrado_geral.size
     @static_graph3 = Gchart.pie(
-        :data => [valvenaria, vdedetizacao, veletrodomesticos, veletrica, vequipamento_cozinha, vhidraulica, vlimpeza,  vmarcenaria,  vpintura, vplayground, vpoda_grama, vserralheria, vtelhado, voutros
-                 ],
+        :data => [valvenaria, vdedetizacao, veletrodomesticos, veletrica, vequipamento_cozinha, vhidraulica, vlimpeza,  vmarcenaria,  vpintura, vplayground, vpoda_grama, vserralheria, vtelhado, voutros],
         :title =>  "Total de Serviços: #{vtotal} NA SEDUC  (Abertos: #{Mmanutencao.aberto_geral.size} -  Encerrados:#{Mmanutencao.encerrado_geral.size})"  ,
         :size => '800x350',
         :format => 'image_tag',
@@ -313,7 +322,8 @@ end
                     "Poda Grama: #{vpoda_grama}  (#{((vpoda_grama.to_f)/(vtotal.to_f) * 100).round(2)} %)",
                     "Serralheria:  #{vserralheria}  (#{((vserralheria.to_f)/(vtotal.to_f) * 100).round(2)} %)",
                     "Telhado: #{ vtelhado}  (#{((vtelhado.to_f)/(vtotal.to_f) * 100).round(2)} %)",
-                    "Outros: #{voutros}  (#{((voutros.to_f)/(vtotal.to_f) * 100).round(2)} %)", ])
+                    "Outros: #{voutros}  (#{((voutros.to_f)/(vtotal.to_f) * 100).round(2)} %)"],
+         :bar_colors => '0A0EEA')
 
     @static_graph6 = Gchart.pie(
         :data => [valvenaria_ab, vdedetizacao_ab, veletrodomesticos_ab, veletrica_ab, vequipamento_cozinha_ab, vhidraulica_ab, vlimpeza_ab,  vmarcenaria_ab,  vpintura_ab, vplayground_ab, vpoda_grama_ab, vserralheria_ab, vtelhado_ab, voutros_ab
@@ -334,7 +344,8 @@ end
                     "Poda Grama: #{vpoda_grama_ab}  (#{((vpoda_grama_ab.to_f)/((Mmanutencao.aberto_geral.size).to_f) * 100).round(2)} %)",
                     "Serralheria:  #{vserralheria_ab}  (#{((vserralheria_ab.to_f)/((Mmanutencao.aberto_geral.size).to_f) * 100).round(2)} %)",
                     "Telhado: #{ vtelhado_ab}  (#{((vtelhado_ab.to_f)/((Mmanutencao.aberto_geral.size).to_f) * 100).round(2)} %)",
-                    "Outros: #{voutros_ab}  (#{((voutros_ab.to_f)/((Mmanutencao.aberto_geral.size).to_f) * 100).round(2)} %)", ])
+                    "Outros: #{voutros_ab}  (#{((voutros_ab.to_f)/((Mmanutencao.aberto_geral.size).to_f) * 100).round(2)} %)"],
+            :bar_colors => '0A0EEA')
 
     @static_graph7 = Gchart.pie(
         :data => [valvenaria_en, vdedetizacao_en, veletrodomesticos_en, veletrica_en, vequipamento_cozinha_en, vhidraulica_en, vlimpeza_en,  vmarcenaria_en,  vpintura_en, vplayground_en, vpoda_grama_en, vserralheria_en, vtelhado_en, voutros_en
@@ -355,7 +366,8 @@ end
                     "Poda Grama: #{vpoda_grama_en}  (#{((vpoda_grama_en.to_f)/((Mmanutencao.encerrado_geral.size).to_f) * 100).round(2)} %)",
                     "Serralheria:  #{vserralheria_en}  (#{((vserralheria_en.to_f)/((Mmanutencao.encerrado_geral.size).to_f) * 100).round(2)} %)",
                     "Telhado: #{ vtelhado_en}  (#{((vtelhado_en.to_f)/((Mmanutencao.encerrado_geral.size).to_f) * 100).round(2)} %)",
-                    "Outros: #{voutros_en}  (#{((voutros_en.to_f)/((Mmanutencao.encerrado_geral.size).to_f) * 100).round(2)} %)", ])
+                    "Outros: #{voutros_en}  (#{((voutros_en.to_f)/((Mmanutencao.encerrado_geral.size).to_f) * 100).round(2)} %)"],
+            :bar_colors => '0A0EEA')
 
 
 

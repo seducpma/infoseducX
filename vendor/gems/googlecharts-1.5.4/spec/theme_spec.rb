@@ -31,4 +31,8 @@ describe "generating a default Gchart" do
   it 'should set chart background' do
     Chart::Theme.load(:keynote).chart_background.should eql("FFFFFF")
   end
+
+  it 'should set chart chart color' do
+    Chart::Theme.load(:keynote).chart_colors.should eql("#0A0EEA")
+  end
 end

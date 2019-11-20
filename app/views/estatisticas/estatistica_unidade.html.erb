@@ -3,7 +3,7 @@
 <div class="tabs">
  <table bgcolor="#DCDCDC" width="70%" align="center" >
   <tr bgcolor="#DCDCDC" >
-      <td colspan="2">
+      <td colspan="3">
          <div id="caixa_titulo">
              <font size="3"><strong>O.S. MANUNTENÇÃO  POR UNIDADE</strong></font><br/>
          </div>
@@ -11,7 +11,7 @@
       </td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <%= form_tag({ :method => 'post', :action => 'por_unidade' }, :id => 'graph-unit-form')%>
           <%= error_messages_for 'contact' %>
            <% if $uni==1 %>
@@ -33,8 +33,9 @@
     </tr>
     <tr>
       
-      <td colspan="2" align="center">
+      <td colspan="3" align="center">
           <% if @static_graph.present?%>
+          <u><b>ESTATÍSTICA SERVIÇOS NA SEDUC X UNIDADE NO ANO</b></u>
               <%= @static_graph%>
           <%else%>
               <%= @graph %>
@@ -43,8 +44,9 @@
     </tr>
     <tr>
 
-      <td colspan="2" align="center">
+      <td colspan="3" align="center">
           <% if @static_graph2.present?%>
+                <u><b>ESTATÍSTICA DE SERVIÇOS EM ABERTO E ENCERRADOS  NA UNIDADE NO ANO </b></u>
               <%= @static_graph2%>
           <%else%>
               <%= @graph2 %>
@@ -53,8 +55,9 @@
     </tr>
     <tr>
 
-      <td colspan="2" align="center">
+      <td colspan="3" align="center">
           <% if @static_graph3.present?%>
+          <u><b>ESTATÍSTICA DE SERVIÇOS EM ABERTO NA UNIDADE NO ANO </b></u>
               <%= @static_graph3%>
           <%else%>
               <%= @graph3 %>
@@ -65,7 +68,7 @@
 
    <% if $menu==1 %>
     <tr>
-
+        <td width="1%"align="left" ><%= button_to '' %></td>
         <td width="6%"align="left" ><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
         <td><b><%#= link_to image_tag("/stylesheets/images/imprimir12.png"), onclick="javascript:MM_openBrWindow('#{impressao_estatistica_unidade_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
 
