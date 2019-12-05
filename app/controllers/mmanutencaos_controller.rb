@@ -62,7 +62,7 @@ def consulta_encerrados_unidade
                       page.replace_html 'encerrados', :partial => "encerrados"
                  end
           else if params[:type_of].to_i == 3
-                        if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('terceiro')or current_user.has_role?('oficios')or current_user.has_role?('estagiario SEDUC')
+                        if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('terceiro')or current_user.has_role?('oficios')or current_user.has_role?('estagiario SEDUC')or current_user.has_role?('SEDUC')
                             @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE (situacao_manutencao_id = 2 or situacao_manutencao_id = 9)")
                         else
                            @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE (situacao_manutencao_id = 2 or situacao_manutencao_id = 9) and unidade_id ="+(current_user.unidade_id).to_s+" order by data_enc DESC ")
@@ -87,7 +87,7 @@ def consulta_encerrados_unidade
 end
 
 def consultas_encerrados
-     if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')
+     if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')or current_user.has_role?('SEDUC')
       @unidades_manutencao =  Unidade.find(:all, :order => 'nome ASC')
      else
         if (current_user.unidade_id== 53)
@@ -172,7 +172,7 @@ end
 def consultas_abertos
      @situacao_manutencao =  SituacaoManutencao.find(:all, :conditions =>  ["id <> 2"], :order => 'situacao')
                         
-     if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')
+     if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')or current_user.has_role?('SEDUC')
       @unidades_manutencao =  Unidade.find(:all, :order => 'nome ASC')
      else
         if (current_user.unidade_id== 53)
