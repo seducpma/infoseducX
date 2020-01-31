@@ -47,6 +47,7 @@ end
   def show
    define_layout
     @chamados = Chamado.find(params[:id])
+    session[:id_chamado]=params[:id]
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @chamados }

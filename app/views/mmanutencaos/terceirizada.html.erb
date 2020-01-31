@@ -97,7 +97,7 @@
                  </tr>
                  <tr>
                     <td align="left" width="10%" valign="top"><b>Data:</b></td>
-                    <td align="left" colspan="5"><%= @mmanutencao.data_ate.strftime("%d/%m/%Y %H:%M")%></td>
+                    <td align="left" colspan="5"><%if !@mmanutencao.data_ate.nil? %> <%=@mmanutencao.data_ate.strftime("%d/%m/%Y %H:%M")%> <%end %></td>
                    </tr>
                </table>
             </fieldset>

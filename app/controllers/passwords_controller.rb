@@ -23,6 +23,10 @@ class PasswordsController < ApplicationController
      
   end
 
+  def tela_email_chamado
+
+  end
+
   def email
        
   #   participante = Participante.find_by_matricula(params[:matricula])
@@ -50,7 +54,19 @@ class PasswordsController < ApplicationController
   #  end
   #end
 
+  def email_chamado
 
+  
+       w=session[:email]=email= (params[:email])
+      if !session[:id_chamado].nil?
+       @mmanutencao= Mmanutencao.find(session[:id_manutencao])
+       @mmanutencao.data3= Time.now
+       @mmanutencao.save
+       t=0
+      end
+       #InscricaoMailer.deliver_confirmacao_inscricao(@inscricao,@inscricao.participante)
+       ChamadoMailer_salvar.deliver_enviar_email(@chamado,email)
+  end
 
 
 
