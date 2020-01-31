@@ -1,4 +1,4 @@
-
+<% @chamados= Chamado.find(session[:id_chamado]) %>
 <div id="interno6">
     <% title "CLASSES".singularize %>
     <div class="tabs">
@@ -73,6 +73,7 @@
             <tr>
                <td align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
               <td align="left" ><%= button_to("Imprimir",  onclick="javascript:window.print()", :title => "Imprimir") %></td>
+              <td align="left" ><%= button_to('Enviar cópia deste chamado para E-mail', {:action => "tela_email_chamado_enc", :controller =>'passwords' }, :method => "get", :title => "Email") %></td>
             </tr>
          </table>
             </table>

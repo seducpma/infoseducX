@@ -18,7 +18,7 @@
                <td align="center">
                 <br/><br/>
                     <% form_tag url_for(:action => 'email_chamado') do %>
-                        <b>Digite e-mail cadastrado no sistema</b>
+                        <b>Digite o endereço de-mail:</b>
                         <%= text_field_tag :email, "", :size => 50 %>
                         <%= submit_tag 'Enviar' %>
                     <% end %>

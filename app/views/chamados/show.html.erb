@@ -36,7 +36,7 @@
                                 <table bgcolor ="#E6E2D">
                                     <tr >
                                         <td align="left" width="4%"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
-                                        
+                                        <td align="left" ><%= button_to('Enviar cópia deste chamado para E-mail', {:action => "tela_email_chamado", :controller =>'passwords' }, :method => "get", :title => "Email") %></td>
                                     </tr>
                                 </table>
 

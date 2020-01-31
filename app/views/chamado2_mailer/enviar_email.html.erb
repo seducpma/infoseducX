@@ -1,0 +1,129 @@
+<%t=0%>    
+<br/>
+ ORDEM DE SERVIÇO DE SERVIÇO DE INFORMÁTICA ABAIXO FOI <b><u>ENCERRADA</u></b> NESTA DATA E SERÁ ATENDIDA ASSIM QUE POSSÍVEL. <br/><br/>
+ CASO O SERVIÇO <b><u>NÂO ESTEJA CONCLUÍDO CORRETAMENTE, FAVOR ENTRAR EM CONTATO COM A INFORMÁTICA/SEDUC.</u></b><br/><br/>
+        <div class="tabs">
+            <table width="100%" align="center"  bgcolor="#F5F5F5" >
+                <tr  bgcolor ="#E6E2D">
+                    <td align="left">
+                        <font  size=5 color="black"> <b>SERVIÇO ENCERRADO - MANUTENÇÃO INFORMÁTICA</b></font>
+                        <hr/>
+                    </td>
+                </tr>
+                <tr>
+                    <td  colspan="2">
+                        <table>
+                            <tr>
+                                <td width="40%" valign="TOP">
+
+
+   <fieldset><legend><font  size=4> Solicitação</font></legend>
+     <table>
+       <tr>
+             <td align="left"><b>Nº Ordem:</b></td>
+             <td align="left"><%=h @chamado.id %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Data Solicitação:</b></td>
+         <td align="left"><%=h @chamado.data_sol.strftime("%d de %B de %Y") %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Solicitação:</b></td>
+         <td align="left"><%=h @chamado.data_sol.strftime("%H:%M horas") %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Solicitante</b></td>
+         <td align="left"><%=h @chamado.solicitante %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Unidade:</b></td>
+         <td align="left"> <%=h @chamado.unidade.nome %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Forma Solicitação:</b></td>
+         <td align="left"><%=h @chamado.forma_sol %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Descrição Problema:</b></td>
+         <td align="left"><%=h @chamado.problema %></td>
+       </tr>
+       <tr>
+         <td align="left"><b>Observação:</b></td>
+         <td align="left"><%=h @chamado.obs%></td>
+       </tr>
+     </table>
+
+    </fieldset>
+
+
+
+
+                                </td>
+                                <td valign="top">
+                                    <fieldset><legend><font  size=4> Atendimento Realizado</font></legend>
+                                        <table>
+                                            <tr>
+                                                <td align="left" width="20%"><b>Data Atendimento:</b></td>
+                                                <td align="left"><%=h @chamado.data_aten.strftime("%d de %B de %Y") %></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" width="20%"><b>Hora Atendimento:</b></td>
+                                                <td align="left"><%=h @chamado.data_aten.strftime("%H:%M horas")%></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left"><b>Funcionário:</b></td>
+                                                <%if @chamado.unidade_id.nil?%>
+                                                    <td><font color="red">ERRO no registro nº<%=h @chamado.id %></font></td>
+                                                <%else%>
+                                                    <td align="left"><%=h @chamado.estagiario.nome %></td>
+                                                <%end%>
+                                            </tr>
+                                            <tr>
+                                                <td align="left"><b>Tipo Problema:</b></td>
+                                                <%if @chamado.tipos_problema.nil?%>
+                                                    <td><font color="red">ERRO no registro nº<%=h @chamado.id %></font></td>
+                                                <%else%>
+                                                    <td align="left"><%=h @chamado.tipos_problema.tipo %></td>
+                                                <%end%>
+                                            </tr>
+                                            <tr>
+                                                <td align="left"><b>Patrimônio:</b></td>
+                                                <td align="left"><%=h @chamado.patrimonio %>
+                                                    <b>Local Atendimento:</b><%=h @chamado.local %></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top"><b>Procedimentos executados:</b></td>
+                                                <td align="left"><%=h @chamado.procedimentos %></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left"><b>Situação Chamado:</b></td>
+                                                <td align="left"><%=h @chamado.situacao_chamado.situacao %></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left"><b>Término:</b></td>
+                                                <td align="left"><%=h @chamado.data_enc.strftime("%d de %B de %Y") %></td>
+                                            </tr>
+                                        </table>
+                                    </fieldset>
+                                </td>
+                            </tr>
+
+              <table align="left">
+             </table>
+            </table>
+            </td>
+            </tr>
+            </table>
+            </font>
+
+        </div>
+
+
+
+
+      </font>
+      <br/>
+
+>> QUALQUER DÚVIDA ENTRAR EM CONTATO COM A INFORMÁTICA- SEDUC <br/><br/>
+
+Para acompanhar o atendimento da solicitação utilize o site: <a href="infoseduc.seducpma.com">Acessar Infoseduc</a>

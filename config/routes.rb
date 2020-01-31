@@ -115,8 +115,8 @@ ActionController::Routing::Routes.draw do |map|
   map.montar_classe '/montar_classe', :controller => 'classes', :action => 'montar_classe'
   map.new_disciplinanota '/new_disciplinanota', :controller => 'disciplinas', :action => 'new_disciplinanota'
   map.create_discipina_nota '/create_discipina_nota', :controller => 'disciplinas', :action => 'create_discipina_nota'
-
-    map.impressao_nf'/impressao_nf', :controller => 'orc_nota_fiscals', :action => 'impressao_nf'
+  map.chamado_encerrado '/chamado_encerrado', :controller =>'chamados', :action =>'showencerrado'
+  map.impressao_nf'/impressao_nf', :controller => 'orc_nota_fiscals', :action => 'impressao_nf'
   map.impressao_dotacao'/impressao_dotacao', :controller => 'orc_fichas', :action => 'impressao_dotacao'
   map.impressao_sem_empenho'/impressao_sem_empenho', :controller => 'orc_pedido_compras', :action => 'impressao_sem_empenho'
   map.impressao_atendimento '/impressao_atendimento', :controller => 'chamados', :action => 'impressao_atendimento'
@@ -145,6 +145,7 @@ ActionController::Routing::Routes.draw do |map|
   #map.download_historico '/download_historico', :controller => 'atribuicaos', :action => 'arquivo_historico'
   map.impressao_unidade '/impressao_unidade', :controller => 'aulas_eventuals', :action => 'impressao_unidade'
   map.impressao_chamado_manutencao '/impressao_chamado_manutencao', :controller =>'mmanutencao', :action =>'impressao_chamado_manutencao'
+  
   map.impressao_calendar '/impressao_calendar', :controller =>'reservar_salas', :action =>'impressao_calendar'
   map.impressao_calendar_agendamento '/impressao_calendar_agendamento', :controller =>'poda_gramas', :action =>'impressao_calendar_agendamento'
   map.impressao_calendar_agenda '/impressao_calendar_agenda', :controller =>'poda_gramas', :action =>'impressao_calendar_agenda'

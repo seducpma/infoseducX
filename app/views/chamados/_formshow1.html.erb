@@ -2,7 +2,8 @@
      <table>
        <tr>
              <td align="left"><b>Nº Ordem:</b></td>
-             <td align="left"><%=h @chamados[0].id %></td>
+             <td align="left"><%=h @chamados[0].id %>   <%session[:id_chamado]= @chamados[0].id  %>     // <%=  session[:id_chamado] %></td>
+
        </tr>
        <tr>
          <td align="left"><b>Data Solicitação:</b></td>

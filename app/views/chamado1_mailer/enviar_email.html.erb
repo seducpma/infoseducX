@@ -1,0 +1,53 @@
+<%t=0%>    
+<br/>
+ ORDEM DE SERVIÇO DE SERVIÇO DE INFORMÁTICA ABAIXO FOI ABERTA NESTA DATA E SERÁ ATENDIDA ASSIM QUE POSSÍVEL. <br/>
+
+
+                 <table width="100%" align="center"  bgcolor="#F5F5F5" >
+                   <tr bgcolor ="#E6E2D">
+                     <td width ="100%" colspan="2">
+                        <fieldset><legend><font  size=4> Solicitação</font></legend>
+                             <table>
+                               <tr>
+                                     <td align="left"><b>Nº Ordem:</b></td>
+                                     <td align="left"><%=h @chamado.id %></td>
+                               </tr>
+                               <tr>
+                                 <td align="left"><b>Data Solicitação:</b></td>
+                                 <td align="left"><%=h @chamado.data_sol.strftime("%d de %B de %Y") %></td>
+                               </tr>
+                               <tr>
+                                 <td align="left"><b>Horas Solicitação:</b></td>
+                                 <td align="left"><%=h @chamado.data_sol.strftime("%H:%M horas") %></td>
+                               </tr>
+                               <tr>
+                                 <td align="left"><b>Solicitante</b></td>
+                                 <td align="left"><%=h @chamado.solicitante %></td>
+                               </tr>
+                               <tr>
+                                 <td align="left"><b>Unidade:</b></td>
+                                 <td align="left"> <%=h @chamado.unidade.nome %></td>
+                               </tr>
+                               <tr>
+                                 <td align="left"><b>Forma Solicitação:</b></td>
+                                 <td align="left"><%=h @chamado.forma_sol %></td>
+                               </tr>
+                               <tr>
+                                 <td align="left"><b>Descrição Problema:</b></td>
+                                 <td align="left"><%=h @chamado.problema %></td>
+                               </tr>
+                               <tr>
+                                 <td align="left"><b>Observação:</b></td>
+                                 <td align="left"><%=h @chamado.obs%></td>
+                               </tr>
+                             </table>
+                            </fieldset>
+                     </td>
+                  </tr>
+                       </table>
+      </font>
+      <br/>
+
+>> QUALQUER DÚVIDA ENTRAR EM CONTATO COM A INFORMÁTICA- SEDUC <br/><br/>
+
+Para acompanhar o atendimento da solicitação utilize o site: <a href="infoseduc.seducpma.com">Acessar Infoseduc</a>

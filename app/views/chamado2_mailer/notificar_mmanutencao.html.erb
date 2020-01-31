@@ -1,0 +1,82 @@
+    <br/>
+      <font size="2">
+      <table  class="tabelas " width="50%"align="center">
+       <tr>
+          <th align="left">
+             <font  size=4 color="black"> <b> ORDEM DE SERVIÇO DE MANUTENÇÃO</b></font><br/>
+             <font  size=2 color="black"> <b> Sistema de Chamado de Manutenção - Infoseduc</b></font>
+          </th>
+       </tr>
+       <tr>
+         <td>
+          <font  size="2">
+           <table width="100%">
+            <tr>
+              <td>
+                 <fieldset><legend><font  size=4> Solicitação</font></legend>
+                 <table>
+                   <tr>
+                         <td align="left" width="50%"><b>Nº Ordem Serviço:  </b></td>
+                         <td align="left"><%=h @mmanutencao.id%></td>
+                   </tr>
+                   <tr>
+                     <td align="left"><b>Data Solicitação:</b></td>
+                     <td align="left"><%=h @mmanutencao.data_sol.strftime("%d/%m/%Y" ) %></td>
+                   </tr>
+                   <tr>
+                     <td align="left"><b>Horas Solicitação:</b></td>
+                     <td align="left"><%=h @mmanutencao.data_sol.strftime("%H:%M horas") %></td>
+                   </tr>
+                   <tr>
+                     <td align="left"><b>Solicitante</b></td>
+                     <td align="left"><%=h @mmanutencao.solicitante %></td>
+                   </tr>
+                   <tr>
+                     <td align="left" valign="top"><b>Unidade:</b></td>
+                     <td align="left"> <%=h @mmanutencao.unidade.nome %></td>
+                   </tr>
+                   <tr>
+                     <td align="left"><b>Forma Solicitação:</b></td>
+                     <td align="left"><%=h @mmanutencao.forma %></td>
+                   </tr>
+                   <tr>
+                      <td valign="top"><b>Serviços Solicitados:</b></td>
+                      <td>
+                         <% @mmanutencao.tipos_manutencaos.each do |servico| %>
+                          - <%=h servico.servico%><br/>
+                         <% end %>
+                      </td>
+                  </tr>
+                   <tr>
+                     <td align="left" valign="top"><b>Descrição Problema:</b></td>
+                     <td align="left"><%=h @mmanutencao.descricao %></td>
+                   </tr>
+                   <tr>
+                     <td align="left"><b>Quem abriu:</b></td>
+                     <td align="left"><%=h @mmanutencao.user.name%></td>
+                   </tr>
+                   <tr>
+                     <td align="left"><b>Observação:</b></td>
+                     <td align="left"><%=h @mmanutencao.obs%></td>
+                   </tr>
+                  </table>
+                </fieldset>
+              </td>
+            </tr>
+       <tr>
+         <td>
+           <font size="1">Email gerado automaticamente, não necessita ser respondido</font>
+         </td>
+       </tr>
+
+           </table>
+         </font>
+       </td>
+       </tr>
+      </table>
+      </font>
+      <br/>
+
+
+
+Site: <a href="infoseduc.seducpma.com">Acessar Infoseduc</a>

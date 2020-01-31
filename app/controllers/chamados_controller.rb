@@ -87,10 +87,14 @@ end
   def update
     define_layout
     @chamados = Chamado.find(params[:id])
+    w= session[:id_chamado_encerrado]= params[:id]
+    t=0
     respond_to do |format|
       if @chamados.update_attributes(params[:chamado])
         flash[:notice] = 'SOLICITAÇÃO DE SERVIÇO SALVA COM SUCESSO.'
-        format.html { redirect_to(chamados_path) }
+        #format.html { redirect_to(chamados_path) }
+        #format.html { redirect_to(chamado_encerrado_path) }
+        format.html { redirect_to( {:action => "showencerrado", :id => session[:id_chamado_encerrado]}) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -145,7 +149,7 @@ end
    def encerrados
     @chamados_encerrado = Chamado.encerrado
     if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao')
-        @chamados = Chamado.find_by_sql("SELECT est.nome as estagiario, uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_chamado_id, mma.estagiario_id, mma.problema, mma.data_sol, mma.data_aten, mma.data_enc, mma.solicitante, mma.procedimentos,  mma.obs  FROM chamados mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id   INNER JOIN  estagiarios est ON mma.estagiario_id = est.id WHERE situacao_chamado_id = 12")
+        @chamados = Chamado.find_by_sql("SELECT est.nome as estagiario, uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_chamado_id, mma.estagiario_id, mma.problema, mma.data_sol, mma.data_aten, mma.data_enc, mma.solicitante, mma.procedimentos,  mma.obs  FROM chamados mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id   INNER JOIN  estagiarios est ON mma.estagiario_id = est.id WHERE situacao_chamado_id = 12  order by data_enc DESC")
     else
        @chamados = Chamado.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_chamado_id, mma.estagiario_id, mma.problema, mma.data_sol, mma.data_aten, mma.data_enc,  mma.solicitante, mma.procedimentos,  mma.obs  FROM chamados mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_chamado_id = 12 and unidade_id ="+(current_user.unidade_id).to_s+" order by data_enc DESC ")
     end
