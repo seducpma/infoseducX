@@ -120,12 +120,11 @@ end
   end
 
  def showencerrado
-   define_layout
+   #define_layout
+   w=params[:id]
+   t=0
      @chamados = Chamado.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @chamados }
-    end
+    
  end
 
  def selected_print
