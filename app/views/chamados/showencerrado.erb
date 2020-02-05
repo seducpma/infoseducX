@@ -25,18 +25,18 @@
                                         <table>
                                             <tr>
                                                 <td align="left" width="20%"><b>Data Atendimento:</b></td>
-                                                <td align="left"><%=h @chamados.data_aten.strftime("%d de %B de %Y") %></td>
+                                                <td align="left"><%if !@chamados.data_aten.nil?%><%=h @chamados.data_aten.strftime("%d de %B de %Y") %> <%end%></td>
                                             </tr>
                                             <tr>
                                                 <td align="left" width="20%"><b>Hora Atendimento:</b></td>
-                                                <td align="left"><%=h @chamados.data_aten.strftime("%H:%M horas")%></td>
+                                                <td align="left"><%if !@chamados.data_aten.nil?%><%=h @chamados.data_aten.strftime("%H:%M horas")%> <%end%></td>
                                             </tr>
                                             <tr>
                                                 <td align="left"><b>Funcionário:</b></td>
                                                 <%if @chamados.unidade_id.nil?%>
                                                     <td><font color="red">ERRO no registro nº<%=h @chamados.id %></font></td>
                                                 <%else%>
-                                                    <td align="left"><%=h @chamados.estagiario.nome %></td>
+                                                    <td align="left"> <%if !@chamados.estagiario.nil?%><%=h @chamados.estagiario.nome %><%end%></td>
                                                 <%end%>
                                             </tr>
                                             <tr>
@@ -62,7 +62,7 @@
                                             </tr>
                                             <tr>
                                                 <td align="left"><b>Término:</b></td>
-                                                <td align="left"><%=h @chamados.data_enc.strftime("%d de %B de %Y") %></td>
+                                                <td align="left"> <%if !@chamados.data_enc.nil?%>  <%=h @chamados.data_enc.strftime("%d de %B de %Y")%> <%end%>  </td>
                                             </tr>
                                         </table>
                                     </fieldset>
