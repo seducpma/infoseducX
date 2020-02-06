@@ -5,7 +5,75 @@
      <font size="3"><strong>MANUTENÇÃO INFORMÁTICA</strong></font><br/>
  </div>
       <div class="tabs">
-      <%= render :partial => 'form' %>
+        <% form_for(@chamados) do |f| %>
+            <%= f.error_messages %>
+            <font  size="2">
+                <table width="100%" align="center"   >
+                    <tr>
+                        <td colspan="3">
+                            <fieldset><legend><font  size=4> Solicitação nº <%=  @chamados.id%> </font></legend>
+                                <table bgcolor="#F5F5F5">
+                                  <tr>
+                                    <td colspan="2"> <hr/></td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2"><font size="3" color =" red"><b><u>ATENÇÃO:</u> Esta tela é somente para abertura de chamados de INFORMÁTICA,
+                                      para outros serviços que não sejam informática favor utilizar no menu a opção MANUTENÇÃO / GERAL / ABRIR. </font>
+                                      </b>
+
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2"> <hr/></td>
+                                  </tr>
+                                    <tr>
+                                        <td align="left"><b>Data Solicitação:</b></td>
+                                        <td align="left"><%= f.datetime_select :data_sol, :order => [:day, :month, :year], :start_year => (Date.today.year), :value => (Time.now) %>horas</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td align="left"><b>Solicitante:</b></td>
+                                        <td align="left"><%= f.text_field :solicitante, :size => 44 %></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left"><b> Unidade:</b></td>
+                                        <td align="left"><%= h  @chamados.unidade.nome%>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left"><b>Forma Solicitação:</b></td>
+                                        <td align="left"><%= f.select :forma_sol, SOLICITACAO, :include_blank => '---Selecionar---',  :size =>20  %></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top"><b> Descrição Problema:</b></td>
+                                        <td align="left"><%= f.text_area :problema, :cols =>"48", :rows => "3" %></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" valign="top"><b>Observação:</b></td>
+                                        <td align="left"><%= f.text_area :obs, :cols =>"48", :rows => "2" %></td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <table  width="100%" align="center">
+                                <tr>
+                                    <td align="left" width="6%">
+                                        <table width="100%" align="left" >
+                                            <tr>
+                                                <td width="2%" align="left"><%= f.submit "Salvar" %> </td>
+                                            <% end %>
+                                            <td  align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+        </font>
+
     </div>
 </div>
 <br/>

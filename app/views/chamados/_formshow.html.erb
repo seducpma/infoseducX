@@ -32,6 +32,11 @@
          <td align="left"><b>Observação:</b></td>
          <td align="left"><%=h @chamados.obs%></td>
        </tr>
+        <%if  current_user.has_role?('admin')%>
+           <tr>
+               <td colspan="2" align="right"><%= link_to image_tag("/stylesheets/images/editar1.png"),  {:action => "edit", :id =>@chamados.id}, :target => '_blank', :title => "Editar" %> </td>
+           </tr>
+       <%end%>
      </table>
        <% session[:formshow] = 1 %>
     </fieldset>

@@ -122,7 +122,7 @@ end
  def showencerrado
    #define_layout
    w=params[:id]
-   t=0
+
      @chamados = Chamado.find(params[:id])
     
  end

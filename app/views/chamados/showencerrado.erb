@@ -64,10 +64,17 @@
                                                 <td align="left"><b>Término:</b></td>
                                                 <td align="left"> <%if !@chamados.data_enc.nil?%>  <%=h @chamados.data_enc.strftime("%d de %B de %Y")%> <%end%>  </td>
                                             </tr>
+                                            <%if  current_user.has_role?('admin')%>
+                                               <tr>
+                                                   <td colspan="2" align="right"><%= link_to image_tag("/stylesheets/images/editar1.png"),  {:action => "ordemservico", :id =>@chamados.id}, :target => '_blank', :title => "Editar" %> </td>
+                                               </tr>
+                                           <%end%>
                                         </table>
                                     </fieldset>
                                 </td>
                             </tr>
+
+
 
               <table align="left">
             <tr>
