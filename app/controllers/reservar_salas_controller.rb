@@ -3,7 +3,7 @@ class ReservarSalasController < ApplicationController
 before_filter :load_salas
 before_filter :load_servicos_salas
 layout :define_layout
-before_filter :login_required, :except => ["cesta_basica", "uso_internet", "dowloads", "ata_ensino_fundamental_02_03_18", "ata_coordenadores_emei_02_03_18" ,"ata_infantil_01_03_18", "infantil_2018", "plano_educacao", "fundamental_2018", "banco_horas", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda", "infantil_2019", "fundamental_2019"]
+before_filter :login_required, :except => ["cesta_basica", "uso_internet", "dowloads",  "plano_educacao", "banco_horas", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda", "infantil_2019", "fundamental_2019",  "fundamental_2020",  "infantil_2020", "acordo_2020"]
 
  def load_servicos_salas
   @servicos_salas = ServicosSala.find(:all, :conditions=>['status = 1'] )
@@ -142,19 +142,23 @@ end
      session[:reservadata]= params[:reservar_sala_data_reserva]
  end
 
-
+# para download acrescentar a def no "before_filter"
 def dowloads
     
 end
 
-def infantil_2018
-    #send_file("#{RAILS_ROOT}/public/documentos/Infantil_2018.pdf" , :type=>"pdf")
-    send_file("#{RAILS_ROOT}/public/documentos/Infantil2018.xls" , :type=>"xls")
+
+def fundamental_2020
+    #send_file("#{RAILS_ROOT}/public/documentos/Fundamental_2018.pdf" , :type=>"pdf")
+    send_file("#{RAILS_ROOT}/public/documentos/Fundamental2020.xls" , :type=>"xls")
 end
 
-def fundamental_2018
-    #send_file("#{RAILS_ROOT}/public/documentos/Fundamental_2018.pdf" , :type=>"pdf")
-    send_file("#{RAILS_ROOT}/public/documentos/Fundamental2018.xls" , :type=>"xls")
+def infantil_2020
+    send_file("#{RAILS_ROOT}/public/documentos/Infantil2020.xls" , :type=>"xls")
+end
+
+def acordo_2020
+    send_file("#{RAILS_ROOT}/public/documentos/acordo_2020.pdf" , :type=>"pdf")
 end
 
 
@@ -170,22 +174,8 @@ def cesta_basica
     send_file("#{RAILS_ROOT}/public/documentos/Lei 6166.pdf" , :type=>"pdf")
 end
 
-
 def plano_educacao
     send_file("#{RAILS_ROOT}/public/documentos/plano_educacao.pdf" , :type=>"pdf")
-end
-
-def ata_infantil_01_03_18
-    send_file("#{RAILS_ROOT}/public/documentos/ata_infantil_01_03_18.pdf" , :type=>"pdf")
-end
-
-def ata_coordenadores_emei_02_03_18
-    send_file("#{RAILS_ROOT}/public/documentos/Coordenadores_EMEI_02_03_18.pdf" , :type=>"pdf")
-end
-
-
-def ata_ensino_fundamental_02_03_18
-    send_file("#{RAILS_ROOT}/public/documentos/ensino_fundamental_02_03_18.pdf" , :type=>"pdf")
 end
 
 def banco_horas
