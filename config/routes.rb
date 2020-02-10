@@ -230,9 +230,10 @@ ActionController::Routing::Routes.draw do |map|
   map.ata_ensino_fundamental_02_03_18'/ata_ensino_fundamental_02_03_18', :controller => 'reservar_salas', :action => 'ata_ensino_fundamental_02_03_18'
   map.uso_internet '/uso_internet', :controller => 'reservar_salas', :action => 'uso_internet'
 
+  map.diarioinfantil_2020'/diarioinfantil_2020', :controller => 'reservar_salas', :action => 'diarioinfantil_2020'
   map.acordo_2020 '/acordo_2020', :controller => 'reservar_salas', :action => 'acordo_2020'
-    map.fundamental_2020 '/fundamental_2020', :controller => 'reservar_salas', :action => 'fundamental_2020'
-   map.infantil_2020 '/infantil_2020', :controller => 'reservar_salas', :action => 'infantil_2020'
+  map.fundamental_2020 '/fundamental_2020', :controller => 'reservar_salas', :action => 'fundamental_2020'
+  map.infantil_2020 '/infantil_2020', :controller => 'reservar_salas', :action => 'infantil_2020'
   map.fundamental_2018 '/fundamental_2018', :controller => 'reservar_salas', :action => 'fundamental_2018'
   map.infantil_2018 '/infantil_2018', :controller => 'reservar_salas', :action => 'infantil_2018'
   map.fundamental_2019 '/fundamental_2019', :controller => 'reservar_salas', :action => 'fundamental_2019'
