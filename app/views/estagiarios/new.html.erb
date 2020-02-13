@@ -23,9 +23,22 @@
                     <tr>
                       <td align="left"><b>Nome:</b></td>
                       <td align="left" colspan="3"><%= f.text_field :nome, :size => 45%>
+                         <%= observe_field :estagiario_nome,
+                            :with => :estagiario_nome,
+                             :url => { :action => 'mesmo_nome' } %>
+
                             <b>RG:</b><%= f.text_field :RG, :size => 13 %>
                             <b> CPF:</b><%= f.text_field :CPF, :size => 13 %></td>
                     </tr>
+
+
+
+                     <tr>
+                         <td></td>
+                         <td colspan="3"><b><div id='certeza' ></div> </b></td>
+
+
+                       </tr>
                    <tr>
                       <td align="left"><b> Endereço:</b></td>
                       <td align="left" colspan="3"> <%= f.text_field :endereco, :size => 45%>
@@ -109,11 +122,11 @@
 
                   <table width="100%"  align="left">
                    <tr>
-                     <div id='Certeza'>
-                      <td width="6%"align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
-                      </div>
-                      <td align="left"><%= f.submit "Salvar", :class => "btn_filtrar" %></td>
+
+                      <td width="6%" align="left"><div id='certeza1' > <%= f.submit 'Salvar' %></div></td>
         <% end %>
+                     <td align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+
                     </tr>
                 </table>
 

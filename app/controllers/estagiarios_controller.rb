@@ -16,6 +16,20 @@ class EstagiariosController < ApplicationController
       end
  end
 
+  def mesmo_nome
+
+    w=session[:nome] = params[:estagiario_nome]
+
+    @verifica = Estagiario.find(:all, :conditions=> ['nome =? ',params[:estagiario_nome]])
+
+    if @verifica.present? then
+      render :update do |page|
+        page.replace_html 'certeza', :text => '<font color="red" id="pisca1"> NOME JÁ CADASTRADO NO SISTEMA </font>'
+         page.replace_html 'certeza1', :text => '<font color="red" id="pisca1"> NOME JÁ CADASTRADO NO SISTEMA </font>'
+      end
+    end
+  end
+
 
 def lista_consulta_estagiario
       @estagiarios = Estagiario.find(:all, :conditions => ['desligado =0 and id= ?', params[:estagiario_id]])
