@@ -32,12 +32,63 @@
             <td></td>
         </tr>
         <tr>
-            <td colspan="22" align="right"><font size="2"><b>RELATÓRIO SUBSTITUIÇÕES DO MÊS DE <%= session[:mes] %> DE <%=  Time.now.year%> &nbsp&nbsp&nbsp&nbsp</b></font>
+            <td colspan="22" align="right"><font size="2"><b>Período: de &nbsp <%= session[:dataI_tela]%> &nbsp  à &nbsp <%=session[:dataF_tela]%> &nbsp&nbsp&nbsp&nbsp</b></font>
             </td>
         </tr>
     </table>
+<table width="100%">
+        <tr  bgcolor="#DCDCDC">
+            <td colspan="22" align="center"><font size="3"><b><u>RELATÓRIO DE SUBSTITUIÇÕES </u> </b> </font>
+            </td>
+        </tr>
+    <tr><%if  (session[:mostra_eventuals_professor] == 1)%>
+        <td width ="40%"><table>
+                <tr>
+                  <td><b><u>PROFESSOR(ES)</u></b></td>
+                  <td><b><u>SUBSTITUIÇÕES</u></b></td>
+                </tr>
+                <%t1 =1%>
+                <% @eventual_professor.each do |faltaP| %>
+                   <tr>
+                        <td><%= t1%>) <%= faltaP.eventual.professor.nome %></td>
+                        <td align="center"><%= faltaP.conta%> </td>
+                    </tr>
+                    <%t1 =t1+1%>
+                  <%end%>
+            </table>
+        </td>
+        <%end%>
+
+
+   </tr>
+   <tr>
+        <td valign="top"%> <b><u>TOTAL DE SUBSTITUIÇÕES NO PERÍODO:</u>
+                <%t=0 %>
+               <% @aulas_eventuals.each do |falta| %>
+                     <% t=t+1 %>
+
+                    <%end%>
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                 <%= t %></b>
+        </td>
+        <td valign="top"%>  &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp <b><u>TOTAL DE PROFESSORES/SUBSTITUTOS NO PERÍODO:</u>
+                 <%= t1 %></b>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4"><hr/>
+
+        </td>
+    </tr>
+  </table>
+<br/>
      <% t=0 %>
+
         <table border="1" cellspacing="0" cellpadding="1" width="100%">
+<tr  bgcolor="#DCDCDC">
+            <td colspan="22" align="center"><font size="3"><b><u>DETALHAMENTO DAS SUBSTITUIÇÕES NO PERÍODO </u> &nbsp&nbsp&nbsp&nbsp</b></font>
+       </td>
+        </tr>
             <tr cellspacing="2" cellpadding="2" >
                 <td width=" 6%" align="center"><b>Data</b></td>
                 <td width=" 10%" align="center"><b>Unidade</b></td>
@@ -65,29 +116,7 @@
 
   </table>
 <br/>
-<table width="100%">
-    <tr><%if  (session[:mostra_eventuals_professor] == 1)%>
-        <td width ="40%"><table>
-                <tr>
-                  <td><b><u>PROFESSOR(ES)</u></b></td>
-                  <td><b><u>SUBSTITUIÇÕES</u></b></td>
-                </tr>
-                <%t1 =1%>
-                <% @eventual_professor.each do |faltaP| %>
-                   <tr>
-                        <td><%= t1%>) <%= faltaP.eventual.professor.nome %></td>
-                        <td align="center"><%= faltaP.conta%> </td>
-                    </tr>
-                    <%t1 =t1+1%>
-                  <%end%>
-            </table>
-        </td>
-        <%end%>
-
-        <td valign="top" align="center"%> <b><u>TOTAL DE SUBSTITUIÇÔES NO MÊS</u> <br/>
-                 <%= t %></b> </td></tr>
-
-  </table>
+ 
   <table  width="100% ">
             <tr>
                 <td width="6%"align="left" ><br/><%= button_to '', home_path, {:method => "get"}  %></td><td>

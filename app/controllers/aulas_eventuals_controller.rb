@@ -379,6 +379,9 @@ def relatorios_eventual_professor
     session[:mesF]=params[:mesF]
     session[:dataI]=params[:aulas_falta][:dataI][6,4]+'-'+params[:aulas_falta][:dataI][3,2]+'-'+params[:aulas_falta][:dataI][0,2]
     session[:dataF]=params[:aulas_falta][:dataF][6,4]+'-'+params[:aulas_falta][:dataF][3,2]+'-'+params[:aulas_falta][:dataF][0,2]
+   session[:dataI_tela]=params[:aulas_falta][:dataI][0,2]+'-'+params[:aulas_falta][:dataI][3,2]+'-'+params[:aulas_falta][:dataI][6,4]
+    session[:dataF_tela]=params[:aulas_falta][:dataF][0,2]+'-'+params[:aulas_falta][:dataF][3,2]+'-'+params[:aulas_falta][:dataF][6,4]
+
     session[:mes]=params[:aulas_falta][:dataF][3,2]
     session[:mostra_eventual_professor] = 1
         if session[:mes] == '01'
@@ -417,8 +420,8 @@ def relatorios_eventual_professor
                 end
             end
         end
-    @aulas_eventuals = AulasEventual.find(:all, :conditions =>  ["data between ? and ? AND ano_letivo=? AND eventual_id=?", session[:dataI].to_s, session[:dataF].to_s, Time.now.year, params[:aulas_eventual][:eventual_id]], :order => 'data ASC')
-    @eventual_professor = AulasEventual.find_by_sql("SELECT eventual_id, count( id ) as conta FROM aulas_eventuals WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"'  AND ano_letivo = "+(Time.now.year).to_s+" AND eventual_id ="+(session[:verifica_professor_id]).to_s+" ) GROUP BY eventual_id")
+    @aulas_eventuals = AulasEventual.find(:all, :conditions =>  ["data between ? and ? AND eventual_id=?", session[:dataI].to_s, session[:dataF].to_s, params[:aulas_eventual][:eventual_id]], :order => 'data ASC')
+    @eventual_professor = AulasEventual.find_by_sql("SELECT eventual_id, count( id ) as conta FROM aulas_eventuals WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' AND eventual_id ="+(session[:verifica_professor_id]).to_s+" ) GROUP BY eventual_id")
     session[:imprimeprofessor] = 1
     session[:mostra_faltas_professor] = 1
        render :update do |page|
@@ -475,12 +478,12 @@ end
     session[:mostra_eventuals_professor] = 1
     session[:aulas_eventual_unidade_id] = params[:aulas_eventual][:unidade_id]
      if (session[:verifica_unidade_id]=='52')
-         @aulas_eventuals = AulasEventual.find(:all, :conditions =>  ["data between ? and ?  AND ano_letivo=? ", session[:dataI].to_s, session[:dataF].to_s, Time.now.year], :order => 'data ASC')
-         @eventual_professor = AulasEventual.find_by_sql("SELECT eventual_id, count( id ) as conta FROM aulas_eventuals WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' AND ano_letivo = "+(Time.now.year).to_s+" AND eventual_id IS NOT NULL) GROUP BY eventual_id")
+         @aulas_eventuals = AulasEventual.find(:all, :conditions =>  ["data between ? and ? ", session[:dataI].to_s, session[:dataF].to_s], :order => 'data ASC')
+         @eventual_professor = AulasEventual.find_by_sql("SELECT eventual_id, count( id ) as conta FROM aulas_eventuals WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"'  AND eventual_id IS NOT NULL) GROUP BY eventual_id")
          session[:imprimemes] = 1
      else
-         @aulas_eventuals = AulasEventual.find(:all, :conditions =>  ["data between ? and ? AND ano_letivo=? AND unidade_id=?", session[:dataI].to_s, session[:dataF].to_s, Time.now.year, params[:aulas_eventual][:unidade_id]], :order => 'data ASC')
-         @eventual_professor = AulasEventual.find_by_sql("SELECT eventual_id, count( id ) as conta FROM aulas_eventuals WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' AND ano_letivo = "+(Time.now.year).to_s+" AND unidade_id ="+(session[:verifica_unidade_id]).to_s+" AND eventual_id IS NOT NULL) GROUP BY eventual_id")
+         @aulas_eventuals = AulasEventual.find(:all, :conditions =>  ["data between ? and ? AND unidade_id=?", session[:dataI].to_s, session[:dataF].to_s, params[:aulas_eventual][:unidade_id]], :order => 'data ASC')
+         @eventual_professor = AulasEventual.find_by_sql("SELECT eventual_id, count( id ) as conta FROM aulas_eventuals WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' AND unidade_id ="+(session[:verifica_unidade_id]).to_s+" AND eventual_id IS NOT NULL) GROUP BY eventual_id")
          session[:imprimemes] = 1
      end
        render :update do |page|
