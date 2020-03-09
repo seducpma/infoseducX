@@ -11,12 +11,103 @@
             </td>
         </tr>
         <tr>
-            <td></td>
+            <td colspan="4"><hr/></td>
         </tr>
- 
+
     </table>
+<table width="100%" >
+        <tr  bgcolor="#DCDCDC">
+            <td colspan="22" align="center"><font size="3"><b><u>FALTAS NO PERÍODO </u> &nbsp&nbsp&nbsp&nbsp</b></font>
+            </td>
+        </tr>
+    <tr><%if  (session[:mostra_faltas_professor] == 1)%>
+        <td width ="35%" valign="top"><table>
+                <tr>
+                  <td><b><u>PROFESSOR(ES)</u></b></td>
+                  <td><b><u>FALTAS</u></b></td>
+                </tr>
+                <%t1 =1%>
+                <% @faltas_professor.each do |faltaP| %>
+                   <tr>
+                        <td><%= t1%>) <%= truncate(faltaP.professor.nome,:length => 25,:omission => "...") %></td>
+                        <td align="center"><%= faltaP.conta%> </td>
+                    </tr>
+                    <%t1 =t1+1%>
+                  <%end%>
+            </table>
+        </td>
+        <%end%>
+        <%  mes=0 %>
+       <% @aulas_faltas.each do |falta| %>
+          <% mes=mes+1 %>
+       <%end%>
+        <%if  (session[:mostra_faltas_funcionario] == 1)%>
+        <td width ="30%" valign="top"><table>
+                <tr>
+                  <td><b><u>FUNCIONARIOS</u></b></td>
+                  <td><b><u>FALTAS</u></b></td>
+                </tr>
+                <%t1 =1%>
+                <% @faltas_funcionario.each do |falta_fun| %>
+                   <tr>
+                        <td><%= t1%>) <%= truncate(falta_fun.funcionario.nome,:length => 25,:omission => "...") %></td>
+                        <td  align="center"><%= falta_fun.conta%> </td>
+                    </tr>
+                    <%t1 =t1+1%>
+                  <%end%>
+            </table>
+        </td>
+       <%end%>
+        <td valign="top" width ="30%" ><table  width="100%" >
+                <tr>
+                  <td><b><u>TIPO FALTAS</u></b></td>
+
+                  <td width =" 25%" align="center"><b><u>no PERÍODO</u></b></td>
+                  <td width =" 20%" align="center"><b><u>no ANO</u></b></td>
+                </tr>
+                <%t1 =1%>
+                <%cont=0%>
+                <%ano=0%>
+                <% @tipo_faltas.each do |faltas| %>
+                   <tr>
+                        <td><%= t1%>)  <%= truncate(faltas.tipo,:length => 30,:omission => "...") %></td>
+                        <%if @tipo_faltas_mes[cont].present? %>
+                            <%if (faltas.tipo == @tipo_faltas_mes[cont].tipo)%>
+                                <td width =" 5%" align="center"><%= @tipo_faltas_mes[cont].conta%> </td>
+                                <%cont=cont+1%>
+
+                            <%else%>
+                                <td width =" 5%" align="center"> 0  </td>
+                            <%end%>
+
+                       <%else%>
+                                <td width =" 5%" align="center"> 0 </td>
+                       <%end%>
+                        <%  ano = ano + (faltas.conta).to_i %>
+                        <td  align="center"><%= faltas.conta%> </td>
+
+                    </tr>
+                    <%t1 =t1+1%>
+                  <%end%>
+            <tr>
+                <td align="right"> <b>TOTAL  FALTAS ==> </b> </td>
+                <td align="center"> <b> <%= mes %></b> </td>
+                <td align="center"> <b> <%= ano %></b> </td>
+            </tr>
+        </table>
+     </td>
+    </tr>
+         <tr>
+            <td colspan="4"><hr/></td>
+        </tr>
+  </table>
+
 <%  mes=0 %>
         <table border="1" cellspacing="0" cellpadding="1" width="100%">
+        <tr  bgcolor="#DCDCDC">
+            <td colspan="22" align="center"><font size="3"><b><u>DETALHAMENTO DAS FALTAS NO PERÍODO </u> &nbsp&nbsp&nbsp&nbsp</b></font>
+            </td>
+        </tr>
             <tr cellspacing="2" cellpadding="2" >
                 <td width=" 10%" align="center"><b>Data</b></td>
                 <td width=" 15%" align="center"><b>Unidade</b></td>
@@ -47,85 +138,7 @@
   </table>
 <br/><br/>
 
-<table width="100%" >
-        <tr>
-            <td colspan="22" align="left"><font size="3"><b><u>FALTAS NO PERÍODO </u> &nbsp&nbsp&nbsp&nbsp</b></font>
-            </td>
-        </tr>
-    <tr><%if  (session[:mostra_faltas_professor] == 1)%>
-        <td width ="35%" valign="top"><table>
-                <tr>
-                  <td><b><u>PROFESSOR(ES)</u></b></td>
-                  <td><b><u>FALTAS</u></b></td>
-                </tr>
-                <%t1 =1%>
-                <% @faltas_professor.each do |faltaP| %>
-                   <tr>
-                        <td><%= t1%>) <%= truncate(faltaP.professor.nome,:length => 25,:omission => "...") %></td>
-                        <td align="center"><%= faltaP.conta%> </td>
-                    </tr>
-                    <%t1 =t1+1%>
-                  <%end%>
-            </table>
-        </td>
-        <%end%>
-        <%if  (session[:mostra_faltas_funcionario] == 1)%>
-        <td width ="30%" valign="top"><table>
-                <tr>
-                  <td><b><u>FUNCIONARIOS</u></b></td>
-                  <td><b><u>FALTAS</u></b></td>
-                </tr>
-                <%t1 =1%>
-                <% @faltas_funcionario.each do |falta_fun| %>
-                   <tr>
-                        <td><%= t1%>) <%= truncate(falta_fun.funcionario.nome,:length => 25,:omission => "...") %></td>
-                        <td  align="center"><%= falta_fun.conta%> </td>
-                    </tr>
-                    <%t1 =t1+1%>
-                  <%end%>
-            </table>
-        </td>
-       <%end%>
-        <td valign="top" width ="30%" ><table  width="100%" >
-                <tr>
-                  <td><b><u>TIPO FALTAS</u></b></td>
 
-                  <td width =" 25%" align="center"><b><u>no PERÍODO</u></b></td>
-                  <td width =" 20%" align="center"><b><u>no ANO</u></b></td>
-                </tr>
-                <%t1 =1%>
-                <%cont=0%>
-                <%ano=0%>
-                <% @tipo_faltas.each do |faltas| %>
-                   <tr>
-                        <td><%= t1%>)  <%= truncate(faltas.tipo,:length => 25,:omission => "...") %></td>
-                        <%if @tipo_faltas_mes[cont].present? %>
-                            <%if (faltas.tipo == @tipo_faltas_mes[cont].tipo)%>
-                                <td width =" 5%" align="center"><%= @tipo_faltas_mes[cont].conta%> </td>
-                                <%cont=cont+1%>
-
-                            <%else%>
-                                <td width =" 5%" align="center"> 0  </td>
-                            <%end%>
-
-                       <%else%>
-                                <td width =" 5%" align="center"> 0 </td>
-                       <%end%>
-                        <%  ano = ano + (faltas.conta).to_i %>
-                        <td  align="center"><%= faltas.conta%> </td>
-
-                    </tr>
-                    <%t1 =t1+1%>
-                  <%end%>
-            <tr>
-                <td align="right"> <b>TOTAL  FALTAS ==> </b> </td>
-                <td align="center"> <b> <%= mes %></b> </td>
-                <td align="center"> <b> <%= ano %></b> </td>
-            </tr>
-        </table>
-     </td>
-    </tr>
-  </table>
 
 
   <table  width="100% ">
@@ -134,19 +147,19 @@
 
                    <% if (current_user.has_role?('admin') or current_user.has_role?('SEDUC') or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('supervisao') or current_user.has_role?('direcao_fundamental')or current_user.has_role?('secretaria_fundamental')or current_user.has_role?('pedagogo')or current_user.has_role?('secretaria_infantil')or current_user.has_role?('diretor_unidade'))%>
                        <%if session[:imprimedia] == 1%>
-                         <td align="right" ><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_faltas_dia_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
+                         <td align="right" ><%#= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_faltas_dia_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
                          <%  session[:imprimedia] = 0%>
                        <%end%>
                         <%if session[:imprimemes] == 1%>
-                         <td align="right" ><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_faltas_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
+                         <td align="right" ><%#= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_faltas_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
                          <%  session[:imprimemes] = 0%>
                        <%end%>
                        <%if session[:imprimeprofessor]  == 1%>
-                         <td align="right" ><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_faltas_professor_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
+                         <td align="right" ><%#= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_faltas_professor_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
                          <%  session[:imprimeprofessor]  = 0%>
                        <%end%>
                        <%if session[:imprimefuncionario]  == 1%>
-                         <td align="right" ><%= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_faltas_funcionario_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
+                         <td align="right" ><%#= button_to 'Imprimir', onclick="javascript:MM_openBrWindow('#{impressao_faltas_funcionario_path}','impressao', 'scrollbars=yes');", :title => "Imprimir" %> </b></td>
                          <% session[:imprimefuncionario]  = 0%>
                        <%end%>
                  <%end%>
@@ -161,7 +174,7 @@
                 </td>
             </tr>
             <tr>
-                <td width="6%"align="left" ><br/><%= button_to '', home_path, {:method => "get"}  %></td><td>
+                <td width="6%"align="left" ><br/><%#= button_to '', home_path, {:method => "get"}  %></td><td>
             </tr>
         </table>
 
