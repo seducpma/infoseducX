@@ -211,6 +211,8 @@ ActionController::Routing::Routes.draw do |map|
   map.relatorios_observacoes'/relatorios_observacoes', :controller => 'atribucaos', :action => 'relatorios_observacoes'
   map.continuar'/continuar', :controller => 'alunos', :action => 'continuar'
   map.relatorios_faltas'/relatorios_faltas', :controller => 'aulas_faltas', :action => 'relatorios_faltas'
+  map.relatorios_tipo'/relatorios_tipo', :controller => 'aulas_faltas', :action => 'relatorios_tipo'
+  map.relatorios_faltas_tipo'/relatorios_faltas_tipo', :controller => 'aulas_faltas', :action => 'relatorios_faltas_tipo'
   map.relatorios_dia_faltas'/relatorios_dia_faltas', :controller => 'aulas_faltas', :action => 'relatorios_dia_faltas'
   map.relatorios_faltas_professor'/relatorios_faltas_professor', :controller => 'aulas_faltas', :action => 'relatorios_faltas_professor'
   map.relatorios_faltas_funcionario'/relatorios_faltas_funcionario', :controller => 'aulas_faltas', :action => 'relatorios_faltas_funcionario'

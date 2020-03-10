@@ -480,6 +480,101 @@ if params[:aulas_falta][:dataF].nil?
         end
     end
 
+
+    def relatorios_faltas_tipo
+        session[:tiporelatorio]=1
+        w=session[:verifica_unidade_id]=params[:aulas_falta][:unidade_id]
+        session[:dia_final]=params[:diaF]
+        session[:mesF]=params[:mesF]
+        session[:dataI]=params[:aulas_falta][:dataI][6,4]+'-'+params[:aulas_falta][:dataI][3,2]+'-'+params[:aulas_falta][:dataI][0,2]
+        session[:dataF]=params[:aulas_falta][:dataF][6,4]+'-'+params[:aulas_falta][:dataF][3,2]+'-'+params[:aulas_falta][:dataF][0,2]
+        session[:mes]=params[:aulas_falta][:dataF][3,2]
+        session[:tipo]=params[:aulas_falta][:tipo]
+        t=0
+        if session[:mes] == '01'
+            session[:mes] = 'JANEIRO'
+        else if session[:mes] == '02'
+                session[:mes] = 'FEVEREIRO'
+            else if session[:mes] == '03'
+                    session[:mes] = 'MARÇO'
+                else if session[:mes] == '04'
+                        session[:mes] = 'ABRIL'
+                    else if params[:mes] == '05'
+                            session[:mes] = 'MAIO'
+                        else if session[:mes] == '06'
+                                session[:mes] = 'JUNHO'
+                            else if session[:mes] == '07'
+                                    session[:mes] = 'JULHO'
+                                else if session[:mes] == '08'
+                                        session[:mes] = 'AGOSTO'
+                                    else if session[:mes] == '09'
+                                            session[:mes] = 'SETEMBRO'
+                                        else if session[:mes] == '10'
+                                                session[:mes] = 'OUTUBRO'
+                                            else if session[:mes] == '11'
+                                                    session[:mes] = 'NOVEMBRO'
+                                                else if session[:mes] == '12'
+                                                        session[:mes] = 'DEZEMBRO'
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+
+        session[:mostra_faltas_funcionario] = 1
+        session[:mostra_faltas_professor] = 1
+        session[:aulas_falta_unidade_id] = params[:aulas_falta][:unidade_id]
+        #if (session[:verifica_unidade_id]=='52')
+        w1=session[:verifica_unidade_id] 
+        t=0
+        if current_user.unidade_id == 52
+              if session[:verifica_unidade_id].to_i == 52
+
+                @aulas_faltas = AulasFalta.find(:all, :conditions =>  ["data between ? and ? and tipo=?", session[:dataI].to_s, session[:dataF].to_s, session[:tipo]], :order => 'data ASC')
+                @faltas_professor = AulasFalta.find_by_sql("SELECT aulas_faltas.professor_id, count( aulas_faltas.id ) as conta FROM aulas_faltas INNER JOIN "+session[:base]+".professors ON aulas_faltas.professor_id = professors.id WHERE (aulas_faltas.data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' AND professor_id IS NOT NULL) GROUP BY professor_id AND tipo= '"+session[:tipo]+"' order by professors.nome")
+                @faltas_funcionario = AulasFalta.find_by_sql("SELECT funcionario_id, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"'  AND funcionario_id IS NOT NULL) GROUP BY funcionario_id")
+                @tipo_faltas = AulasFalta.find_by_sql("SELECT tipo, count( id ) as conta FROM aulas_faltas WHERE  tipo= '"+session[:tipo]+"' GROUP BY tipo")
+                @tipo_faltas_mes = AulasFalta.find_by_sql("SELECT tipo, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"')AND tipo= '"+session[:tipo]+"' GROUP BY tipo")
+                @aulas_faltas_ano = AulasFalta.find(:all, :conditions =>  ["ano_letivo=?  AND tipo=?", session[:dataI],session[:tipo]], :order => 'data ASC')
+                t=0
+t=0
+             else
+                @aulas_faltas = AulasFalta.find(:all, :conditions =>  ["data between ? and ? AND unidade_id=? and tipo=?", session[:dataI].to_s, session[:dataF].to_s, params[:aulas_falta][:unidade_id], session[:tipo]], :order => 'data ASC')
+                @faltas_professor = AulasFalta.find_by_sql("SELECT aulas_faltas.professor_id, count( aulas_faltas.id ) as conta FROM aulas_faltas INNER JOIN "+session[:base]+".professors ON aulas_faltas.professor_id = professors.id WHERE (aulas_faltas.data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' AND aulas_faltas.unidade_id ="+(session[:verifica_unidade_id]).to_s+" AND professor_id IS NOT NULL) GROUP BY professor_id AND tipo= '"+session[:tipo]+"' order by professors.nome")
+                @faltas_funcionario = AulasFalta.find_by_sql("SELECT funcionario_id, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' AND unidade_id ="+(session[:verifica_unidade_id]).to_s+" AND funcionario_id IS NOT NULL) GROUP BY funcionario_id")
+                @tipo_faltas = AulasFalta.find_by_sql("SELECT tipo, count( id ) as conta FROM aulas_faltas WHERE unidade_id ="+(session[:verifica_unidade_id]).to_s+" AND tipo= '"+session[:tipo]+"' GROUP BY tipo")
+                @tipo_faltas_mes = AulasFalta.find_by_sql("SELECT tipo, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"'  AND unidade_id ="+(session[:verifica_unidade_id]).to_s+")AND tipo= '"+session[:tipo]+"' GROUP BY tipo")
+                @aulas_faltas_ano = AulasFalta.find(:all, :conditions =>  ["ano_letivo=? AND unidade_id=? AND tipo=?", session[:dataI], params[:aulas_falta][:unidade_id],session[:tipo]], :order => 'data ASC')
+                t=0
+            end
+            session[:imprimemes] = 1
+            session[:imprimeprofessor]  = 0
+            session[:imprimefuncionario]= 0
+        else
+            @aulas_faltas = AulasFalta.find(:all, :conditions =>  ["data between ? and ? AND unidade_id=?", session[:dataI].to_s, session[:dataF].to_s, params[:aulas_falta][:unidade_id]], :order => 'data ASC')
+            @faltas_professor = AulasFalta.find_by_sql("SELECT professor_id, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"'  AND unidade_id ="+(session[:verifica_unidade_id]).to_s+" AND professor_id IS NOT NULL) GROUP BY professor_id")
+            @faltas_funcionario = AulasFalta.find_by_sql("SELECT funcionario_id, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"' AND unidade_id ="+(session[:verifica_unidade_id]).to_s+" AND funcionario_id IS NOT NULL) GROUP BY funcionario_id")
+            @tipo_faltas = AulasFalta.find_by_sql("SELECT tipo, count( id ) as conta FROM aulas_faltas WHERE unidade_id ="+(session[:verifica_unidade_id]).to_s+" GROUP BY tipo")
+            @tipo_faltas_mes = AulasFalta.find_by_sql("SELECT tipo, count( id ) as conta FROM aulas_faltas WHERE (data BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"'  AND unidade_id ="+(session[:verifica_unidade_id]).to_s+") GROUP BY tipo")
+            @aulas_faltas_ano = AulasFalta.find(:all, :conditions =>  ["ano_letivo=? AND unidade_id=?", session[:dataI], params[:aulas_falta][:unidade_id]], :order => 'data ASC')
+t=0
+            session[:imprimemes] = 1
+            session[:imprimeprofessor]  = 0
+            session[:imprimefuncionario]= 0
+        end
+        render :update do |page|
+            page.replace_html 'calendario', :partial => 'faltas'
+        end
+    end
+
+
     def relatorios_faltas_professor
         session[:tiporelatorio]=2
         session[:aulas_falta_professor_id]=params[:aulas_falta][:professor_id]
@@ -706,13 +801,15 @@ if params[:aulas_falta][:dataF].nil?
             @unidades_infantil = Unidade.find(:all,  :select => 'nome, id',:conditions =>  ["(tipo_id = 2 OR tipo_id = 5 OR tipo_id = 8) OR id = 52"], :order => 'nome ASC')
             @professores_faltas = Professor.find_by_sql("SELECT distinct(professors.id), professors.nome FROM "+session[:base]+".professors INNER JOIN  "+session[:baseinfo]+".aulas_faltas  ON  professors.id = aulas_faltas.professor_id  WHERE aulas_faltas.funcionario_id is null order by professors.nome ASC ")
             @funcionarios_faltas = Funcionario.find_by_sql("SELECT distinct(funcionarios.id), funcionarios.nome FROM funcionarios INNER JOIN  aulas_faltas  ON  funcionarios.id = aulas_faltas.funcionario_id  WHERE aulas_faltas.professor_id is null order by funcionarios.nome ASC ")
-            t=0
+
         else
             @unidades_infantil = Unidade.find(:all,  :select => 'nome, id', :conditions =>  ["id=?", current_user.unidade_id], :order => 'nome ASC')
             @professores_faltas = Professor.find_by_sql("SELECT distinct(professors.id), professors.nome FROM professors INNER JOIN  "+session[:baseinfo]+".aulas_faltas  ON  professors.id = aulas_faltas.professor_id  WHERE  aulas_faltas.unidade_id = "+(current_user.unidade_id).to_s+" AND aulas_faltas.funcionario_id is null order by professors.nome ASC ")
             @funcionarios_faltas = Funcionario.find_by_sql("SELECT distinct(funcionarios.id), funcionarios.nome FROM funcionarios INNER JOIN  "+session[:baseinfo]+".aulas_faltas  ON  funcionarios.id = aulas_faltas.funcionario_id  WHERE aulas_faltas.unidade_id = "+(current_user.unidade_id).to_s+" AND aulas_faltas.professor_id is null order by funcionarios.nome ASC ")
-            t=0
+
         end
+        @tipos= AulasFalta.find(:all, :select => 'distinct(tipo)', :conditions => ['ano_letivo=?', Time.now.year])
+        
     session[:mostra_faltas_professor] = 0
     session[:mostra_faltas_funcionario] = 0
     end
