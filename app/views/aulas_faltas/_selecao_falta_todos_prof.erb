@@ -1,0 +1,44 @@
+<table width="100%"  >
+    <tr> 
+            <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <font color =" red"> <b>UNIDADE AINDA NÃO EFETUOU TODOS OS CADASTRAMENTO NO SISTEMA </b></font>
+            </td>
+
+        </tr>
+
+
+
+         <tr>
+             <td align="left" width ="60%" valign="top"><b> Professor(a): </b>&nbsp&nbsp&nbsp&nbsp <%= collection_select :aulas_falta, :professor_id, @professor_todos, :id, :nome, :include_blank => ' -- Selecionar caso seja professor -- ' %></td>
+         </tr>
+         <tr>
+             <td>
+              <table width="100%"  >
+                    <tr bgcolor="#F5F5F5" >
+                       <td align="left" width="10%"></td>
+                       <td align="left" width="25%">&nbsp<b>1) Classe:</b>  <%= collection_select :aulas_falta, :classe, @classes, :classe_classe, :classe_classe %></td>
+
+                   </tr>
+              </table>
+             </td>
+         </tr>
+
+  <!--
+     <%#if  @funcionarios.present?%>
+         <tr>
+             <td align="left"><b> Funcionario: </b><%#= collection_select :aulas_falta, :funcionario_id, @funcionarios, :id, :nome, :include_blank => ' -- Selecionar caso seja funcionário -- ' %>
+                <%#= observe_field 'aulas_falta_funcionario_id',
+                       :with   => :aulas_falta_funcionario_id,
+                       :url  => { :action => 'setor_funcionario' },
+                       :update => "setor_funcionario"%>
+             </td>
+         </tr>
+         <tr>
+             <td><div id="setor_funcionario"></div></td>
+         </tr>
+
+  <%#end%>
+  -->
+
+
+</table>

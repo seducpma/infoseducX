@@ -289,8 +289,13 @@ def aulas_faltas_prof_classe
             session[:classe_id]=0
        else
             @classe= Classe.find(:all, :joins => "INNER JOIN atribuicaos atr ON atr.classe_id = classes.id INNER JOIN professors  pro ON atr.professor_id = pro.id INNER JOIN  "+session[:baseinfo]+".aulas_faltas falt ON falt.classe = classes.classe_classe", :conditions=>[ "atr.professor_id = ? AND atr.ano_letivo = ? AND classes.unidade_id = falt.unidade_id AND falt.id =?" , session[:professor_id], Time.now.year, session[:aulas_falta_id] ]  )
-            session[:classe_id]=@classe[0].id
-            session[:classe_classe]=@classe[0].classe_classe
+           if @classe.empty?
+              session[:classe_id]= nil
+           else
+           
+              session[:classe_id]=@classe[0].id
+              session[:classe_classe]=@classe[0].classe_classe
+           end
        end
 ### Alex 2019-05-24 12:31 Fim
 #        @classe= Classe.find(:all, :joins => "xxx INNER JOIN atribuicaos atr ON atr.classe_id = classes.id INNER JOIN professors  pro ON atr.professor_id = pro.id INNER JOIN  "+session[:baseinfo]+".aulas_faltas falt ON falt.classe = classes.classe_classe", :conditions=>[ "atr.professor_id = ? AND atr.ano_letivo = ? AND classes.unidade_id = falt.unidade_id AND falt.id =?" , session[:professor_id], Time.now.year, session[:aulas_falta_id] ]  )

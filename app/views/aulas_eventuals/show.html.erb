@@ -23,7 +23,11 @@
                 </tr>
                 <tr bgcolor="#F5F5F5" >
                    <td align="left"><b>Classe:</b></td>
-                   <td align="left">  <%=h @aulas_eventual.classe.classe_classe%></td>
+                   <td align="left">  <%if !@aulas_eventual.classe.nil?  %>
+                                          <%=h @aulas_eventual.classe.classe_classe%>
+                                      <%else%>
+                                           <%=h @aulas_eventual.aulas_falta.classe%>
+                                      <%end%></td>
                    <td align="left"><b>Período:</b></td>
                    <td align="left"> <%=h @aulas_eventual.periodo %></td>
                  </tr>

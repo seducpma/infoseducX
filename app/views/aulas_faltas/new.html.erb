@@ -18,7 +18,7 @@
                 </tr>
 
                <tr>
-                   <td colspan="8"><font color ="RED"> <b><u>Atenção:</u> Selecionar primeiro a DATA, TIPO DE FALTA e UNIDADE.</b></font><br/><br/></td>
+                   <td colspan="8"><font color ="RED"> <b><u>Atenção:</u> Selecionar primeiro o PERIODO, TIPO DE FALTA, DATA,e UNIDADE.</b></font><br/><br/></td>
                </tr>
  <tr>
      <td colspan="8"><b> Periodo da falta do professor(a): </b>&nbsp&nbsp&nbsp&nbsp <%= f.select :periodo,(AulasFalta::PERIODO).sort%> <font color="red"><== <b>ATENÇÃO - OBRIGATÓRIO !!</b></td>
@@ -28,7 +28,7 @@
 
  </tr>
                <tr>
-                   <td colspan="4">&nbsp&nbsp&nbsp&nbsp  <b>Tipo Falta: </b>&nbsp&nbsp&nbsp&nbsp <%= f.select :tipo, (AulasFalta::FALTA).sort %>
+                   <td colspan="4">&nbsp&nbsp&nbsp&nbsp  <b>Tipo Falta: </b>&nbsp&nbsp&nbsp&nbsp <%= f.select :tipo, (AulasFalta::FALTA).sort %><font color="red" size="1" ><== <b>APÓS SELECIONAR AGUARDE O SISTEMA RETORNADA A DATA.</b></td>
                                          <%= observe_field 'aulas_falta_tipo',
                                             :with   => :aulas_falta_tipo,
                                             :url  => { :action => 'data_falta_tipo' },
@@ -41,7 +41,7 @@
               </tr>
                 <tr>
                     <td width =" 10%">&nbsp&nbsp&nbsp&nbsp <b>Unidade: </b>&nbsp</td>
-                    <td>              &nbsp&nbsp&nbsp&nbsp &nbsp <%= collection_select :aulas_falta, :unidade_id, @unidades_infantil, :id, :nome, :include_blank => ' -- Selecionar -- ' %>
+                    <td>              &nbsp&nbsp&nbsp&nbsp &nbsp <%= collection_select :aulas_falta, :unidade_id, @unidades_infantil, :id, :nome, :include_blank => ' -- Selecionar -- ' %> <font color="red" size="1" ><== <b>APÓS SELECIONAR AGUARDE O SISTEMA RETORNADA OS PROFESSORES</b>
                                        <%= observe_field 'aulas_falta_unidade_id',
                                                      :with   => :aulas_falta_unidade_id,
                                                      :url  => { :action => 'nome_falta' },

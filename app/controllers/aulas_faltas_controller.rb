@@ -245,27 +245,38 @@ if params[:aulas_falta][:dataF].nil?
 
 
     def nome_falta
-
-        session[:aulas_falta_unidade_id]=params[:aulas_falta_unidade_id]
+    
+        w= session[:aulas_falta_unidade_id]=params[:aulas_falta_unidade_id]
         @tipo_unidade = Unidade.find(:all, :select => ['id, tipo_id'] , :conditions => ['id =?',  params[:aulas_falta_unidade_id]]  )
          if @tipo_unidade[0].tipo_id == 8 or @tipo_unidade[0].tipo_id == 5 or @tipo_unidade[0].tipo_id == 2
-           # @faltas = AulasFalta.find(:all, :select=>[:professor_id], :conditions => ['data = ? AND  periodo=?', session[:aulas_falta_dataI], session[:periodo]])
+           #    INFANTIL
             @professores = Professor.find(:all, :conditions => ['unidade_id =? or unidade_id=54', params[:aulas_falta_unidade_id]], :order => 'unidade_id ASC, nome ASC ' )
-            #@professores_cat = Professor.find(:all, :select => " distinct(professors.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id",:joins => "INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id", :conditions => ['(unidade_id =? or unidade_id=54) AND atribuicaos.ano_letivo = ? AND disciplinas.curriculo= "I"  ', params[:aulas_falta_unidade_id], Time.now.year], :order => 'professors.unidade_id ASC, professors.nome ASC ' )
-            #@professores_cat = Professor.find(:all, :select => " distinct(professorss.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id",:joins => "INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id", :conditions => ['(unidade_id =? or unidade_id=54) AND atribuicaos.ano_letivo = ? AND disciplinas.curriculo= "I" AND professors.id NOT IN (?) ', params[:aulas_falta_unidade_id], Time.now.year, @faltas], :order => 'professors.unidade_id ASC, professors.nome ASC ' )
-            @professores_cat = Professor.find_by_sql("SELECT  distinct(professors.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id FROM `professors`  INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id WHERE ((unidade_id="+params[:aulas_falta_unidade_id]+" or unidade_id=54) AND atribuicaos.ano_letivo = 2019 AND disciplinas.curriculo= 'I' AND professors.id NOT IN (SELECT af.professor_id FROM "+session[:baseinfo]+".aulas_faltas af WHERE (af.data = '"+session[:aulas_falta_dataI]+"' AND  (af.periodo='"+session[:periodo]+"' OR af.periodo='INTEGRAL'))) )  ORDER BY professors.unidade_id ASC, professors.nome ASC ")
-            #@professores1 = Eventual.find_by_sql("SELECT eventuals.id, professors.nome FROM eventuals INNER JOIN  professors  ON  professors.id = eventuals.professor_id INNER JOIN  unidades  ON  unidades.id = professors.unidade_id WHERE eventuals.periodo = '"+session[:periodo_prof_eventual]+"' AND eventuals.categoria = '"+session[:caregoria_prof_eventual]+"'AND eventuals.unidade_id = "+session[:aulas_eventual_unidade_id]+" AND eventuals.id NOT IN (SELECT aulas_eventuals.eventual_id FROM aulas_eventuals WHERE aulas_eventuals.ano_letivo ="+(Time.now.year).to_s+" AND data = '"+session[:aulas_eventual_data].to_s+"' AND aulas_eventuals.unidade_id = "+session[:aulas_eventual_unidade_id]+" order by unidades.regiao_id ASC ) order by unidades.regiao_id ASC")
-           
-           @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
+            @professores_cat = Professor.find_by_sql("SELECT  distinct(professors.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id FROM `professors`  INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id WHERE ((unidade_id="+params[:aulas_falta_unidade_id]+" or unidade_id=54) AND atribuicaos.ano_letivo = '"+(Time.now.year).to_s+"' AND disciplinas.curriculo= 'I' AND professors.id NOT IN (SELECT af.professor_id FROM "+session[:baseinfo]+".aulas_faltas af WHERE (af.data = '"+session[:aulas_falta_dataI]+"' AND  (af.periodo='"+session[:periodo]+"' OR af.periodo='INTEGRAL'))) )  ORDER BY professors.unidade_id ASC, professors.nome ASC ")
+            @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
         else
             #  FUNDAMENTAL
             @professores = Professor.find(:all, :conditions => ['(unidade_id =? or unidade_id = 52 or  unidade_id = 75 or diversas_unidades = 1 or unidade_id = 54) and (funcao !="PROF. DE CRECHE" and funcao != "ADI" and funcao !="PEB1 - ED. INFANTIL"  )    ', params[:aulas_falta_unidade_id]], :order => 'unidade_id ASC, nome ASC ')
-            #@professores_cat = Professor.find(:all, :select => " distinct(professors.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id",:joins => "INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id", :conditions => ['(unidade_id =? or unidade_id=54) AND atribuicaos.ano_letivo = ? AND (disciplinas.curriculo= "B" OR disciplinas.curriculo= "D")', params[:aulas_falta_unidade_id], Time.now.year], :order => 'professors.unidade_id ASC, professors.nome ASC ' )
-             @professores_cat = Professor.find_by_sql("SELECT  distinct(professors.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id FROM `professors`  INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id WHERE ((unidade_id ='16' or unidade_id=54) AND atribuicaos.ano_letivo = 2019 AND disciplinas.curriculo= 'I' AND professors.id NOT IN (SELECT af.professor_id FROM "+session[:baseinfo]+".aulas_faltas af WHERE (af.data = '"+session[:aulas_falta_dataI]+"' AND  (af.periodo='"+session[:periodo]+"' OR af.periodo='INTEGRAL'))) )  ORDER BY professors.unidade_id ASC, professors.nome ASC ")
-           @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
+            @professores_cat = Professor.find_by_sql("SELECT  distinct(professors.id), CONCAT(professors.nome, ' - ',professors.funcao) AS prof_funcao, unidade_id FROM `professors`  INNER JOIN  atribuicaos  ON  professors.id = atribuicaos.professor_id INNER JOIN  disciplinas  ON  disciplinas.id = atribuicaos.disciplina_id WHERE ((unidade_id ='16' or unidade_id=54) AND atribuicaos.ano_letivo = '"+(Time.now.year).to_s+"' AND disciplinas.curriculo= 'I' AND professors.id NOT IN (SELECT af.professor_id FROM "+session[:baseinfo]+".aulas_faltas af WHERE (af.data = '"+session[:aulas_falta_dataI]+"' AND  (af.periodo='"+session[:periodo]+"' OR af.periodo='INTEGRAL'))) )  ORDER BY professors.unidade_id ASC, professors.nome ASC ")
+            @funcionarios = Funcionario.find(:all, :conditions => ['unidade_id =? ', params[:aulas_falta_unidade_id]], :order => 'nome ASC')
         end
         if (@professores.present?) or (@funcionarios.present?)
-            render :partial => 'selecao_falta'
+
+            if !@professores_cat.empty?
+                render :partial => 'selecao_falta'
+            else
+                if @tipo_unidade[0].tipo_id == 8 or @tipo_unidade[0].tipo_id == 5 or @tipo_unidade[0].tipo_id == 2
+                    #@professor_todos=Professor.find(:all, :conditions=>['desligado = 0 AND  (funcao2 = "ADI / Prof. de Creche" or funcao2 = "PEB1 - ED. INFANTIL"  or funcao2 = "PEB"  or funcao2="PROF. DE CRECHE" or funcao2="PROF. DE CRECHE" or funcao2 like "%ESPECIAL%"  ) '])
+                     @professor_todos=Professor.find_by_sql(' SELECT id, nome FROM `professors` WHERE (desligado = 0 AND  (funcao2 = "ADI / Prof. de Creche" or funcao2 = "PEB1 - ED. INFANTIL"  or funcao2 = "PEB"  or funcao2="PROF. DE CRECHE" or funcao2 like "%ESPECIAL%"  ) ) ORDER BY nome')
+                     @classes = Classe.find(:all, :select => 'distinct classes.classe_classe', :joins =>[:unidade], :conditions=> ['(unidades.tipo_id = 8 or unidades.tipo_id = 5 or unidades.tipo_id = 2) AND classes.classe_ano_letivo =?', Time.now.year], :order => 'classes.classe_classe ASC')
+                     @disciplinas = Disciplina.find(:all, :select => 'distinct disciplina', :conditions =>['curriculo = "I"'])
+                     t=0
+                    render :partial => 'selecao_falta_todos_prof'
+
+                else
+#                    @professor_todos=Professor.find(:all, :conditions=>['desligado = 0  AND  (funcao2 like "PED2@%" or funcao2 = " 	PEB1 - ENSINO FUNDAMENTAL" or funcao2 = "INSTRUTOR"  or funcao2 like "%ESPECIAL%"  or funcao2="PROF. COORDENADOR")'])
+                    @professor_todos=Professor.find_by_sql(' SELECT id, nome FROM `professors` WHERE (desligado = 0 AND  (funcao2 like "PED2@%" or funcao2 = " 	PEB1 - ENSINO FUNDAMENTAL" or funcao2 = "INSTRUTOR"  or funcao2 like "%ESPECIAL%"  or funcao2="PROF. COORDENADOR"  ) ) ORDER BY nome')
+                end
+            end
         else
             render :partial => 'aviso'
         end
