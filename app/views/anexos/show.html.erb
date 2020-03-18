@@ -29,7 +29,7 @@
                                     </table>
                                   </td>
                                   <td  valign="top"  align="center"><%= link_to image_tag(@anexo.file.url(:thumb), :size => "120x120"), @anexo.file.url %>
-                                    <br/><br/><font size="1">(Clique na imagem para vizualizar)</font>
+                                    <br/><br/><%= link_to image_tag("/stylesheets/images/baixar.png"), @anexo.file.url %>
                                   </td>
                                 </tr>
                              </table>
@@ -40,7 +40,7 @@
                      </tr>
                      <tr>
                             <td colspan="5" align="left"  style="border-color: white"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
-                                                        <td colspan="5" align="left"  style="border-color: white"><%= button_to('Baixar Anexo', home_path, :method => "get", :title => "Fechar")%></td>
+                                                        
                               </tr>
 
 
