@@ -21,21 +21,28 @@
               <td><%=h anexo.descricao %></td>
               <td><%=h anexo.unidade.nome %></td>
               <td><%=h anexo.file_content_type %></td>
-            </tr>
-            <tr>
-                <td colspan="12" align="right">
-                <table witdh="100%" >
-                   <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.png"), anexo, :title => "Exibir Anexo" %> </td>
-
-                   <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
-                      <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/editar.png"), edit_anexo_path(anexo), :title => "Alterar Anexo" %></td>
-                        <% if current_user.has_role?('administrador')%>
-                           <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.png"), anexo, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir Anexo" %></td>
-                         <%end%>
+              <td widht =" 10%" >
+                  <table width="100%" >
+                      <tr>
+                          <td><%= link_to image_tag("/stylesheets/images/baixar.png"), anexo.file.url,:target => '_blank' %></td>
+                          <!--<td><%#= link_to image_tag("/stylesheets/images/exibir.png"), anexo, :title => "Exibir Anexo" %> </td>-->
+                           <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                              <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/editar.png"), edit_anexo_path(anexo), :title => "Alterar Anexo" %></td>
+                                <% if current_user.has_role?('administrador')%>
+                                   <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.png"), anexo, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir Anexo" %></td>
+                                 <%end%>
                    <%end%>
-                </table>
 
+                      </tr> 
+                  </table>
               </td>
+
+
+
+
+ 
+
+ 
          </tr>
        <%end %>
          <table>
