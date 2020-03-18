@@ -29,7 +29,7 @@
                                     </table>
                                   </td>
                                   <td  valign="top"  align="center"><%= link_to image_tag(@anexo.file.url(:thumb), :size => "120x120"), @anexo.file.url %>
-                                    <br/><br/><%= link_to image_tag("/stylesheets/images/baixar.png"), @anexo.file.url %>
+                                    <br/><br/><%= link_to image_tag("/stylesheets/images/baixar.png"), @anexo.file.url,:target => '_blank', %>
                                   </td>
                                 </tr>
                              </table>
