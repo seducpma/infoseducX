@@ -1,0 +1,68 @@
+<div id="interno5">
+    <% title "CLASSES".singularize %>
+      <div class="tabs">
+        <div id="caixa_titulo">
+            <font size="3"><strong>ANEXOS - UNIDADE <%=  session[:uni].present? ?  session[:uni] : "" %> - <%=  session[:uni].present? ? Unidade.find( session[:uni]).nome : "Todos" %></strong></font><br/>
+        </div>
+            <font size="2">
+                <table width="100%" align="center" bgcolor="#F5F5F5" style="border-color: white"  border="1">
+                    <tr>
+                       <td>
+                         <fieldset><legend><font  size=4> Documento anexado</font></legend>
+                             <table width="100%" >
+                               <tr>
+                                 <td valign="top" width="50%">
+                                   <table>
+                                      <tr>
+                                        <td align="left"><b>Unidade: </b></td>
+                                        <td align="left"><%=h @anexo.unidade.nome %></td>
+                                      </tr>
+                                      <tr>
+                                        <td align="left"><b>Título: </b></td>
+                                        <td align="left"><%=h @anexo.titulo %> </td>
+                                      </tr>
+                                      <tr>
+                                        <td align="left"><b>Descrição: </b></td>
+                                        <td align="left"><%=h @anexo.descricao %> </td>
+                                      </tr>
+
+                                    </table>
+                                  </td>
+                                  <td  valign="top"  align="center"><%= link_to image_tag(@anexo.file.url(:thumb), :size => "120x120"), @anexo.file.url %>
+                                    <br/><br/><font size="1">(Clique na imagem para vizualizar)</font>
+                                  </td>
+                                </tr>
+                             </table>
+                           </fieldset>
+
+
+                       </td>
+                     </tr>
+                     <tr>
+                            <td colspan="5" align="left"  style="border-color: white"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                    </tr>
+
+
+
+  </table>
+</font>
+  </div>
+        <br/>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

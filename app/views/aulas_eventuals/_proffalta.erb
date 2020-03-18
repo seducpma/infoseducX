@@ -9,7 +9,7 @@
                <td align="left"  width ="12%"> <%=h aula.periodo%></td>
                <td > <b><%=@falta.count %> </b> falta(s) - <%=@falta[0].tipo %>
                     <% if @falta.count > 1 %>
-                       <b> de </b><%= aula.dataI.strftime("%d/%m/%Y")  %>   <b> à </b> <%= aula.dataF.strftime("%d/%m/%Y")  %>
+                       <b> de </b><%= aula.dataI.strftime("%d/%m/%Y")  %>   <b> à </b> <%= aula.dataF.strftime("%d/%m/%Y")  %><%session[:dataFlimite]= aula.dataF %><%#session[:dataIlimite]= aula.dataI %>
                     <%else%>
                        <b> dia </b><%= aula.data.strftime("%d/%m/%Y")  %>
                      <%end%>

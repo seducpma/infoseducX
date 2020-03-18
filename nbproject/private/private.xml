@@ -9,5 +9,9 @@
             <url>public/javascripts/jquery-ui-1.8.16.custom.min.js</url>
             <line>585</line>
         </file>
+        <file>
+            <url>app/controllers/aulas_eventuals_controller.rb</url>
+            <line>157</line>
+        </file>
     </editor-bookmarks>
 </project-private>

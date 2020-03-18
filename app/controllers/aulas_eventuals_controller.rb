@@ -96,9 +96,9 @@ class AulasEventualsController < ApplicationController
                    t=0
                    i=0
                    if !params[:aulas_eventual][:dataI].nil?
-                       a1=session[:dataI]=params[:aulas_eventual][:dataI].to_date
-                       a2=session[:dataF]=params[:aulas_eventual][:dataF].to_date
-                       a3=session[:data]= session[:dataF]-session[:dataI]
+                       session[:dataI]=params[:aulas_eventual][:dataI].to_date
+                       session[:dataF]=params[:aulas_eventual][:dataF].to_date
+                       session[:data]= session[:dataF]-session[:dataI]
                    else
                         session[:data]= 0
                    end
@@ -108,7 +108,7 @@ class AulasEventualsController < ApplicationController
                          @aulas_eventual.save
                          eventual_id=@aulas_eventual.id
                          d=session[:aulas_eventual_data]   #?????
-                        unidade=@aulas_eventual.unidade_id=session[:unidade_id]
+                         unidade=@aulas_eventual.unidade_id=session[:unidade_id]
                         t=0
    #                  end
 
@@ -137,31 +137,40 @@ class AulasEventualsController < ApplicationController
               session[:create]=0
         else
                    i=0
+
                    if !params[:aulas_eventual][:dataI].nil?
-                       a1=session[:dataI]=params[:aulas_eventual][:dataI].to_date
-                       a2=session[:dataF]=params[:aulas_eventual][:dataF].to_date
-                       a3=session[:data]= session[:dataF]-session[:dataI]       # esta session[:data] é para contar o numero de vezes da repetição
-                       t=0
+                       session[:dataI]=params[:aulas_eventual][:dataI].to_date
+                       session[:dataF]=params[:aulas_eventual][:dataF].to_date
+                       #if session[:dataIlimite] > session[:dataI]
+                       #    session[:dataI]= session[:dataIlimite]
+                       #end
+                       if session[:dataFlimite] < session[:dataF]
+                           session[:dataF]= session[:dataFlimite]
+                       end
+                       session[:data]= session[:dataF]-session[:dataI]       # esta session[:data] é para contar o numero de vezes da repetição
                    else
                         session[:data]= 0
                         session[:dataI]=params[:aulas_eventual][:data].to_date
                         session[:dataF]=params[:aulas_eventual][:data].to_date
-                        t=0
+
                    end
+
+
                    while i < session[:data]+1 do
                     @aulas_eventual = AulasEventual.new(params[:aulas_eventual])
-                    @aulas_eventual.save
+
+                     @aulas_eventual.save
                      eventual_id=@aulas_eventual.id
                      d=session[:aulas_eventual_data]
                      unidade=@aulas_eventual.unidade_id=session[:unidade_id]
-                    t=0
+                     t=0
                         if !session[:aulas_eventual_data].nil?
                             @aulas_eventual.data=session[:aulas_eventual_data].to_date+i
                             @aulas_eventual.dataI=session[:dataI]
                             @aulas_eventual.dataF=session[:dataF]
                             ideventual= @aulas_eventual.id
                             idfalta = session[:falta_id] +i
-                            @falta= AulasFalta.find(idfalta )
+                                @falta= AulasFalta.find(idfalta )
                             @falta.substituicao = ideventual
                             @falta.save
 

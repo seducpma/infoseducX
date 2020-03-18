@@ -1,0 +1,59 @@
+<% session[:uni]= params[:unidade]%>
+<div id="interno6">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>ANEXOS - UNIDADE <%=  session[:uni].present? ?  session[:uni] : "" %> - <%=  session[:uni].present? ? Unidade.find( session[:uni]).nome : "Todos" %></strong></font><br/>
+ </div>
+   <div class="tabs">
+    <table  border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: black"  bgcolor="#F5F5F5">
+          <tr>
+              <th bgcolor="DCDCDC">Titulo</th>
+              <th bgcolor="DCDCDC">Descricao</th>
+              <th bgcolor="DCDCDC" width="10%">Unidade</th>
+              <th bgcolor="DCDCDC">Tipo de arquivo</th>
+               <th bgcolor="DCDCDC"></th>
+          </tr>
+
+                   <% @anexos.each do |anexo| %>
+            <tr>
+              <td><%=h anexo.titulo %></td>
+              <td><%=h anexo.descricao %></td>
+              <td><%=h anexo.unidade.nome %></td>
+              <td><%=h anexo.file_content_type %></td>
+            </tr>
+            <tr>
+                <td colspan="12" align="right">
+                <table witdh="100%" >
+                   <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/exibir.png"), anexo, :title => "Exibir Anexo" %> </td>
+
+                   <% if current_user.has_role?('administrador') or current_user.has_role?('estagiario SEDUC') %>
+                      <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/editar.png"), edit_anexo_path(anexo), :title => "Alterar Anexo" %></td>
+                        <% if current_user.has_role?('administrador')%>
+                           <td align="center" colspan="1"><%= link_to image_tag("/stylesheets/images/excluir.png"), anexo, :confirm => 'Confirma Exclusao?', :method => :delete, :title => "Excluir Anexo" %></td>
+                         <%end%>
+                   <%end%>
+                </table>
+
+              </td>
+         </tr>
+       <%end %>
+         <table>
+                                   <tr>
+                                        <td align="center"  ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                                        <td colspan="5" align="left"><%= button_to('Incluir Anexo ', new_anexo_path(:unidade => params[:unidade]), :title => "Incluir Anexo") %></td>
+                                     </tr>
+         </table>
+
+
+  </table>
+
+  </div>
+        <br/>
+
+    </div>
+        <br/>
+
+
+
+

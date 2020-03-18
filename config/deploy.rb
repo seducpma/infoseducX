@@ -23,7 +23,7 @@ server application, :app, :web, :db, :primary => true
    task :restart, :roles => :app, :except => { :no_release => true } do
      run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
      #run "ln -s /home/atena/photos/infoseduc /home/atena/infoseduc.seducpma.com/current/public/photos"
-     run "ln -s /home/atena/photos/infoseduc /home/atena/infoseduc.seducpma.com/current/public/photos"    # direcionamento da pasta para guardar imagens
+     run "ln -s /home/atena/photos/infoseduc /home/atena/infoseduc.seducpma.com/current/public/photos"    # direcionamento da pasta para guardar todo tipo de uoload
      #run "ln -s /home/atena/photos/sisgered /home/atena/sisgered.seducpma.com/current/public/photos"
 
 

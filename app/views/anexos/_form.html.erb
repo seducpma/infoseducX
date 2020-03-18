@@ -1,0 +1,85 @@
+<div id="interno3">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>CADASTRO DE UNIDADES - ANEXOS </strong></font><br/>
+ </div>
+
+
+  <div class="tabs">
+ <table  width="100%" >
+  <tr >
+    <td colspan="2" align="left">
+        <font  size=5><b> DOCUMENTOS ANEXOS</b></font>
+    </td>
+  </tr>
+  <tr bgcolor="#F5F5F5" >
+    <td>
+     <% form_for(@anexo, :html => {:multipart=>true}) do |f| %>
+     <%= f.error_messages %>
+     <font  size="2">
+        <fieldset><legend><font  size=4> Anexo</font></legend>
+          <table>
+             <tr>
+               <td align="left"> <b>Unidade:</b></td>
+               <td align="left">
+                <%if params[:unidade].present?%>
+                    <%= f.label Unidade.find(params[:unidade]).nome %> <%= f.label params[:unidade] %>
+                    <%= f.hidden_field(:unidade_id, :value => params[:unidade])  %>
+                <%else%>
+                     <%= f.collection_select :unidade_id, @unidades, :id, :nome, :include_blank => ' -- Selecione -- ', :size=> 30 %>
+                <%end%>
+              </td>
+            </tr>
+             <tr>
+               <td align="left"><b>Título:</b></td>
+               <td colspan="3" align="left"><%= f.text_field :titulo, :size => 30 %></td>
+             </tr>
+             <tr>
+                 <td align="left" valign="top"><b>Descrição:</b></td>
+               <td colspan="3" align="left"><%= f.text_area(:descricao , :cols =>"60", :rows => "2")%></td>
+             </tr>
+             <tr>
+               <td align="left"><b>Arquivo:</b></td>
+               <td colspan="3" align="left"><%= f.file_field :file %></td>
+             </tr>
+          </table>
+         </fieldset>
+
+
+         <table width="100%" align="left" bgcolor="#F5F5F5" >
+           <tr>
+
+               <td  width="2%" align="left">   <%= f.submit "Salvar" %></td>
+      <% end %>
+              <td align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+            </tr>
+        </table>
+
+
+
+    </td>
+   </tr>
+  </table>
+</font>
+
+
+
+
+
+
+
+
+    </div>
+</div>
+<br/>
+<script>
+    $("#demo input[title]").tooltip();
+  </script>
+</font>
+</div>
+
+
+
+
+
