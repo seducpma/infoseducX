@@ -39,9 +39,16 @@
                        </td>
                      </tr>
                      <tr>
-                            <td colspan="5" align="left"  style="border-color: white"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
-                                                        
-                              </tr>
+                         <td colspan="5">
+                             <table>
+
+                                  <tr>
+                                       <td ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                                      <td ><%= button_to('Consultar Unidade', consultas_unidades_path, :method => "get", :title => "Fechar")%></td>
+                                  </tr>
+                             </table>
+                         </td>
+                     </tr>
 
 
 
