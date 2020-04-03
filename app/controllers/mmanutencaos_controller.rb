@@ -145,7 +145,7 @@ def consulta_abertos_unidade
                      end
               else if params[:type_of].to_i == 4
                         w=session[:sstatus]=  params[:manutencao][:situacao_manutencao_id]
-                        
+                        session[:type_of] = 4
                         if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC')
                            @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE  mma.situacao_manutencao_id ="+(session[:sstatus]).to_s+"   ORDER BY mma.data_sol DESC")
                         else
@@ -156,7 +156,52 @@ def consulta_abertos_unidade
                        end
 
                      else if params[:type_of].to_i == 5
-                        # NÂO UTILIUZADO
+                          session[:type_of] = 5
+                             session[:dataI]=params[:mmanutencao][:inicio][6,4]+'-'+params[:mmanutencao][:inicio][3,2]+'-'+params[:mmanutencao][:inicio][0,2]
+                             session[:dataF]=params[:mmanutencao][:fim][6,4]+'-'+params[:mmanutencao][:fim][3,2]+'-'+params[:mmanutencao][:fim][0,2]
+                             session[:mes]=params[:mmanutencao][:fim][3,2]
+                             session[:anoI]=params[:mmanutencao][:inicio][6,4]
+                             session[:anoF]=params[:mmanutencao][:fim][6,4]
+                             if session[:mes] == '01'
+                                  session[:mes] = 'JANEIRO'
+                              else if session[:mes] == '02'
+                                      session[:mes] = 'FEVEREIRO'
+                                  else if session[:mes] == '03'
+                                          session[:mes] = 'MARÇO'
+                                      else if session[:mes] == '04'
+                                              session[:mes] = 'ABRIL'
+                                          else if params[:mes] == '05'
+                                                  session[:mes] = 'MAIO'
+                                              else if session[:mes] == '06'
+                                                      session[:mes] = 'JUNHO'
+                                                  else if session[:mes] == '07'
+                                                          session[:mes] = 'JULHO'
+                                                      else if session[:mes] == '08'
+                                                              session[:mes] = 'AGOSTO'
+                                                          else if session[:mes] == '09'
+                                                                  session[:mes] = 'SETEMBRO'
+                                                              else if session[:mes] == '10'
+                                                                      session[:mes] = 'OUTUBRO'
+                                                                  else if session[:mes] == '11'
+                                                                          session[:mes] = 'NOVEMBRO'
+                                                                      else if session[:mes] == '12'
+                                                                              session[:mes] = 'DEZEMBRO'
+                                                                          end
+                                                                      end
+                                                                  end
+                                                              end
+                                                          end
+                                                      end
+                                                  end
+                                              end
+                                          end
+                                      end
+                                  end
+                              end
+                                     @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE (data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"')   ORDER BY mma.data_sol DESC")
+                                             render :update do |page|
+                                               page.replace_html 'abertos', :partial => "abertos"
+                                             end
                      end
                   end
               end
@@ -799,7 +844,7 @@ def estatisticasMANTAt
                                                                 session[:nome_manutencao]= "TELHADO"
                                                                 render "estatisticasM"
                                                                 else if (params[:estatisticas].to_i == 13)
-                                Anterior                                      @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 12 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4) and created_at > ? and created_at < ?", $datai, $dataf])
+                                                                      @mmanutencaos_estatisticas = Mmanutencao.all(:joins => 'INNER JOIN mmanutencaos_tipos_manutencaos ON mmanutencaos.id = mmanutencaos_tipos_manutencaos.mmanutencao_id', :conditions => ["mmanutencaos_tipos_manutencaos.tipos_manutencao_id= 12 and (situacao_manutencao_id=3 OR situacao_manutencao_id=4) and created_at > ? and created_at < ?", $datai, $dataf])
                                                                       session[:nome_manutencao]= "PODA GRAMA"
                                                                       render "estatisticasM"
                                                                       else if (params[:estatisticas].to_i == 14)
@@ -966,7 +1011,7 @@ def lista_unidade
          @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma  INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id = mma.id INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id <> 2 and tma.tipos_manutencao_id ="+session[:tipo].to_s+" order by data_sol DESC ")
            render :layout => "impressao"
      else if session[:type_of].to_i == 2
-            
+            t=0
                 if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC')
                      @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id,  mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE situacao_manutencao_id <> 2 and mma.unidade_id ="+session[:unidade].to_s+" ORDER BY mma.data_sol DESC")
                       t=0
@@ -992,9 +1037,57 @@ def lista_unidade
  t=0
                     render :layout => "impressao"
               else if session[:type_of].to_i == 4
-                        # NÂO UTILIUZADO
+                        w=session[:sstatus]=  params[:manutencao][:situacao_manutencao_id]
+
+                        if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC')
+                           @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE  mma.situacao_manutencao_id ="+(session[:sstatus]).to_s+"   ORDER BY mma.data_sol DESC")
+                        else
+                           @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE mma.unidade_id ="+(current_user.unidade_id).to_s+"  and mma.situacao_manutencao_id ="+(session[:sstatus]).to_s+"   ORDER BY mma.data_sol DESC")
+                        end
+                         render :layout => "impressao"
                      else if session[:type_of].to_i == 5
-                        # NÂO UTILIUZADO
+
+
+                             if session[:mes] == '01'
+                                  session[:mes] = 'JANEIRO'
+                              else if session[:mes] == '02'
+                                      session[:mes] = 'FEVEREIRO'
+                                  else if session[:mes] == '03'
+                                          session[:mes] = 'MARÇO'
+                                      else if session[:mes] == '04'
+                                              session[:mes] = 'ABRIL'
+                                          else if params[:mes] == '05'
+                                                  session[:mes] = 'MAIO'
+                                              else if session[:mes] == '06'
+                                                      session[:mes] = 'JUNHO'
+                                                  else if session[:mes] == '07'
+                                                          session[:mes] = 'JULHO'
+                                                      else if session[:mes] == '08'
+                                                              session[:mes] = 'AGOSTO'
+                                                          else if session[:mes] == '09'
+                                                                  session[:mes] = 'SETEMBRO'
+                                                              else if session[:mes] == '10'
+                                                                      session[:mes] = 'OUTUBRO'
+                                                                  else if session[:mes] == '11'
+                                                                          session[:mes] = 'NOVEMBRO'
+                                                                      else if session[:mes] == '12'
+                                                                              session[:mes] = 'DEZEMBRO'
+                                                                          end
+                                                                      end
+                                                                  end
+                                                              end
+                                                          end
+                                                      end
+                                                  end
+                                              end
+                                          end
+                                      end
+                                  end
+                              end
+                              t=0
+                                     @mmanutencaos = Mmanutencao.find_by_sql("SELECT uni.nome as nome, mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma INNER JOIN "+session[:base]+".unidades uni ON uni.id = mma.unidade_id WHERE (data_sol BETWEEN '"+session[:dataI]+"' AND '"+session[:dataF]+"')   ORDER BY mma.data_sol DESC")
+                                     t=0
+                                             render :layout => "impressao"
                      end
                   end
               end

@@ -497,6 +497,7 @@ $(".sem_filtroE").click(function ()
 
   $(".filtro").click(function ()
    { $(".consulta_categoria").hide();
+     $(".consulta_data").hide();
      $(".consulta").show();
      $(".txt_busca").show();
      $(".label_busca").show();
@@ -537,7 +538,7 @@ $(".filtro_nome").click(function ()
      $(".txt_busca1").show();
      $(".label_busca1").show();
      $(".consulta_nome").show();
-
+      $(".consulta_data").hide();
      $(".status").hide();
      $(".consulta").hide();
      $(".consulta2").hide();
@@ -580,6 +581,7 @@ $(".prof_filtro").click(function ()
      $(".label_busca2").show();
      $(".consulta2").show();
      $(".txt_busca2").show();
+     $(".consulta_data").hide();
      $(".label_busca2").show();
      $(".status").hide();
      $(".consulta").hide();
@@ -589,7 +591,7 @@ $(".prof_filtro").click(function ()
 
     $(".filtro_status").click(function ()
    { $(".status").show();
-
+      $(".consulta_data").hide();
      $(".consulta").hide();
      $(".consulta1").hide();
      $(".consulta2").hide();
@@ -831,6 +833,7 @@ $(".filtro_des").click(function ()
      $(".label_busca4").show();
      $(".consulta").hide();
      $(".consulta1").hide();
+     $(".consulta2").hide();
      $(".consulta_empresa").hide();
      $(".consulta_obreiro").hide();
      $(".consulta_2").hide();

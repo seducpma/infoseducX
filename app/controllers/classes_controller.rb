@@ -147,6 +147,7 @@ end
 
 
 def consulta_classe_aluno
+  t=0
        session[:classe_id]=params[:classe][:id]
        @classe = Classe.find(:all,:conditions =>['id = ?', params[:classe][:id]])
        @atribuicao_classe = Atribuicao.find(:all, :joins => :disciplina,:conditions =>['classe_id = ? AND ativo=?', params[:classe][:id],0], :order =>'disciplinas.ordem ASC ' )
