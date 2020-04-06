@@ -13,7 +13,7 @@
            <%= link_to image_tag("/stylesheets/Imagens/sisgered.jpg", :size => "200x100"),  "http://sisgered.seducpma.com", :title => "Sistema de Gerenciamento Escolar"%>
          </td>
          <td width="10%" align="center" style="height: 100%">
-           <%= link_to image_tag("/stylesheets/Imagens/palestras.jpg", :size => "200x100"), new_inscricao_path, :title => "Inscrições para cursos de aprefeiçoamento"%>
+           <%= link_to image_tag("/stylesheets/Imagens/pedagogico.png", :size => "200x100"),"https://docs.google.com/document/d/1mmTGfxiBgE3mCgElGntiHjG7oLrzFiXO7fQ7Q79P8Uw/edit?usp=sharing"  , :title => "Conteúdos Pedagógicos"%>
          </td>
          <td rowspan="4" valign="top" align="left">
              <table width="100%">
@@ -93,19 +93,40 @@
                            </tr>
     -->
                            <tr>
-                               <td colspan="2" > <font size ="5" color="red"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b><u>ATENÇÃO</b></u></font><br/>
-                                   <font size ="4" > <b>Em virtude <%= link_to("Decreto Municipal2.410, de 18/03/2020", "http://www.americana.sp.gov.br/download/diarioOficial/9x36p9jylq.pdf")%>,
-                                                        A Secretaria de Educação passará a atender das 12:00 as 17:00 horas, pelo telefone 3475-9700 ou mediante agendamento individual realizado através do e-mail:<br/>
-                                                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp atendimento@seducpma.com  <br/>
-                                                        Os portões parmanecerão fechados e serão liberados somente à pessoa no horário agendado, NÃO SERÃO ATENDIDAS PESSOA SEM AGENDAMENTO SOLICITADO.
+                               <td colspan="2" > <font size ="5" color="red"><b>< <u>MATERIAL DIDÁTICO - ALUNOS</b></u></font><br/>
+
+
+                                   <font size ="4" > <b>Acessar o link que se encontra no centro da esta tela. 
+                                    <%= link_to("CONEXÕES PARA APRENDIZAGEM", "https://docs.google.com/document/d/1mmTGfxiBgE3mCgElGntiHjG7oLrzFiXO7fQ7Q79P8Uw/edit?usp=sharing" , :title => "Conteúdos Pedagógicos")%>.
 </b></font><br/>
+
+                                     </td>
+                              </tr>
+                           <tr>
+                               <td colspan="2" ><hr> </td>
+                              </tr>
+
+                         <tr>
+                             <td colspan="2" >
+                               <table width="100%">
+                                 <tr>
+                                   <td align="center"> <font size ="5" color="red"> <b><u>ATENÇÃO</b></u></font> </td>
+                                   <td align="center"> <%= link_to image_tag("/stylesheets/images/diario.png", :size => "100x100"), "http://www.americana.sp.gov.br/download/diarioOficial/qojgqkjcop.pdf", :title => "Agenda Atendimento"%></td>
+                                   
+                                 </tr>  
+                               </table>
+
+
+
+
+                                   <font size ="4" > <b>Em virtude <%= link_to("Decreto Municipal2.410, de 18/03/2020", "http://www.americana.sp.gov.br/download/diarioOficial/9x36p9jylq.pdf")%>,
+                                                        A Secretaria de Educação passará a atender das 12:00 as 17:00 horas, pelo email atendimento@seducpma.com ou pelo telefone 3475-9700.
+                                                        </br>Os portões parmanecerão fechados com controle de acesso que será liberados somente à uma pessoa de cada vez.</b></font>
                                      </td>
                               </tr>
 
-                                <tr>
-                                    <td align="center">         <%= link_to image_tag("/stylesheets/images/diario.png", :size => "150x150"), "http://www.americana.sp.gov.br/download/diarioOficial/qojgqkjcop.pdf", :title => "Agenda Atendimento"%>     </td>
-                                  <td>         <%= link_to image_tag("/stylesheets/images/agenda.png", :size => "150x150"), "https://docs.google.com/spreadsheets/d/1yUfkdxLCNbogrhYc9sSenVb2LRNFmtJ2t8-LZKbsVmI/edit#gid=0", :title => "Agenda Atendimento"%>     </td>
-                              </tr>
+
+
                           </table>
                          </td>
                         </tr>
@@ -136,7 +157,7 @@
        <!-- <%= link_to image_tag("/stylesheets/Imagens/seduc.png", :size => "200x100"), "http://americana.gestaopublicadigital.com.br/americana/portal", :title => "Portal SEDUC"%>-->
        <!-- <%= link_to image_tag("/stylesheets/Imagens/voto1.jpg", :size => "200x100")%>-->
        <!--<%= link_to image_tag("/stylesheets/Imagens/lista.jpg", :size => "200x100"),"https://docs.google.com/document/d/19gzeXfP79nrhQqwdtJIwxxC6d4tvnk2H2Jpvm1b4b8g/edit?usp=sharing"  , :title => "Atribuição"%>-->
-       <%= link_to image_tag("/stylesheets/Imagens/pedagogico.png", :size => "200x100"),"https://docs.google.com/document/d/1mmTGfxiBgE3mCgElGntiHjG7oLrzFiXO7fQ7Q79P8Uw/edit?usp=sharing"  , :title => "Conteúdos Pedagógicos"%>
+                  <%= link_to image_tag("/stylesheets/Imagens/palestras.jpg", :size => "200x100"), new_inscricao_path, :title => "Inscrições para cursos de aprefeiçoamento"%>
      </td>
 
    </tr>
