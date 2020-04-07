@@ -1,3 +1,24 @@
+#pisca1{
+    animation:2s blink 50 steps(1);
+}
+
+#pisca1{
+    animation:0.5s blink 100 alternate(0.5);
+}
+
+@keyframes blink{
+    20%{
+        color:transparent;
+    }
+}
+
+@keyframes blink{
+    80%{
+        color:transparent;
+    }
+}
+
+
 body {
 	padding:0;
 	background-color:white;
