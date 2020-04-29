@@ -20,7 +20,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :acompanhamento_despachos
 
   map.resources :acompanhamentos, :collection => {:acompanhamento=>:get, :consulta => :get, :editar => :get}
- map.resources :anexos
+  map.resources :anexos
+
+  map.decreto'/descreto', :controller => 'sessions', :action => 'decreto'
+  map.mascara'/mascara', :controller => 'sessions', :action => 'mascara'
+
+
 
   map.resources :despachos
   map.resources :produtos

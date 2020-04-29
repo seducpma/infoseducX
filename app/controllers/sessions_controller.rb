@@ -62,6 +62,15 @@ class SessionsController < ApplicationController
       render :layout => "aviso"
   end
 
+  def mascara
+    send_file("#{RAILS_ROOT}/public/documentos/mascara.pdf" , :type=>"pdf")
+  end
+
+ def decreto
+    send_file("#{RAILS_ROOT}/public/documentos/decreto.pdf" , :type=>"pdf")
+  end
+
+
 protected
 
   def note_failed_signin
