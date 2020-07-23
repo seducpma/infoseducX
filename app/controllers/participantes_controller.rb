@@ -183,10 +183,23 @@ def index
   end
 
   def lista_participante1
-    @inscricao = Inscricao.find_by_participante_id(params[:participante_participante_id])
+    t=0
+    w=params[:participante_participante_id]
+    #@inscricao = Inscricao.find_by_participante_id(params[:participante_participante_id])
+    @participante= Participante.find(:all,  :conditions=> ['id =?',params[:participante_participante_id] ])
     render :partial => 'lista_participantes'
+  #   render :update do |page|
+  #               page.replace_html 'listagem', :partial => 'lista_participantes'
+  #  end
+
   end
 
+ def lista_inscricaos
+     @inscricaos = Inscricao.find(:all, :joins => :participante, :conditions => ["participantes.nome like ?", "%" + params[:search1].to_s + "%"],:order => 'inscricaos.data_inscricao DESC')
+                     render :update do |page|
+                          page.replace_html 'listagem', :partial => "lista_inscricao"
+                     end
+ end
 
   def lista_participante_index
     @participantes = Participante.find(:all, :conditions => ["id = ?",params[:participante_participante_id] ])

@@ -1,34 +1,42 @@
 <br/>  
-<table width="100%" align="center" class="tabelas1"  border="1">
-      <%unless @inscricao.present?%>
-        <center><h2><b>"Participante ainda não possui inscrição"</b></h2></center>
-      <%else%>
-          <h2 align="center">Nome do participante: "<%= @inscricao.participante.nome %>"</h2>
 
 
-        <tr>
-          <th> Curso</th>
-          <th> Opção 1</th>
-          <th> Opção 2</th>
-        </tr>
-           <% @inscricao.cursos.each do |curso| %>
-              <tr>
-                <td align="center">
-                  <b><%=h curso.nome %></b>
-                </td>
-           
-             <% if (@inscricao.periodoop1.nil?) %>
-                     <td> Não selecionada</td>
+
+
+    <div class="tabs">
+    <table bgcolor="#DCDCDC" width="100%">
+
+
+ <tr>
+  <td width="100%" colspan="3">
+   <%  contador = 0 %>
+
+    <table border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: black"bgcolor="#F5F5F5">
+       <tr>
+        <td bgcolor="#DCDCDC" align="center">ID</td>
+        <td bgcolor="#DCDCDC">Participante</td>
+        <td align="center" bgcolor="#DCDCDC">Cadastrado em:</td>
+        <td  width="5%" colspan="2"></td>
+        
+      </tr>
+      <% for participante in @participante %>
+      <tr>
+          <td align="center"><%=h participante.id %></td>
+       <td><%=h participante.nome %></td>
+       <td align="center"> <%=h participante.created_at.strftime("%d/%b/%Y") %> </td>
+        <td align="center"><%= button_to('Visualizar', {:action => "show", :id =>participante},:method => "get", :title => "Visualizar") %></td>
+               <% if ((current_user.has_role?('admin') or current_user.has_role?('SEDUC')or  current_user.has_role?('diretor_unidade')) )%>
+                    <td align="center"><%= button_to 'Editar', {:action => "edit", :id =>participante}, :method => "get", :title => "Editar"%></td>
                 <%else%>
-                    <td><%=h " #{Unidade.find(@inscricao.opcao1).nome} - #{@inscricao.periodoop1}" %></td>
+                    <td align="center"> --- </td>
                 <%end%>
-                <% if (@inscricao.periodoop2.nil?) %>
-                     <td>Não selecionada</td>
-                <%else%>
-                    <td><%=h "#{Unidade.find(@inscricao.opcao2).nome} - #{@inscricao.periodoop2}" %></td>
-               <%end%>
 
-            </tr>
-          <% end %>
-       <%end%>
+     </tr>
+     <%  contador = contador + 1 %>
+    <% end %>
+   </table>
+ </td>
+</tr>
+
  </table>
+    </div>

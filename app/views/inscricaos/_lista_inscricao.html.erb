@@ -12,14 +12,17 @@
         <td bgcolor="#DCDCDC">Participante</td>
         <td bgcolor="#DCDCDC">Curso</td>
         <td align="center" bgcolor="#DCDCDC">Data da Inscrição:</td>
+        <td width="5%" bgcolor="#DCDCDC"></td>
       </tr>
       <% for inscricao in @inscricaos %>
       <tr>
           <td align="center"><%=h inscricao.id %></td>
        <td><%=h inscricao.participante.nome %></td>
        <td><%=h inscricao.curso.nome %></td>
-
        <td align="center"> <%=h inscricao.data_inscricao.strftime("%d/%b/%Y") %> </td>
+       <td ><%= button_to('Visualizar', {:action => "show", :id =>inscricao},:method => "get", :title => "Visualizar") %></td>
+
+
      </tr>
      <%  contador = contador + 1 %>
     <% end %>
@@ -31,4 +34,4 @@
      <td width="8%" colspan="4"><b> Total de cursos inscrito: <%= contador %></b> </td>
      </tr>
  </table>
-        </div
+    </div>

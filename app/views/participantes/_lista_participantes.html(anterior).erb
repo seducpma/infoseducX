@@ -1,0 +1,34 @@
+<br/>  
+<table width="100%" align="center" class="tabelas1"  border="1">
+      <%unless @inscricao.present?%>
+        <center><h2><b>"Participante ainda não possui inscrição"</b></h2></center>
+      <%else%>
+          <h2 align="center">Nome do participante: "<%= @inscricao.participante.nome %>"</h2>
+
+
+        <tr>
+          <th> Curso</th>
+          <th> Opção 1</th>
+          <th> Opção 2</th>
+        </tr>
+           <% @inscricao.cursos.each do |curso| %>
+              <tr>
+                <td align="center">
+                  <b><%=h curso.nome %></b>
+                </td>
+           
+             <% if (@inscricao.periodoop1.nil?) %>
+                     <td> Não selecionada</td>
+                <%else%>
+                    <td><%=h " #{Unidade.find(@inscricao.opcao1).nome} - #{@inscricao.periodoop1}" %></td>
+                <%end%>
+                <% if (@inscricao.periodoop2.nil?) %>
+                     <td>Não selecionada</td>
+                <%else%>
+                    <td><%=h "#{Unidade.find(@inscricao.opcao2).nome} - #{@inscricao.periodoop2}" %></td>
+               <%end%>
+
+            </tr>
+          <% end %>
+       <%end%>
+ </table>

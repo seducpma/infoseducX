@@ -1,53 +1,53 @@
- <br/><br/>
-<table class="tabelas1" align="center" width="80%">
- <tr>
-   <th colspan="2" align="left">
-      <font  size=5 color="black"> <b> INSCRIÇÕES POR PARTICIPANTE </b></font>
-   </th>
-  </tr>
-  <tr>
-    <td>
-      <br/>
-      <div class="botao">
-        <table>
-          <tr>
-            <td>
-              <font size="3"> Participante: <%= collection_select :participante, :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecionar -- '  %></font>
-             </td>
-          </tr>
-        </table>
-     </div>
-    </td>
-   </tr>
-   <tr>
-        <td>
-         <%= observe_field 'participante_participante_id',
+
+<div id="interno6">
+<% title "CLASSES".singularize %>
+<div class="tabs">
+ <div id="caixa_titulo">
+     <font size="3"><strong>SISTEMA DE INSCRIÇÃO ON LINE </strong></font><br/>
+ </div>
+   <div class="tabs">
+    <table width="100%" align="center"  bgcolor="#F5F5F5"   style="border-color: white">
+         <tr  bgcolor ="#E6E2D" style="border-color: white">
+            <td align="left" style="border-color: white">
+             <font  size=5 color="black"> <b> CONSULTA SISTEMA DE INSCRIÇÃO / PARTICIPANTE</b></font>
+               <hr/>
+            </td>
+        </tr>
+         
+         <table width="100%" align="center" bgcolor="#F5F5F5" >
+        <tr style="border-color: white">
+            <td style="border-color: white" align="right">
+                            
+                  <font size="3"> Participante: <%= collection_select :participante, :participante_id, @participantes, :id, :nome, :include_blank => ' -- Selecionar -- '  %></font>
+                           <%= observe_field 'participante_participante_id',
                :update => "listagem",
                :url    => { :action => 'lista_participante1' },
                :with   => 'participante_participante_id' %>
-             <div id="listagem"> </div>
-      </td>
-   </tr>
-   <tr>
-     <td>
+             
+          </td>
+        </tr>
+        
+        <tr style="border-color: white"><td style="border-color: white" colspan="2">  <hr/>   </td> </tr>
+        <tr style="border-color: white" >
+            <td style="border-color: white" colspan="2"align="center">
 
-       <div class="botao">
-        <table width="100%" align="left">
-          <tr>
-            <td align="left" width="4%"><%= link_to image_tag("/stylesheets/images/voltar.png", :size => "40x40"),  homes_path, {:method => "get"}, :title => "Voltar"%></td>
-            <td align="left" ><%= link_to image_tag("/stylesheets/images/imprimir.png", :size => "30x30"), onclick="javascript:window.print()", :title => "Imprimir" %></td>
-          </tr>
-       </table>
-      </div>
+            <div id="listagem"> </div>
+         </td>
+       </tr>
+        <tr style="border-color: white">
+            <td style="border-color: white">
+                <table width="100%" align="left" style="border-color: white">
+                  <tr style="border-color: white">
+                          <td align="left"  style="border-color: white"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                  </tr>
+               </table>
+            </td>
+        </tr>
 
-     </td>
-   </tr>
+    </table>
+
+
 
 </table>
 <br>
-
-
-
-
-
 

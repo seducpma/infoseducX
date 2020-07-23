@@ -12,7 +12,7 @@
         <th align="center">
            <font  size=5 color="black">  <b> CADASTRO DE PARTICIPANTES </b></font>
         </th>
-      </tr>
+  </tr>
   <tr>
     <td colspan="2">
      <% form_for(@participante) do |f| %>
@@ -20,63 +20,102 @@
      <font  size="2">
       <fieldset><legend><font  size=4> Participante</font></legend>
           <table width="100%" align="center" >
-         <tr>
-            <td colspan="2"><a href="#" class="filtro_professor"><%= radio_button_tag(:type_of, "1") %></a>Professor na SEDUC/PMA &nbsp&nbsp&nbsp&nbsp&nbsp
-                <a href="#" class="filtro"><%= radio_button_tag(:type_of, "2") %></a>Funcionario da SEDUC/PMA &nbsp&nbsp&nbsp&nbsp&nbsp
-                <a href="#" class="filtro_unidade"><%= radio_button_tag(:type_of, "3") %></a>Outros
-           </td>
-         </tr>
+           <tr>
+               <td align="left"><b>Nome:</b></td>
+               <td align="left" colspan="3"><%= text_field :participante, :nome, :size => 74 %>
 
-         <tr>
-             <td colspan="2"><div class="consulta_nome" style="display:none"> <%= render "funcionario" %> </div>
-               <div class="consulta_unidade" style="display:none"> <%= render "outros" %> </div>
-               <div class="consulta_professor" style="display:none"> <%= render "professor" %> </div>
-           </td>
-         </tr>
+              </td>
+            </tr>
+
+            <tr>
+               <td align="left" width =" 5%"><b>Profissão:</b></td>
+               <td align="left" colspan="3"><%if @participante.professor_id. present?%>
+                                                 Professor da rede SEDUC
+                                            <%else if @participante.professor_id. present?%>
+                                                    Funcionário da Rede Municipal
+                                                 <%else  %>
+                                                     <%= text_field :participante, :profissao, :size =>74%></td>
+                                                 <%end%>
+                                            <%end%>
+
+            </tr>
+            <tr>
+               <td align="left" width =" 5%"><b>CPF:</b></td>
+               <td align="left" colspan="3"> <%= text_field :participante, :cpf, :size =>16%> &nbsp&nbsp&nbsp
+                 <font size="3" color =" red"><b>*</b></font> <b>RG:</b> <%= text_field :participante, :rg, :size =>16%> &nbsp&nbsp&nbsp
+                 <b>CEP:</b><%= text_field :participante, :CEP, :size =>17 %>
+               </td>
+            </tr>
+
+            <tr>
+               <td align="left"><b>Endereço:</b></td>
+               <td align="left" colspan="3"><%= text_field :participante, :endereco, :size => 63 %>
+                   <b>Nº</b><%= text_field :participante, :num, :size => 4%>
+              </td>
+            </tr>
+            <tr>
+               <td align="left" colspan="4"><b>Complemento:</b> <%= text_field :participante, :complemento, :size =>26 %>
+                &nbsp <b>Fone:</b><%= text_field :participante, :telefone, :size =>10 %>
+                &nbsp <b>Cel:</b><%= text_field :participante, :cel, :size => 12%> <font size="2" color =" red"><b id="pisca1">  <=== *Preenchimento obrigatório</b></font>
+              </td>
+            </tr>
+            <tr>
+               <td align="left"><b>Cidade:</b></td>
+                <td align="left" colspan="3"><%= text_field :participante, :cidade, :size =>31%>
+                 &nbsp <b>Bairro:</b><%= text_field :participante, :bairro, :size =>30 %>
+
+               </td>
+            </tr>
 
 
 
             <tr>
                 <td width ="11%" align="left" valign="top"><b><font size="3" color =" red">*</font>E-mail:</b></td>
-               <td align="left"><%= f.text_field :email, :size =>60 %><font size="2" color =" red"><b>   <=== *Preenchimento obrigatório</b></font></td>
+               <td align="left"><%= f.text_field :email, :size =>60 %><font size="2" color =" red"><b id="pisca1">   <=== *Preenchimento obrigatório</b></font></td>
             </tr>
+
+
              <tr>
                <td align="left"><b>Observação:</b></td>
                <td align="left"><%= f.text_field :obs, :size =>60 %></td>
             </tr>
             <tr>
-              <% if $parti == 1 %>
-                <br/>
-                <td align="left" colspan="2"><font size="5" color =" red"><b>*
-                 NÃO CONSTA E_MAIL - FAVOR CADASTAR </b></font>
-                </td>
-              <%else%>
-                <td  align="left" colspan="2"><font size="3" color =" red"><b></b></font>
-                 </td>
-              <%end%>
+             <% if !@participante.email.present? %>
+                 <td align="left" colspan="2"><font size="5" color =" red"><b>*  NÃO CONSTA E_MAIL - FAVOR CADASTAR </b></font> </td>
+             <%else%>
+                <td  align="left" colspan="2"><font size="3" color =" red"><b></b></font> </td>
+             <%end%>
             </tr>
+            <tr>
+              <% if !@participante.cel.present? %>
+                <td align="left" colspan="2"><font size="5" color =" red"><b>* NÃO CONSTA Nº CELULAR - FAVOR CADASTAR </b></font>   </td>
+              <%else%>
+                <td  align="left" colspan="2"><font size="3" color =" red"><b></b></font>          </td>
+             <%end%>
+            </tr>
+          
         </table>
       </fieldset>
 
-        <table width="100%" align="left">
-         <tr>
-           <td colspan="2">
 
-                <table width="40%" align="left">
-                   <tr>
-                     <td width="2%"  align="left"><%= f.submit "Gravar" %> </td>
-        <% end %>
-                      <td  align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
-
-                   </tr>
-                </table>
-
-
-           </td>
-          </tr>
-       </table>
 
     </td>
    </tr>
   </table>
+   <table width="100%" align="left">
+         <tr>
+                        <td width="2%"  align="left"><%= f.submit "Salvar" %> </td>
+        <% end %>
+                      <td  align="left"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+
+                   </tr>
+ </table>
+
+
+
+<br/>
+</div>
+<br/>
+
 </font>
+</div>

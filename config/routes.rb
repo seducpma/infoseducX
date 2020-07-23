@@ -98,6 +98,7 @@ ActionController::Routing::Routes.draw do |map|
   map.new_entrada '/new_entrada', :controller => 'produtos_lancamentos', :action => 'new_entrada'
   map.new_saida '/new_saida', :controller => 'produtos_lancamentos', :action => 'new_saida'
   map.lista_inscricaos '/lista_inscricaos', :controller => 'inscricaos', :action => 'lista_inscricaos'
+  map.lista_participantes '/lista_participantes', :controller => 'participantes', :action => 'lista_participante1'
   map.encerrados '/cencerrados', :controller => 'chamados', :action => 'encerrados'
   map.estatisticas '/estatisticas', :controller => 'estatisticas', :action => 'estatiticas'
   map.estatistica_unidade '/estatistica_unidade', :controller => 'estatisticas', :action => 'estatistica_unidade'

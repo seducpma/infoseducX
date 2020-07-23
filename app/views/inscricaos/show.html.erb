@@ -22,9 +22,27 @@
                                    <td  style="border-color: white"width="5%"><b>Nº Inscrião:</b></td>
                                    <td  style="border-color: white"><%=h  @inscricao.id%></td>
                                  </tr>
+
+
                                  <tr style="border-color: white">
                                    <td  style="border-color: white"><b>Participante:</b></td>
                                    <td  style="border-color: white"><%=h  @inscricao.participante.nome %></td>
+                                 </tr>
+                                 <tr style="border-color: white">
+                                   <td  style="border-color: white"width="5%" valign="top"><b>Contatos:</b></td>
+                                   <td  style="border-color: white"><b> E-mail: </b><%if  @inscricao.participante.email.present?%>
+                                                                                        <%=h  @inscricao.participante.email%> <br/>
+                                                                                    <%else%>
+                                                                     <font size ="3"color="red"><b><u id="pisca1">ATENÇÃO:</u> FAVOR CADASTRAR SEU EMAIL </b>
+                                                                                    <%end%>
+
+
+                                                                    <b>Celular: </b><%if  @inscricao.participante.cel.present?%> 
+                                                                                          <%=h  @inscricao.participante.cel%>
+                                                                                    <%else%>
+                                                                    <font size ="3"color="red"><b><u id="pisca1">ATENÇÃO:</u> FAVOR CADASTRAR SEU CELULAR </b>
+                                                                                     <%end%>
+                                   </td>
                                  </tr>
                                   <tr style="border-color: white">
                                     <td style="border-color: white" valign="top"><b>Curso: </b></td>
@@ -53,6 +71,10 @@
                                 </td>
                               </tr>
                               <tr style="border-color: white">
+                                <td colspan="2"  style="border-color: white"><b>
+                              <font size ="2"color="red"><b><u id="pisca1">ATENÇÃO:</u> VERIFIQUAR SE SEU EMAIL E Nº CELULAR ESTÃO CORRETOS.</b>                                </td>
+                              </tr>
+                              <tr style="border-color: white">
                                  <td colspan="2" style="border-color: white"><hr></td>
                             </tr>
 
@@ -65,6 +87,7 @@
                                       <td width="1%" align="left" style="border-color: white"><%= button_to "Nova Inscrição", new_inscricao_path, :title => 'Nova Inscrição'  %></td>
                                       <td width="1%" align="left" style="border-color: white"><%= button_to "Imprimir", {:action => "impressao", :id =>@inscricao}, :method => "get", :title => "Imprimir" %></td>
                                       <td align="left"  style="border-color: white"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                                      <td align="left"style="border-color: white"><%= button_to 'Alterar CADASTRO', {:action => "edit", :controller=> "participantes", :id =>$idparticipante}, :method => "get", :title => "Editar"%></td>
                                     </tr>
                                   </table>
                                  </td>

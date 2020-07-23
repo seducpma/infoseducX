@@ -15,46 +15,43 @@
    <td colspan="2">
     <fieldset><legend><font  size=4> Dados Pessoais </font></legend>
        <table width="100%">
-           <% if !@participante.professor_id.nil?%>
-               <tr>
-                   <td></td>
-                   <td colspan="2"align="left"><b>Professor - SEDUC/PMA </b></td>
-                </tr>
+           
                <tr>
                    <td width ="20%"align="left"><b>Nome :</b></td>
-                   <td align="left"><%= @professor.nome %></td>
+                   <td align="left"><%= @participante.nome %></td>
                 </tr>
                 <tr>
                    <td  width="10%"align="left"><b>Matrícula: </b></td>
-                   <td align="left"><%=h @professor.matricula %> </td>
+                   <td align="left"><%=h @participante.matricula %> </td>
                 </tr>
                 <tr>
                    <td align="left"><b>Endereço: </b></td>
-                   <td align="left"><%=h @professor.endres %>, <b>Nº</b> <%=h @professor.num %></td>
+                   <td align="left"><%=h @participante.endereco %>, <b>Nº</b> <%=h @participante.num %></td>
                 </tr>
                 <tr>
                    <td align="left"><b>Complemento: </b></td>
-                   <td align="left"><%=h @professor.complemento %></td>
+                   <td align="left"><%=h @participante.complemento %></td>
                 </tr>
 
                 <tr>
                    <td align="left"><b>Cidade: </b></td>
-                   <td align="left"><%=h @professor.cidade %></td>
+                   <td align="left"><%=h @participante.cidade %></td>
                 </tr>
                 <tr>
                    <td align="left"><b>Bairro: </b></td>
-                   <td align="left"><%=h @professor.bairro%> -
-                     <b>CEP: </b><%=h @professor.cep %></td>
+                   <td align="left"><%=h @participante.bairro%> -
+                     <b>CEP: </b><%=h @participante.CEP %></td>
                 </tr>
                 <tr>
                    <td align="left"><b>Telefone: </b></td>
-                   <td align="left"><%=h @professor.telefone %> &nbsp&nbsp -  &nbsp&nbsp
-                     <b>Celular: </b><%=h @professor.cel %></td>
+                   <td align="left"><%=h @participante.telefone %> &nbsp&nbsp -  &nbsp&nbsp
+                     <b>Celular: </b><%=h @participante.cel %></td>
                 </tr>
                  <tr>
                      <td align="left"><b>E-mail: </b></td>
-                     <td align="left"><%=h @professor.email %>  -  <%=h @participante.email %>  </td>
+                     <td align="left"><%=h @participanteemail %>  -  <%=h @participante.email %>  </td>
                  </tr>
+                 <%if @participante.professor_id.present?%>
                 <tr>
                    <td align="left"><b>Unidade: </b></td>
                    <td align="left"><%=h @professor.unidade.nome %></td>
@@ -63,149 +60,37 @@
                    <td align="left"><b>Função: </b></td>
                    <td align="left"><%=h @professor.funcao%></td>
                 </tr>
+                <%end%>
+                 <%if @participante.funcionario_id.present?%>
+                <tr>
+                   <td align="left"><b>Unidade: </b></td>
+                   <td align="left"><%=h @funcionario.unidade.nome %></td>
+                </tr>
+                <tr>
+                   <td align="left"><b>Função: </b></td>
+                   <td align="left"><%=h @funcionario.funcao%></td>
+                </tr>
+                <%end%>
                  <tr>
                    <td align="left"><b>Observação: </b></td>
                    <td align="left"><%=h @participante.obs%></td>
                 </tr>
-             <%else if !@participante.funcionario_id.nil?%>
-                   <tr>
-                       <td></td>
-                       <td colspan="2"align="left"><b>Funcionário da Prefeitura Americana</b></td>
-                    </tr>
-                   <tr>
-                       <td width ="20%"align="left"><b>Nome :</b></td>
-                       <td align="left"><%= @funcionario.nome %></td>
-                    </tr>
-                    <tr>
-                       <td  width="10%"align="left"><b>Matrícula: </b></td>
-                       <td align="left"><%=h @funcionario.matricula %></td>
-                    </tr>
-                    <tr>
-                       <td align="left"><b>Endereço: </b></td>
-                       <td align="left"><%=h @funcionario.endereco %>, <b>Nº</b> <%=h @funcionario.num %></td>
-                    </tr>
-                    <tr>
-                       <td align="left"><b>Complemento: </b></td>
-                       <td align="left"><%=h @funcionario.complemento %></td>
-                    </tr>
-
-                    <tr>
-                       <td align="left"><b>Cidade: </b></td>
-                       <td align="left"><%=h @funcionario.cidade %></td>
-                    </tr>
-                    <tr>
-                       <td align="left"><b>Bairro: </b></td>
-                       <td align="left"><%=h @funcionario.bairro%> -
-                         <b>CEP: </b><%=h @funcionario.cep %></td>
-                    </tr>
-                    <tr>
-                       <td align="left"><b>Telefone: </b></td>
-                       <td align="left"><%=h @funcionario.fone %> &nbsp&nbsp -  &nbsp&nbsp
-                         <b>Celular: </b><%=h @funcionario.cel %></td>
-                    </tr>
-                     <tr>
-                         <td align="left"><b>E-mail: </b></td>
-                         <td align="left"><%=h @funcionario.email %>  -  <%=h @participante.email %>  </td>
-                     </tr>
-                    <tr>
-                       <td align="left"><b>Unidade: </b></td>
-                       <td align="left"><%=h @funcionario.unidade.nome %></td>
-                    </tr>
-                    <tr>
-                       <td align="left"><b>Função: </b></td>
-                       <td align="left"><%=h @funcionario.funcao%></td>
-                    </tr>
-                     <tr>
-                       <td align="left"><b>Observação: </b></td>
-                       <td align="left"><%=h @funcionario.obs%></td>
-                    </tr>
-
-                   <%else%>
-                           <tr>
-                               <td></td>
-                               <td colspan="2"align="left"><b> Não funcionário/professor da Prefeitura Americana</b></td>
-                            </tr>
-
-                           <tr>
-                               <td width ="20%"align="left"><b>Nome :</b></td>
-                               <td align="left"><%=h @participante.nome %></td>
-                            </tr>
-                            <tr>
-                               <td align="left"><b>RG :</b></td>
-                               <td align="left"><%=h @participante.rg %> -
-                                 <b>CPF :</b><%=h @participante.cpf %></td>
-                            </tr>
-                             <tr>
-                               <td align="left"><b>Profissão:</b></td>
-                               <td align="left"><%=h @participante.profissao %></td>
-                            </tr>
-                            <tr>
-                               <td align="left"><b>Endereço: </b></td>
-                               <td align="left"><%=h @participante.endereco %> <b>Nº</b> <%=h @participante.num %></td>
-                            </tr>
-                            <tr>
-                               <td align="left"><b>Complemento: </b></td>
-                               <td align="left"><%=h @participante.complemento %></td>
-                            </tr>
-
-                            <tr>
-                               <td align="left"><b>Cidade: </b></td>
-                               <td align="left"><%=h @participante.cidade %></td>
-                            </tr>
-                            <tr>
-                               <td align="left"><b>Bairro: </b></td>
-                               <td align="left"><%=h @participante.bairro%> -
-                                 <b>CEP: </b><%=h @participante.CEP %></td>
-                            </tr>
-                            <tr>
-                               <td align="left"><b>Telefone: </b></td>
-                               <td align="left"><%=h @participante.telefone %> -
-                                 <b>Celular: </b><%=h @participante.cel %></td>
-                            </tr>
-
-
-
-
-
-
-                            <tr>
-                               <td align="left"><b>Observação: </b></td>
-                               <td align="left"><%=h @participante.obs %></td>
-                            </tr>
-
-                             <tr>
-                               <td  width="10%"align="left"><b>Matrícula: </b></td>
-                               <td align="left"><%=h @participante.matricula %></td>
-                            </tr>
-                            <tr>
-                               <td align="left"><b>Unidade: </b></td>
-                               <td align="left"><%=h @participante.unidade_id %></td>
-                            </tr>
-                            <tr>
-                               <td align="left"><b>Função: </b></td>
-                               <td align="left"><%=h @participante.funcao%></td>
-                            </tr>
-                             <tr>
-                               <td align="left"><b>Observação: </b></td>
-                               <td align="left"><%=h @participante.obs%></td>
-                            </tr>
-                      <%end%>
-            <%end%>
         </table>
     </fieldset>
  </td>
 </tr>
-<tr>
-    <td>
+</table>
           <table align="left">
               <tr>
-                <td align="left" ><%= button_to('Inscrição', new_inscricao_path, :title => "Inscrições")%></td>
+                
                 <td align="left" ><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+                <td align="center"><%= button_to 'Editar', {:action => "edit", :id =>@participante}, :method => "get", :title => "Editar"%></td>
+                <td align="center"><%= button_to 'INSCRIÇÕES', {:action => "consultas", :controller=>"inscricaos"}, :method => "get", :title => "Editar"%></td>
               </tr>
             </table>
     </td>
-</tr>
-</table>
+
+
     </fieldset>
 
 

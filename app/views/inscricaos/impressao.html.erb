@@ -35,6 +35,22 @@
                                    <td  style="border-color: white"><b>Participante:</b></td>
                                    <td  style="border-color: white"><%=h  @inscricao.participante.nome %></td>
                                  </tr>
+                                 <tr style="border-color: white">
+                                   <td  style="border-color: white" valign="top"><b>Contatos:</b></td>
+                                   <td  style="border-color: white"><b> E-mail: </b><%if  @inscricao.participante.email.present?%>
+                                                                                        <%=h  @inscricao.participante.email%> <br/>
+                                                                                    <%else%>
+                                                                     <font size ="3"color="red"><b><u id="pisca1">ATENÇÃO:</u> FAVOR CADASTRAR SEU EMAIL </b>
+                                                                                    <%end%>
+
+
+                                                                    <b>Celular: </b><%if  @inscricao.participante.cel.present?%>
+                                                                                          <%=h  @inscricao.participante.cel%>
+                                                                                    <%else%>
+                                                                    <font size ="3"color="red"><b><u id="pisca1">ATENÇÃO:</u> FAVOR CADASTRAR SEU CELULAR </b>
+                                                                                     <%end%>
+                                    </td>
+                                 </tr>
                                   <tr style="border-color: white">
                                     <td style="border-color: white" valign="top"><b>Curso: </b></td>
                                    <td  style="border-color: white"><%=h  @inscricao.curso.nome %></td>
