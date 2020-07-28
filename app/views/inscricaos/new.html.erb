@@ -1,4 +1,5 @@
 <%@cursos = Curso.find(:all, :conditions => ['status = 0 '])%>
+<%@cursosativos = Curso.find(:all, :conditions => ['status = 0 AND vagas_disponiveis > 0'])%>
 <div id="interno6">
 <% title "CLASSES".singularize %>
 <div class="tabs">
@@ -115,7 +116,7 @@
 
     <tr>
       <td colspan="2" align="left"><br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-         <font size="3"><b>Curso: <%= f.collection_select :curso_id, @cursos, :id, :nome, :include_blank => ' -- Selecionar curso -- ' %> </font>    </b>
+         <font size="3"><b>Curso: <%= f.collection_select :curso_id, @cursosativos, :id, :nome, :include_blank => ' -- Selecionar curso -- ' %> </font>    </b>
          <br/><br/>
       </td>
     </tr>
