@@ -1,3 +1,4 @@
+<%@cursos = Curso.find(:all, :conditions => ['status = 0 '])%>
 <div id="interno6">
 <% title "CLASSES".singularize %>
 <div class="tabs">
@@ -71,10 +72,29 @@
         </td>
      </tr>
      <% for curso in @cursos %>
-        <%if curso.vagas_disponiveis > 0 %>
+        
              <tr><td width =" 10%"></td>
-               <td><b>><font size="3" color ="blue"> <%=h curso.nome %> </b></font> &nbsp - &nbsp <font size ="3"color="red"><b>Vagas disponíveis:</b> <%=h curso.vagas_disponiveis%></font><br/>
-                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Responsável/Ministrante:</u> <%=h curso.ministrante %><br/>
+               <td><b>><font size="3" color ="blue"> <%=h curso.nome %> </b></font> &nbsp - &nbsp
+               <font size ="3"color="red"> <%if curso.existe_vaga %>
+                                              &nbsp&nbsp <%="Total de vagas: #{curso.qtde}"%> -
+                                              &nbsp&nbsp <%="Vagas disponíveis: #{curso.vagas_disponiveis}"%> 
+                                          <%else%>
+                                              <%if curso.vagas_disponiveis==0%>
+                                                  &nbsp&nbsp <b>TODAS AS <%="#{curso.qtde}"%> VAGAS ESTÃO COMPLETAS.</b>
+                                              <%else%>
+                                                  &nbsp&nbsp <b>INSCRIÇÕES ENCERRADAS! </b>
+                                               <%end%>
+                                        
+                                               <%end%>
+
+                                 <% $cont = $cont + 1 %>
+               </font><br/>
+
+
+
+
+
+               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Responsável/Ministrante:</u> <%=h curso.ministrante %><br/>
                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Público Alvo:</u> <%=h curso.publico %><br/>
                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontro(s):</u> Dia(s) <%=h curso.datas %> &nbsp - &nbsp <u>Carga Horária: <%=h curso.carga_horaria%> </u><br/>
                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Horário:</u> <%=h curso.horario %>
@@ -86,7 +106,7 @@
          ---------------------------------------------------------------------------------------------------------------
                </td>
              </tr>
-            <%end%>
+        
      <%end%>
     <!--
       <tr>
