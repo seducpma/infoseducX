@@ -119,15 +119,15 @@ Solicitamos aos pais e responsáveis pelas crianças que acessem o vídeo explic
 Solicitamos aos pais e responsáveis pelas crianças que acessem o vídeo explicativo e a plataforma, acompanhem seus filhos no processo educativo, quando necessário, podem entrar em contato com professores e gestores das respectivas unidades educacionais onde estão matriculados.
 
 
-  <br/><br/>
+  <br/><br/><br/>
   <font color="red" size ="3" > Vídeo de orientações como acessar a plataforma <%= link_to("CONEDU", "https://www.youtube.com/watch?v=EMgs0tuzHBg" , :title => "Vídeo CONEDU")%> no link <%= link_to("https://www.youtube.com/watch?v=EMgs0tuzHBg", "https://www.youtube.com/watch?v=EMgs0tuzHBg")%>
                                        .
 <!--    <u><b>ATENÇÃO:</u> Aguarde para acessar os conteúdos até os professores postarem as atividades.  &nbsp&nbsp <u> AGUARDE </u>!--> </font><br/><br/>
   <font  size ="4" id="pisca1"><center> Conteúdos já  disponíveis. &nbsp&nbsp   Acesse! </center></b>
-
+<!--
    <br/>
-   <font color="red" size ="3" > <b><==== <%= link_to(" MENSAGEM DA SECRETÁRIA DE EDUCAÇÃO  ", "https://www.youtube.com/watch?v=R2F81iqNsc0" , :title => "Mensagem da Secretária de ")%> no link <%= link_to("https://www.youtube.com/watch?v=EMgs0tuzHBg", "https://www.youtube.com/watch?v=EMgs0tuzHBg")%></b>
-
+   <font color="red" size ="3" > <b><==== <%#= link_to(" MENSAGEM DA SECRETÁRIA DE EDUCAÇÃO  ", "https://www.youtube.com/watch?v=R2F81iqNsc0" , :title => "Mensagem da Secretária de ")%> no link <%#= link_to("https://www.youtube.com/watch?v=EMgs0tuzHBg", "https://www.youtube.com/watch?v=EMgs0tuzHBg")%></b>
+--><br/>
 
                                      </td>
                               </tr>
@@ -191,7 +191,7 @@ Solicitamos aos pais e responsáveis pelas crianças que acessem o vídeo explic
 
    <tr>
      <td align="center" valign="top">
-<%= link_to image_tag("/stylesheets/Imagens/eventual1.jpeg", :size => "200x100"), "https://processoseletivo.seducpma.com", :title => "Processo Seletivo"%>
+       <%= link_to image_tag("/stylesheets/Imagens/eventual1.jpeg", :size => "200x100"), "https://processoseletivo.seducpma.com", :title => "Processo Seletivo"%>
        <%#= link_to image_tag("/stylesheets/Imagens/eventual1.jpeg", :size => "200x100"), aviso_1_session_path, :title => "Manutenção Informática"%>
        <%#= link_to image_tag("/stylesheets/Imagens/eventual1.jpeg", :size => "200x100"), informatica_path, :title => "Manutenção Informática"%>
     </td>
@@ -203,6 +203,7 @@ Solicitamos aos pais e responsáveis pelas crianças que acessem o vídeo explic
        <%= link_to image_tag("/stylesheets/Imagens/sala.jpg", :size => "200x100"),reservar_salas_path, :title => "Sistema de Reservas de Sala (atividades e reuniões)"%>
 
        <%#= link_to image_tag("/stylesheets/Imagens/sala.jpg", :size => "200x100"),informatica_path, :title => "Reservas de Sala"%>
+
     </td>
    </tr>
 
@@ -214,7 +215,8 @@ Solicitamos aos pais e responsáveis pelas crianças que acessem o vídeo explic
         <%= link_to image_tag("/stylesheets/Imagens/mascara.png", :size => "200x100"),  mascara_path, :title => "Utilização Máscaras"%>
      </td>
      <td width="10%" align="center">
-       <%= link_to image_tag("/stylesheets/Imagens/evelene.png", :size => "200x100"), "https://www.youtube.com/watch?v=R2F81iqNsc0", :title => "Mensagem Secretária Educação"%>
+       <%#= link_to image_tag("/stylesheets/Imagens/evelene.png", :size => "200x100"), "https://www.youtube.com/watch?v=R2F81iqNsc0", :title => "Mensagem Secretária Educação"%>
+       
      </td>
    </tr>
  </table>
