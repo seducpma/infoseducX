@@ -108,7 +108,7 @@ def index
                     @participante.unidade_id = @funcionario.unidade_id
                     @participante.funcao = @funcionario.funcao
                     @participante.telefone = @funcionario.fone
-                    @participante.cel = @funcionario.cel
+                    #@participante.cel = @funcionario.cel
                 else  if !@participante.professor_id.nil?
                         @participanteExisteP = Participante.find(:all, :select =>'id', :conditions=> ['professor_id =? AND  desligado != 1',@participante.professor_id])
                         if @participanteExisteP.present?
@@ -121,7 +121,7 @@ def index
                         @participante.funcao = @professor.funcao
                         @participante.funcao = @professor.funcao
                         @participante.telefone = @professor.telefone
-                        @participante.cel = @professor.cel
+                        #@participante.cel = @professor.cel
                         else  if @participante.professor_id.nil? and @participante.funcionario_id.nil?
                                     @participanteExiste = Participante.find(:all, :select =>'id', :conditions=> ['professor_id is null and  professor_id is  null and desligado != 1 and nome =?',@participante.nome ])
                                         if @participanteExiste.present?
