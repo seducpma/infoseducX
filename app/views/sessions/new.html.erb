@@ -102,13 +102,13 @@
                                     <br/><font color="red"><====</font></b>
                                     <font size ="4" ><b> <%= link_to("Conecta Educação - CONEDU", "https://docs.google.com/document/d/1mmTGfxiBgE3mCgElGntiHjG7oLrzFiXO7fQ7Q79P8Uw/edit?usp=sharing" , :title => "Conteúdos Pedagógicos")%> ou no link <%= link_to("http://www.tiny.cc/conedupma", "https://docs.google.com/document/d/1mmTGfxiBgE3mCgElGntiHjG7oLrzFiXO7fQ7Q79P8Uw/edit?usp=sharing")%> ou <%= link_to("tiny.cc/conedupma", "https://docs.google.com/document/d/1mmTGfxiBgE3mCgElGntiHjG7oLrzFiXO7fQ7Q79P8Uw/edit?usp=sharing")%> .
                                     <br/><br/>  
-                                    <font size ="4" > <b> Para acessar <u>INSCRIÇÃO DE VAGA PARA PRÉ ESCOLA</u>, clicar no link à esquerda (DEMANDA).
+<!--                                    <font size ="4" > <b> Para acessar <u>INSCRIÇÃO DE VAGA PARA PRÉ ESCOLA</u>, clicar no link à esquerda (DEMANDA).
                                     </b></font><b>
                                     <br/><font color="red"><====</font></b>
-                                    <font size ="4" ><b> <%= link_to("Inscrição Pré-Escola (DEMANDA)", "http://demanda.seducpma.com")%>
+                                    <font size ="4" ><b> <#%= link_to("Inscrição Pré-Escola (DEMANDA)", "http://demanda.seducpma.com")%>
                                         
                                     <br/><br/>
-
+-->
 
 <!--     <font size ="4" color ="blue" > <b>Diante da necessidade do distanciamento social em função da COVID-19, as unidades escolares da rede  municipal funcionarão em regime diferenciado.
 As escolas estarão abertas às segundas, quartas e sextas-feiras  das 7h30 às 13h30., a partir do próximo dia 06.
@@ -122,19 +122,26 @@ As atividades escolares não presenciais serão encaminhadas a partir do dia 11 
 As escolas estarão abertas às segundas, quartas e sextas-feiras  das 7h30 às 13h30.<br/>
 Solicitamos aos pais e responsáveis pelas crianças que acessem o vídeo explicativo e a plataforma, acompanhem seus filhos no processo educativo, quando necessário, podem entrar em contato com professores e gestores das respectivas unidades educacionais onde estão matriculados.
 -->
- <font size ="3" color ="blue" > <b>Diante da necessidade do distanciamento social em função da COVID-19, as unidades escolares da rede municipal funcionarão em regime diferenciado.<br/>
+ <font size ="2" color ="blue" > <b>Diante da necessidade do distanciamento social em função da COVID-19, as unidades escolares da rede municipal funcionarão em regime diferenciado.<br/>
 Solicitamos aos pais e responsáveis pelas crianças que acessem o vídeo explicativo e a plataforma, acompanhem seus filhos no processo educativo, quando necessário, podem entrar em contato com professores e gestores das respectivas unidades educacionais onde estão matriculados.
+<BR/> 
+<font  size ="3" id="pisca1" color ="RED"><center> Conteúdos já  disponíveis. &nbsp&nbsp   Acesse! </center></b>
 
 
-  <br/><br/><br/>
-  <font color="red" size ="3" > Vídeo de orientações como acessar a plataforma <%= link_to("CONEDU", "https://www.youtube.com/watch?v=EMgs0tuzHBg" , :title => "Vídeo CONEDU")%> no link <%= link_to("https://www.youtube.com/watch?v=EMgs0tuzHBg", "https://www.youtube.com/watch?v=EMgs0tuzHBg")%>
+   
+  <font color="BLACK" size ="3" > Vídeo de orientações como acessar a plataforma <%= link_to("CONEDU", "https://www.youtube.com/watch?v=EMgs0tuzHBg" , :title => "Vídeo CONEDU")%> no link <%= link_to("https://www.youtube.com/watch?v=EMgs0tuzHBg", "https://www.youtube.com/watch?v=EMgs0tuzHBg")%>
                                        .
 <!--    <u><b>ATENÇÃO:</u> Aguarde para acessar os conteúdos até os professores postarem as atividades.  &nbsp&nbsp <u> AGUARDE </u>!--> </font><br/><br/>
-  <font  size ="4" id="pisca1"><center> Conteúdos já  disponíveis. &nbsp&nbsp   Acesse! </center></b>
+ <!-- <font  size ="3" id="pisca1"><center> Conteúdos já  disponíveis. &nbsp&nbsp   Acesse! </center></b>-->
 <!--
    <br/>
    <font color="red" size ="3" > <b><==== <%#= link_to(" MENSAGEM DA SECRETÁRIA DE EDUCAÇÃO  ", "https://www.youtube.com/watch?v=R2F81iqNsc0" , :title => "Mensagem da Secretária de ")%> no link <%#= link_to("https://www.youtube.com/watch?v=EMgs0tuzHBg", "https://www.youtube.com/watch?v=EMgs0tuzHBg")%></b>
---><br/>
+-->
+
+ <font size ="3" color ="black" > <b>Conforme disposto no decreto Municipal nº 12.541 de 24 de Setembro de 2020, a Secretaria Muncipal de Educação disponibiliza pesquisa sobre retorno às atividades presenciais realizada em Setembro/2020 junto ao pais e responsáveis dos alunos matriculados na rede municipal de ensino.</FONT> <font size ="1" color ="black" > (Para acessar clique nos links abaixo) <br/></b>
+  <font size ="3" color ="black" > &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <%= "#{ link_to "ENSINO FUNDAMENTAL", ensino_fundamental_path}"%>    &nbsp&nbsp    -    &nbsp&nbsp    <%= "#{ link_to "EDUCAÇÃO INFANTIL", educacao_infantil_path}"%></FONT>
+
+
 
                                      </td>
                               </tr>
@@ -219,11 +226,14 @@ Solicitamos aos pais e responsáveis pelas crianças que acessem o vídeo explic
         <%= link_to image_tag("/stylesheets/Imagens/diario1.png", :size => "200x100"), "http://www.americana.sp.gov.br/download/diarioOficial/qojgqkjcop.pdf", :title => "Diário Oficial"%> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
      </td>
      <td align="center">
-        <%= link_to image_tag("/stylesheets/Imagens/mascara.png", :size => "200x100"),  mascara_path, :title => "Utilização Máscaras"%>
+        <%#= link_to image_tag("/stylesheets/Imagens/mascara.png", :size => "200x100"),  mascara_path, :title => "Utilização Máscaras"%>
+       <%= link_to image_tag("/stylesheets/Imagens/diario2.png", :size => "200x100"), "https://www.americana.sp.gov.br/download/diarioOficial/w9wyx2hwun.pdf", :target => "_blank"%>
      </td>
      <td width="10%" align="center">
        <%#= link_to image_tag("/stylesheets/Imagens/evelene.png", :size => "200x100"), "https://www.youtube.com/watch?v=R2F81iqNsc0", :title => "Mensagem Secretária Educação"%>
-            <%= link_to image_tag("/stylesheets/Imagens/diario.png", :size => "200x100"), "https://diariooficial.americana.sp.gov.br/diario-oficial-index.php", :target => "_blank"%>
+       <%= link_to image_tag("/stylesheets/Imagens/diario.png", :size => "200x100"), "https://diariooficial.americana.sp.gov.br/diario-oficial-index.php", :target => "_blank"%>
+       
+
      </td>
    </tr>
  </table>

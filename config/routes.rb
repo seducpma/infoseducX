@@ -232,6 +232,8 @@ ActionController::Routing::Routes.draw do |map|
 
   #map.si_selecionados'/si_selecionados', :controller => 'orc_pedido_compras', :action => 'si_selecionados'
   map.cesta_basica '/cesta_basica', :controller => 'reservar_salas', :action => 'cesta_basica'
+  map.educacao_infantil '/educacao_infantil', :controller => 'reservar_salas', :action => 'educacao_infantil'
+  map.ensino_fundamental '/ensino_fundamental', :controller => 'reservar_salas', :action => 'ensino_fundamental'
   map.banco_horas '/banco_horas', :controller => 'reservar_salas', :action => 'banco_horas'
   map.plano_educacao '/plano_educacao', :controller => 'reservar_salas', :action => 'plano_educacao'
   map.ata_infantil_01_03_18'/ata_infantil_01_03_18', :controller => 'reservar_salas', :action => 'ata_infantil_01_03_18'
