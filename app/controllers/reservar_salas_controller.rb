@@ -3,7 +3,7 @@ class ReservarSalasController < ApplicationController
 before_filter :load_salas
 before_filter :load_servicos_salas
 layout :define_layout
-before_filter :login_required, :except => ["cesta_basica", "uso_internet", "dowloads",  "plano_educacao", "banco_horas", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda", "infantil_2019", "fundamental_2019",  "fundamental_2020",  "infantil_2020", "acordo_2020", "diarioinfantil_2020","ensino_fundamental","educacao_infantil"]
+before_filter :login_required, :except => ["cesta_basica", "uso_internet", "dowloads",  "plano_educacao", "banco_horas", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda", "infantil_2019", "fundamental_2019",  "fundamental_2020",  "infantil_2020", "acordo_2020", "diarioinfantil_2020", "protocolo_covid","ensino_fundamental","educacao_infantil"]
 
  def load_servicos_salas
   @servicos_salas = ServicosSala.find(:all, :conditions=>['status = 1'] )
@@ -152,6 +152,10 @@ def diarioinfantil_2020
     send_file("#{RAILS_ROOT}/public/documentos/DiarioInfantil2020.pdf" , :type=>"pdf")
 end
 
+
+def protocolo_covid
+  send_file("#{RAILS_ROOT}/public/documentos/protocolo.pdf" , :type=>"pdf")
+end
 
 
 

@@ -57,8 +57,24 @@
                         <td><%= "#{ link_to "Cesta Básica", cesta_basica_path}"%></td>
                       </tr>
                       <tr>
-                        <td><%= "#{ link_to "Diário Oficial Municipio de Americana", "https://diariooficial.americana.sp.gov.br/diario-oficial-index.php"}"%></td>
+                        <td><%= "#{ link_to "Diário Oficial Municipio de Americana", "https://diariooficial.americana.sp.gov.br/diario-oficial-index.php",:target => "_blank"}"%></td>
                       </tr>
+                     <tr>
+                        <td>
+                          <%= link_to "Diário Oficial - Suspensão atividades presenciais)", "http://www.americana.sp.gov.br/download/diarioOficial/qojgqkjcop.pdf",  :target => "_blank", :title => "Diário Oficial"%>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <%= link_to "Diário Oficial - Retorno atividades presenciais ", "https://www.americana.sp.gov.br/download/diarioOficial/w9wyx2hwun.pdf", :target => "_blank", :title => "Diário Oficial"%>
+                        </td>
+                      </tr>
+
+
+
+
+
                    </table>
                  </fieldset>
                 </td>
@@ -80,6 +96,17 @@
                       <tr>
                         <td><%= "#{ link_to " Orientações para Diário de Classe – Ed. Intanil", diarioinfantil_2020_path}"%></td>
                       </tr>
+                      <tr>
+                        <td>
+                          <%= link_to "Utilização de máscara",  mascara_path, :title => "Utilização Máscaras"%>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><%= "#{ link_to " PROTOCOLO RETORNO ATIVIDADES PRESENCIAIS", protocolo_covid_path}"%></td>
+
+                      </tr>
+
+
 
                    </table>
                  </fieldset>
