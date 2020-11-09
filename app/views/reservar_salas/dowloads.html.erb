@@ -3,7 +3,7 @@
 <% title "ALUNOS".singularize %>
 
  <div id="caixa_titulo" class ="invisible_to_print ">
-     <font size="3"><strong>Downloads Documentos</strong></font><br/>
+     <font size="3"><strong>Orientações e Regulamentações Internas da Secretaria Municipal de Educação. </strong></font><br/>
  </div>
     <table width="100%"  bgcolor ="#E6E2D" style="border-color: white" >
       <tr  class ="invisible_to_print ">
@@ -11,7 +11,7 @@
        </tr>
        <tr bgcolor="#F5F5F5">
            <th colspan="5" align="right">
-                <h1><center> <b>DOWNLOAD- SEDUC </b></center> </h1>
+                <h1><center> <b>ORIENTAÇÕES E REGULAMENTAÇÕES INTERNAS - SEDUC </b></center> </h1>
 
   <hr/>
           </th>
@@ -51,11 +51,18 @@
                  <fieldset><legend><font  size=4> Legislação/Normas</font></legend>
                    <table width="100% " >
                       <tr>
+                        <td><%= "#{ link_to " Plano Municipal de Educação", plano_educacao_path}"%></td>
+                      </tr>
+                      <tr>
                         <td><%= "#{ link_to "Banco de Horas", banco_horas_path}"%></td>
                       </tr>
                       <tr>
                         <td><%= "#{ link_to "Cesta Básica", cesta_basica_path}"%></td>
                       </tr>
+                      <tr>
+                        <td><%= "#{ link_to " Acordo Coletivo (Férias 2020)", acordo_2020_path}"%></td>
+                      </tr>
+
                       <tr>
                         <td><%= "#{ link_to "Diário Oficial Municipio de Americana", "https://diariooficial.americana.sp.gov.br/diario-oficial-index.php",:target => "_blank"}"%></td>
                       </tr>
@@ -87,12 +94,7 @@
                <td>
                  <fieldset><legend><font  size=4> Documentos</font></legend>
                    <table width="100% " >
-                      <tr>
-                        <td><%= "#{ link_to " Acordo Coletivo (Férias 2020)", acordo_2020_path}"%></td>
-                      </tr>
-                      <tr>
-                        <td><%= "#{ link_to " Plano Municipal de Educação", plano_educacao_path}"%></td>
-                      </tr>
+
                       <tr>
                         <td><%= "#{ link_to " Orientações para Diário de Classe – Ed. Intanil", diarioinfantil_2020_path}"%></td>
                       </tr>
@@ -116,7 +118,18 @@
                         <td><%= "#{ link_to " PROTOCOLO RETORNO ATIVIDADES PRESENCIAIS", protocolo_covid_path}"%></td>
 
                       </tr>
+                      <tr>
+                        <td><%= "#{ link_to " Encaminhamento Fono \d- Ed.Infantil", fonoinfantil_path}"%></td>
 
+                      </tr>
+                      <tr>
+                        <td><%= "#{ link_to " Encaminhamento Fono - Ens.Fundamental", fonofundamental_path}"%></td>
+
+                      </tr>
+                      <tr>
+                        <td><%= "#{ link_to " Lista Material 2021", material_path}"%></td>
+
+                      </tr>
 
 
                    </table>

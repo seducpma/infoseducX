@@ -240,6 +240,13 @@ ActionController::Routing::Routes.draw do |map|
   map.ata_coordenadores_emei_02_03_18'/ata_coordenadores_emei_02_03_18', :controller => 'reservar_salas', :action => 'ata_coordenadores_emei_02_03_18'
   map.ata_ensino_fundamental_02_03_18'/ata_ensino_fundamental_02_03_18', :controller => 'reservar_salas', :action => 'ata_ensino_fundamental_02_03_18'
   map.uso_internet '/uso_internet', :controller => 'reservar_salas', :action => 'uso_internet'
+  map.fonoinfantil'/fonoinfantil', :controller => 'reservar_salas', :action => 'fonoinfantil'
+  map.fonofundamental'/Fonofundamental', :controller => 'reservar_salas', :action => 'fonofundamental'
+  map.material'/materiall', :controller => 'reservar_salas', :action => 'material'
+
+
+
+
 
   map.diarioinfantil_2020'/diarioinfantil_2020', :controller => 'reservar_salas', :action => 'diarioinfantil_2020'
   map.protocolo_covid'/protocolo_covid', :controller => 'reservar_salas', :action => 'protocolo_covid'

@@ -3,7 +3,7 @@ class ReservarSalasController < ApplicationController
 before_filter :load_salas
 before_filter :load_servicos_salas
 layout :define_layout
-before_filter :login_required, :except => ["cesta_basica", "uso_internet", "dowloads",  "plano_educacao", "banco_horas", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda", "infantil_2019", "fundamental_2019",  "fundamental_2020",  "infantil_2020", "acordo_2020", "diarioinfantil_2020", "protocolo_covid","ensino_fundamental","educacao_infantil"]
+before_filter :login_required, :except => ["cesta_basica", "uso_internet", "dowloads",  "plano_educacao", "banco_horas", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda", "infantil_2019", "fundamental_2019",  "fundamental_2020",  "infantil_2020", "acordo_2020", "diarioinfantil_2020", "protocolo_covid","ensino_fundamental","educacao_infantil", "fonofundamental", "fonoinfantil","material"]
 
  def load_servicos_salas
   @servicos_salas = ServicosSala.find(:all, :conditions=>['status = 1'] )
@@ -204,5 +204,22 @@ end
 def uso_internet
     send_file("#{RAILS_ROOT}/public/documentos/Uso_Internet.ppsx", :type=>"ppsx")
 end
+
+
+def fonoinfantil
+  send_file("#{RAILS_ROOT}/public/documentos/FonoInfantil.pdf" , :type=>"pdf")
+end
+
+def fonofundamental
+  send_file("#{RAILS_ROOT}/public/documentos/FonoFundamental.pdf" , :type=>"pdf")
+end
+
+
+
+def material
+  send_file("#{RAILS_ROOT}/public/documentos/MaterialEscolar.pdf" , :type=>"pdf")
+end
+
+
 
 end
