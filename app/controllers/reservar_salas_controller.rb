@@ -3,7 +3,7 @@ class ReservarSalasController < ApplicationController
 before_filter :load_salas
 before_filter :load_servicos_salas
 layout :define_layout
-before_filter :login_required, :except => ["cesta_basica", "uso_internet", "dowloads",  "plano_educacao", "banco_horas", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda", "infantil_2019", "fundamental_2019",  "fundamental_2020",  "infantil_2020", "acordo_2020", "diarioinfantil_2020", "protocolo_covid","ensino_fundamental","educacao_infantil", "fonofundamental", "fonoinfantil","material"]
+before_filter :login_required, :except => ["doc_orientador_A","doc_orientador_5","doc_orientador_4","doc_orientador_3","doc_orientador_1","doc_orientador_fun_01","doc_orientador_inf_01","cesta_basica", "uso_internet", "dowloads",  "plano_educacao", "banco_horas", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda", "infantil_2019", "fundamental_2019",  "fundamental_2020",  "infantil_2020", "infantil_2020_1",  "infantil_2020_2", "acordo_2020", "diarioinfantil_2020", "protocolo_covid","ensino_fundamental","educacao_infantil", "fonofundamental", "fonoinfantil","material"]
 
  def load_servicos_salas
   @servicos_salas = ServicosSala.find(:all, :conditions=>['status = 1'] )
@@ -166,6 +166,39 @@ end
 
 def infantil_2020
     send_file("#{RAILS_ROOT}/public/documentos/Infantil2020.xls" , :type=>"xls")
+end
+
+def infantil_2020_1
+    send_file("#{RAILS_ROOT}/public/documentos/infantil_2020_1.xls" , :type=>"xls")
+end
+
+def infantil_2020_2
+    send_file("#{RAILS_ROOT}/public/documentos/infantil_2020_2.xls" , :type=>"xls")
+end
+
+def doc_orientador_inf_01
+    send_file("#{RAILS_ROOT}/public/documentos/documento_orientador_1_infantil.pdf" , :type=>"pdf")
+end
+
+def doc_orientador_fun_01
+    send_file("#{RAILS_ROOT}/public/documentos/documento_orientador_1_fundamental.pdf" , :type=>"pdf")
+end
+
+def doc_orientador_1
+    send_file("#{RAILS_ROOT}/public/documentos/Documento Orientador n º 1.pdf" , :type=>"pdf")
+end
+
+def doc_orientador_3
+    send_file("#{RAILS_ROOT}/public/documentos/Documento Orientador n º 3.pdf" , :type=>"pdf")
+end
+def doc_orientador_4
+    send_file("#{RAILS_ROOT}/public/documentos/Documento Orientador n º 4.pdf" , :type=>"pdf")
+end
+def doc_orientador_5
+    send_file("#{RAILS_ROOT}/public/documentos/Documento Orientador n º 5.pdf" , :type=>"pdf")
+end
+def doc_orientador_A
+    send_file("#{RAILS_ROOT}/public/documentos/Documento Orientador n º A.pdf" , :type=>"pdf")
 end
 
 def acordo_2020

@@ -252,6 +252,17 @@ ActionController::Routing::Routes.draw do |map|
   map.protocolo_covid'/protocolo_covid', :controller => 'reservar_salas', :action => 'protocolo_covid'
   map.acordo_2020 '/acordo_2020', :controller => 'reservar_salas', :action => 'acordo_2020'
   map.fundamental_2020 '/fundamental_2020', :controller => 'reservar_salas', :action => 'fundamental_2020'
+  map.infantil_2020_1 '/infantil_2020_1', :controller => 'reservar_salas', :action => 'infantil_2020_1'
+  map.infantil_2020_2 '/infantil_2020_2', :controller => 'reservar_salas', :action => 'infantil_2020_2'
+  map.doc_orientador_inf_01 '/doc_orientador_inf_01', :controller => 'reservar_salas', :action => 'doc_orientador_inf_01'
+  map.doc_orientador_fun_01 '/doc_orientador_fun_01', :controller => 'reservar_salas', :action => 'doc_orientador_fun_01'
+  map.doc_orientador_1 '/doc_orientador_1', :controller => 'reservar_salas', :action => 'doc_orientador_1'
+  map.doc_orientador_3 '/doc_orientador_3', :controller => 'reservar_salas', :action => 'doc_orientador_3'
+  map.doc_orientador_4 '/doc_orientador_4', :controller => 'reservar_salas', :action => 'doc_orientador_4'
+  map.doc_orientador_5 '/doc_orientador_5', :controller => 'reservar_salas', :action => 'doc_orientador_5'
+  map.doc_orientador_A '/doc_orientador_A', :controller => 'reservar_salas', :action => 'doc_orientador_A'
+
+  
   map.infantil_2020 '/infantil_2020', :controller => 'reservar_salas', :action => 'infantil_2020'
   map.fundamental_2018 '/fundamental_2018', :controller => 'reservar_salas', :action => 'fundamental_2018'
   map.infantil_2018 '/infantil_2018', :controller => 'reservar_salas', :action => 'infantil_2018'
