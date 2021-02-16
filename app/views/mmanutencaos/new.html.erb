@@ -4,12 +4,12 @@
         <% @unidades= Unidade.find(:all , :conditions => ['id = ?', current_user.unidade_id]) %>
       <% end%>
 
-<% @tipos_manutencaos =  TiposManutencao.find(:all) %>
+<% @tipos_manutencaos =  TiposManutencao.find(:all, :order => 'obs ASC')  %>
 
 
 
 
-<div id="interno5">
+<div id="interno3">
 <% title "CLASSES".singularize %>
 <div class="tabs">
  <div id="caixa_titulo">
@@ -67,7 +67,7 @@
                                         <tr>
                                             <td  colspan="2" align="left" valign="top">
                                               <b>Foto: </b> <%= f.file_field :photo%>
-                                              <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  (É possivel anexar somente UMA foto)
+                                              <br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  (<b>Anexar</b> somente UMA foto)
                                             </td>
                                         </tr>
 
