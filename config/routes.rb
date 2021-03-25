@@ -108,6 +108,11 @@ ActionController::Routing::Routes.draw do |map|
 
   map.estatistica_servico '/estatistica_servico', :controller => 'estatisticas', :action => 'estatistica_servico'
 
+  map.tela_email_devolucao '/tela_email_devolucao', :controller => 'passwords', :action => 'tela_email_devolucao'
+
+
+  
+
   map.consultas_encerrados '/consultas_encerrados', :controller => 'mmanutencaos', :action => 'consultas_encerrados'
   map.consulta_encerrados_unidade '/consulta_encerrados_unidade', :controller => 'mmanutencaos', :action => 'consulta_encerrados_unidade'
   map.consultas_abertos '/consultas_abertos', :controller => 'mmanutencaos', :action => 'consultas_abertos'

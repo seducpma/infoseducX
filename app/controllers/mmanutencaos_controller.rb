@@ -949,9 +949,19 @@ def estatisticasMANTAt
 
     
      @mmanutencao.save
-        flash[:notice] = 'CADASTRADO COM SUCESSO.'
-        format.html { redirect_to(@mmanutencao) }
-        format.xml  { head :ok }
+        if @mmanutencao.situacao_manutencao_id  == 9
+            w=session[:id_manutencao] =@mmanutencao.id
+            session[:email] =@mmanutencao.unidade.email
+            #session[:email] ='naor@seducpma.com'
+           
+          format.html { redirect_to(tela_email_devolucao_path) }
+        else
+
+
+            flash[:notice] = 'CADASTRADO COM SUCESSO.'
+            format.html { redirect_to(@mmanutencao) }
+            format.xml  { head :ok }
+        end
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @mmanutencao.errors, :status => :unprocessable_entity }

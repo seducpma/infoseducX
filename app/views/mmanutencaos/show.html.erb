@@ -253,6 +253,9 @@
                               <% if !@mmanutencao.servico_terceiro.nil? %>
                                   <td align="left" ><%= button_to('Enviar E-mail', {:action => "tela_email", :controller =>'passwords' }, :method => "get", :title => "Email") %></td>
                                 <%end%>
+                              <% if @mmanutencao.situacao_manutencao_id == 9 %>
+                                  <td align="left" ><%= button_to('Enviar E-mail', {:action => "tela_email_devolucao", :controller =>'passwords' }, :method => "get", :title => "Email_devolucao") %></td>
+                                <%end%>
                            <%end%>
                          </tr>
                     </table>

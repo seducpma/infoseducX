@@ -1,0 +1,49 @@
+<div id="interno2">
+<% title "RECUPERA" %>
+<div class ="tabs">
+
+
+ <table bgcolor="#DCDCDC" width="100%">
+   <tr bgcolor="#DCDCDC"  width="100%">
+     <td>
+       <font size="5"><strong>ENVIAR E-MAIL</strong></font></br>
+     </td>
+   </tr>
+    
+   <tr bgcolor="#DCDCDC"  width="100%">
+     <td>
+       <fieldset><legend><font  size=3></font></legend>
+           <table width="100% " border="1">
+            <tr bgcolor="#F5F5F5">
+               <td align="center">
+                    <br/>
+                    <br/><br/>
+                           <font size="5"><strong>E-MAIL ENVIADO PARA <%=session[:email]%></strong></font>
+
+                    <br/>
+                    <br/><br/>
+                 </td>
+            </tr>
+         </table>
+       </fieldset>
+     </td>
+  </tr>
+  <tr>
+    <td>
+     <fieldset>
+       <table>
+         <tr>
+           <td align="left"><%= button_to 'Fechar', home_path, {:method => "get"}  %></td>
+          </tr>
+       </table>
+     </fieldset>
+    </td>
+  </tr>
+ </table>
+
+
+</div>
+<br/>
+</div>
+
+
