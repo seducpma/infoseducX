@@ -102,7 +102,7 @@
                                    <%if @mmanutencao.procedimentos.nil?%>
                                       <td align="left" width ="50%"> <font color ="red">Serviço sem encaminhamento</font></td>
                                    <%else%>
-                                       <td align="left" width ="50%"><%=h @mmanutencao.procedimentos%></td>
+                                      <td align="left" width ="50%"><font size="3" color="red"> <b><%=h @mmanutencao.procedimentos%></b></td>
                                    <%end%>
                                   <td align="left"  width ="5%"><b>Para:</b></td>
                                       <%if @mmanutencao.chefia_id.nil?%>

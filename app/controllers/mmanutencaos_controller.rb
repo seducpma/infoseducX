@@ -950,9 +950,9 @@ def estatisticasMANTAt
     
      @mmanutencao.save
         if @mmanutencao.situacao_manutencao_id  == 9
-            w=session[:id_manutencao] =@mmanutencao.id
-            session[:email] =@mmanutencao.unidade.email
-            #session[:email] ='naor@seducpma.com'
+            session[:id_manutencao] =@mmanutencao.id
+            #session[:email] =@mmanutencao.unidade.email
+            session[:email] ='naor@seducpma.com'
            
           format.html { redirect_to(tela_email_devolucao_path) }
         else
