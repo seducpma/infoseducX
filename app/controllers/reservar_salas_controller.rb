@@ -3,7 +3,7 @@ class ReservarSalasController < ApplicationController
 before_filter :load_salas
 before_filter :load_servicos_salas
 layout :define_layout
-before_filter :login_required, :except => ["doc_orientador_A","doc_orientador_5","doc_orientador_4","doc_orientador_3","doc_orientador_1","doc_orientador_fun_01","doc_orientador_inf_01","cesta_basica", "uso_internet", "dowloads",  "plano_educacao", "banco_horas", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda", "infantil_2019", "fundamental_2019",  "fundamental_2020",  "infantil_2020", "infantil_2020_1",  "infantil_2020_2", "acordo_2020", "diarioinfantil_2020", "protocolo_covid","ensino_fundamental","educacao_infantil", "fonofundamental", "fonoinfantil","material"]
+before_filter :login_required, :except => ["doc_orientador_fun_07","doc_orientador_inf_07","doc_orientador_fun_06","doc_orientador_inf_06","doc_orientador_inf_01A","doc_orientador_fun_01A"," doc_orientador_A","doc_orientador_2","doc_orientador_5","doc_orientador_4","doc_orientador_3","doc_orientador_1","doc_orientador_fun_01","doc_orientador_inf_01","cesta_basica", "uso_internet", "dowloads",  "plano_educacao", "banco_horas", "index", "show", "create", "new","edit","sel_dados", "confirma", "confirma_agenda", "infantil_2019", "fundamental_2019",  "fundamental_2020",  "infantil_2020", "infantil_2020_1",  "infantil_2020_2", "acordo_2020", "diarioinfantil_2020", "protocolo_covid","ensino_fundamental","educacao_infantil", "fonofundamental", "fonoinfantil","material"]
 
  def load_servicos_salas
   @servicos_salas = ServicosSala.find(:all, :conditions=>['status = 1'] )
@@ -147,6 +147,9 @@ def dowloads
     
 end
 
+####  ATENÇÂO VER before_filter :login_required, :except =>
+
+
 
 def diarioinfantil_2020
     send_file("#{RAILS_ROOT}/public/documentos/DiarioInfantil2020.pdf" , :type=>"pdf")
@@ -177,26 +180,46 @@ def infantil_2020_2
 end
 
 def doc_orientador_inf_01
-    send_file("#{RAILS_ROOT}/public/documentos/documento_orientador_1_infantil.pdf" , :type=>"pdf")
+    send_file("#{RAILS_ROOT}/public/documentos/2021/documento_orientador_1_infantil.pdf" , :type=>"pdf")
+end
+def doc_orientador_inf_01A
+    send_file("#{RAILS_ROOT}/public/documentos/2021/Anexo 1(I).pdf" , :type=>"pdf")
 end
 
 def doc_orientador_fun_01
-    send_file("#{RAILS_ROOT}/public/documentos/documento_orientador_1_fundamental.pdf" , :type=>"pdf")
+    send_file("#{RAILS_ROOT}/public/documentos/2021/documento_orientador_1_fundamental.pdf" , :type=>"pdf")
 end
 
-def doc_orientador_1
-    send_file("#{RAILS_ROOT}/public/documentos/Documento Orientador n º 1.pdf" , :type=>"pdf")
+def doc_orientador_fun_01A
+    send_file("#{RAILS_ROOT}/public/documentos/2021/Anexo (F).pdf" , :type=>"pdf")
+end
+def doc_orientador_2
+    send_file("#{RAILS_ROOT}/public/documentos/2021/Documento Orientador nº.  2.pdf" , :type=>"pdf")
 end
 
 def doc_orientador_3
-    send_file("#{RAILS_ROOT}/public/documentos/Documento Orientador n º 3.pdf" , :type=>"pdf")
+      send_file("#{RAILS_ROOT}/public/documentos/2021/Documento Orientador nº.  3.pdf" , :type=>"pdf")
 end
 def doc_orientador_4
-    send_file("#{RAILS_ROOT}/public/documentos/Documento Orientador n º 4.pdf" , :type=>"pdf")
+    send_file("#{RAILS_ROOT}/public/documentos/2021/Documento Orientador nº. 4.pdf" , :type=>"pdf")
 end
 def doc_orientador_5
-    send_file("#{RAILS_ROOT}/public/documentos/Documento Orientador n º 5.pdf" , :type=>"pdf")
+    send_file("#{RAILS_ROOT}/public/documentos/2021/Documento Orientador nº. 5.pdf" , :type=>"pdf")
 end
+def doc_orientador_inf_06
+    send_file("#{RAILS_ROOT}/public/documentos/2021/Documento Orientador n.º 6 - Educação Infantil.pdf" , :type=>"pdf")
+end
+def doc_orientador_fun_06
+    send_file("#{RAILS_ROOT}/public/documentos/2021/Documento Orientador nº. 6.pdf" , :type=>"pdf")
+end
+def doc_orientador_inf_07
+    send_file("#{RAILS_ROOT}/public/documentos/2021/Documento Orientador n.º 7 - Educação Infantil.pdf" , :type=>"pdf")
+end
+def doc_orientador_fun_07
+    send_file("#{RAILS_ROOT}/public/documentos/2021/Documento Orientador nº. 7 - Ensino Fundamental.pdf" , :type=>"pdf")
+end
+
+
 def doc_orientador_A
     send_file("#{RAILS_ROOT}/public/documentos/Documento Orientador n º A.pdf" , :type=>"pdf")
 end
@@ -204,6 +227,8 @@ end
 def acordo_2020
     send_file("#{RAILS_ROOT}/public/documentos/acordo_2020.pdf" , :type=>"pdf")
 end
+
+####  ATENÇÂO VER before_filter :login_required, :except =>
 
 
 def infantil_2019
@@ -253,6 +278,6 @@ def material
   send_file("#{RAILS_ROOT}/public/documentos/MaterialEscolar.pdf" , :type=>"pdf")
 end
 
-
+####  ATENÇÂO VER before_filter :login_required, :except =>
 
 end

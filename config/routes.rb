@@ -260,14 +260,20 @@ ActionController::Routing::Routes.draw do |map|
   map.infantil_2020_1 '/infantil_2020_1', :controller => 'reservar_salas', :action => 'infantil_2020_1'
   map.infantil_2020_2 '/infantil_2020_2', :controller => 'reservar_salas', :action => 'infantil_2020_2'
   map.doc_orientador_inf_01 '/doc_orientador_inf_01', :controller => 'reservar_salas', :action => 'doc_orientador_inf_01'
+  map.doc_orientador_inf_01A '/doc_orientador_inf_01A', :controller => 'reservar_salas', :action => 'doc_orientador_inf_01A'
   map.doc_orientador_fun_01 '/doc_orientador_fun_01', :controller => 'reservar_salas', :action => 'doc_orientador_fun_01'
-  map.doc_orientador_1 '/doc_orientador_1', :controller => 'reservar_salas', :action => 'doc_orientador_1'
+  map.doc_orientador_fun_01A '/doc_orientador_fun_01A', :controller => 'reservar_salas', :action => 'doc_orientador_fun_01A'
+  map.doc_orientador_2 '/doc_orientador_2', :controller => 'reservar_salas', :action => 'doc_orientador_2'
   map.doc_orientador_3 '/doc_orientador_3', :controller => 'reservar_salas', :action => 'doc_orientador_3'
   map.doc_orientador_4 '/doc_orientador_4', :controller => 'reservar_salas', :action => 'doc_orientador_4'
   map.doc_orientador_5 '/doc_orientador_5', :controller => 'reservar_salas', :action => 'doc_orientador_5'
   map.doc_orientador_A '/doc_orientador_A', :controller => 'reservar_salas', :action => 'doc_orientador_A'
+  map.doc_orientador_inf_06 '/doc_orientador_inf_06', :controller => 'reservar_salas', :action => 'doc_orientador_inf_06'
+  map.doc_orientador_fun_06 '/doc_orientador_fun_06', :controller => 'reservar_salas', :action => 'doc_orientador_fun_06'
+  map.doc_orientador_inf_07 '/doc_orientador_inf_07', :controller => 'reservar_salas', :action => 'doc_orientador_inf_07'
+  map.doc_orientador_fun_07 '/doc_orientador_fun_07', :controller => 'reservar_salas', :action => 'doc_orientador_fun_07'
 
-  
+
   map.infantil_2020 '/infantil_2020', :controller => 'reservar_salas', :action => 'infantil_2020'
   map.fundamental_2018 '/fundamental_2018', :controller => 'reservar_salas', :action => 'fundamental_2018'
   map.infantil_2018 '/infantil_2018', :controller => 'reservar_salas', :action => 'infantil_2018'
