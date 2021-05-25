@@ -69,6 +69,10 @@
                          <% end %> - <%=h @mmanutencao.descricao %><br/></font><br/></td>
                </tr>
                <tr>
+                 <th> <b>Justificativa:</b></th>
+                 <td colspan="6     " align="left"><br/><%=h @mmanutencao.justificativa %><br/><br/></td>
+              </tr>
+               <tr>
                  <th> <b>Procedimento à realizar</b></font></th>
                  <td colspan="4" align="left"><br/><%=h @mmanutencao.procedimentos %><br/><br/></td>
                  <th colspan="2"> <b>Foto:</b></font><%= image_tag @mmanutencao.photo.url(:original) %></th>
@@ -77,22 +81,38 @@
               </tr>
 
                 <tr>
-                  <th><b>Procedimento realizado</b></th>
+                  <th><b>Material Utilizado</b></th>
                   <td colspan="6" style="padding-bottom:5px">
-                                   <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                                   <br/><br/><br/><br/><br/><br/><br/>
                                    
                                    
                  <br/></td>
                 </tr>
-               <tr>
-                 <th> <b>Justificativa:</b></th>
-                 <td colspan="6     " align="left"><br/><%=h @mmanutencao.justificativa %><br/><br/></td>
-              </tr>
                 <tr>
-                  <th><b>Assinatura</b></th>
+                  <th><b>Nome do executor</b></th>
+                  <td colspan="3" style="padding-bottom:5px"><br/><br/></td>
+                  <th><b>Matrícula</b></th>
+                  <td colspan="4" style="padding-bottom:5px"><br/><br/></td>
+                </tr>
+
+                <tr>
+                  <th><b>Observações</b></th>
                   <td colspan="6" style="padding-bottom:5px"><br/><br/></td>
                 </tr>
-     </table>
+                <tr>
+                  <th><b>Assinatura aceite </br>
+                      <font size ="1"> (Unidade Escolar)</b> </font></th>
+                  <td colspan="3" style="padding-bottom:5px"><br/><br/></td>
+                  <th><b>Matrícula</b></th>
+                  <td colspan="4" style="padding-bottom:5px"><br/><br/></td>
+                </tr>
+                <tr>
+                  <th><b>Nome</b></th>
+                  <td colspan="3" style="padding-bottom:5px"><br/><br/></td>
+                  <th><b>Matrícula</b></th>
+                  <td colspan="4" style="padding-bottom:5px"><br/><br/></td>
+                </tr>
+                </table>
 
   <table width="100%" >
     <tr>

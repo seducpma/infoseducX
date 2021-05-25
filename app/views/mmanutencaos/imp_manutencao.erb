@@ -65,33 +65,56 @@
                              <% end %> - <%=h @mmanutencao.descricao %><br/></font> <br/>
                       </td>
                    </tr>
-               <tr >
-                 <th colspan="2"> <b>Procedimento à realizar</b></font></th>
-                 <td  colspan="4" align="left"><br/><%=h @mmanutencao.procedimentos %><br/><br/></td>
-                 <td  colspan="2" align="left" valign="top"> <b>Foto: <br/></b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <%= image_tag @mmanutencao.photo.url(:original) %></td>
-
-
-              </tr>
-
-                      <tr>
-                        <th colspan="2"><br/><font size="3"><b>Procedimento realizado</b></font></th>
-                        <td colspan="6" style="padding-bottom:5px">
-                           <br/><br/><br/><br/><br/>
-                           
-                        </td>
-                      </tr>
                      <tr>
                        <th colspan="2"><br/><font size="3"><b>Justificativa </b></font></th>
                        <td colspan="6"  align="left"><br/><%=h @mmanutencao.justificativa %><br/><br/></td>
                     </tr>
-                      <tr>
-                        <th colspan="2"><font size="3"><b>Assinatura</b></font></th>
-                        <td colspan="6" style="padding-bottom:5px"><br/> </td>
+                   <tr >
+                     <th colspan="2"> <b>Procedimento à realizar</b></font></th>
+                     <td  colspan="4" align="left"><br/><%=h @mmanutencao.procedimentos %><br/><br/></td>
+                     <td  colspan="2" align="left" valign="top"> <b>Foto: <br/></b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <%= image_tag @mmanutencao.photo.url(:original) %></td>
+                  </tr>
+                 <tr>
+                        <th colspan="2"><br/><font size="3"><b>Procedimento realizado</b></font></th>
+                        <td colspan="6" style="padding-bottom:5px">
+                           <br/><br/><br/>
+
+                        </td>
                       </tr>
+                <tr>
+                  <th colspan="2"><b>Material Utilizado</b></th>
+                  <td colspan="6" style="padding-bottom:5px">
+                       <br/><br/><br/><br/>
+                 <br/></td>
+                </tr>
+                <tr>
+                  <th  colspan="2" ><b>Nome do executor</b></th>
+                  <td colspan="3" style="padding-bottom:5px"><br/><br/></td>
+                  <th><b>Matrícula</b></th>
+                  <td colspan="4" style="padding-bottom:5px"><br/><br/></td>
+                </tr>
+
+                <tr>
+                  <th colspan="2"><b>Observações</b></th>
+                  <td colspan="6" style="padding-bottom:5px"><br/><br/></td>
+                </tr>
+                <tr>
+                  <th colspan="2"><b>Assinatura aceite </br>
+                      <font size ="1"> (Unidade Escolar)</b> </font></th>
+                  <td colspan="3" style="padding-bottom:5px"><br/><br/></td>
+                  <th><b>Matrícula</b></th>
+                  <td colspan="4" style="padding-bottom:5px"><br/><br/></td>
+                </tr>
+                <tr>
+                  <th colspan="2"><b>Nome</b></th>
+                  <td colspan="3" style="padding-bottom:5px"><br/><br/></td>
+                  <th><b>Matrícula</b></th>
+                  <td colspan="4" style="padding-bottom:5px"><br/><br/></td>
+                </tr>
+
+
                  </table>
-               </td>
-            
-   </tr>
+
    <tr>
      <td colspan="2" >
          <table  width="90%" aligh="center" >
@@ -105,17 +128,6 @@
            </td>
          </tr>
 
-         <tr>
-             <td align="left "colspan="2">
-               <br/><b>Aceite: </b><br/>
-               <font size ="1">(Nome e Matrícula)</font>
-             </td>
-         </tr>
-         <tr>
-             <td align="left "colspan="2">
-               <br/><b>Materiais Utilizados: </b>
-             </td>
-         </tr>
 
       </table>
      </td>
