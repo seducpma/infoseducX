@@ -129,6 +129,7 @@ def consulta_abertos_unidade
                   page.replace_html 'abertos', :partial => "abertos"
              end
      else if params[:type_of].to_i == 2    #unidade
+             session[:impressao_abertos]=0
              session[:type_of] = 2
              session[:unidade]=params[:unidade][:id]
              session[:dataI]=params[:enc_uni][:inicio][6,4]+'-'+params[:enc_uni][:inicio][3,2]+'-'+params[:enc_uni][:inicio][0,2]
@@ -153,6 +154,7 @@ def consulta_abertos_unidade
                       page.replace_html 'abertos', :partial => "abertos"
                  end
           else if params[:type_of].to_i == 3  # ANTIGO TODOS   ATUAL POR PALAVRA
+                  session[:impressao_abertos]=0
                   session[:type_of] = 3
                   session[:dataI]=params[:enc_pal][:inicio][6,4]+'-'+params[:enc_pal][:inicio][3,2]+'-'+params[:enc_pal][:inicio][0,2]
                   session[:dataF]=params[:enc_pal][:fim][6,4]+'-'+params[:enc_pal][:fim][3,2]+'-'+params[:enc_pal][:fim][0,2]
@@ -174,6 +176,7 @@ def consulta_abertos_unidade
                          page.replace_html 'abertos', :partial => "abertos"
                      end
               else if params[:type_of].to_i == 4
+                      session[:impressao_abertos]=0
                         w=session[:sstatus]=  params[:manutencao][:situacao_manutencao_id]
                         session[:type_of] = 4
                         if current_user.has_role?('admin') or current_user.has_role?('admin_manutencao') or current_user.has_role?('SEDUC')or current_user.has_role?('estagiario SEDUC') or current_user.has_role?('SEDUC')
@@ -186,6 +189,7 @@ def consulta_abertos_unidade
                        end
 
                      else if params[:type_of].to_i == 5
+                             session[:impressao_abertos]=0
                           session[:type_of] = 5
                              session[:dataI]=params[:mmanutencao][:inicio][6,4]+'-'+params[:mmanutencao][:inicio][3,2]+'-'+params[:mmanutencao][:inicio][0,2]
                              session[:dataF]=params[:mmanutencao][:fim][6,4]+'-'+params[:mmanutencao][:fim][3,2]+'-'+params[:mmanutencao][:fim][0,2]
