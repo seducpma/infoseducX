@@ -1,8 +1,8 @@
-<div id="interno6">
+<div id="interno2">
 <% title "UNIDADES", :id =>"unidades" %>
  <div class="tabs">
    <div id="caixa_titulo">
-    <font size="3"><strong>MANUTENÇÃO GERAL - CHAMADOS ENCERRADOS</strong></font><br/>
+    <font size="3"><strong>MANUTENÇÃO GERAL - CHAMADOS ENCERRADOS  <%session[:encerrados]=1%></strong></font><br/>
    </div>
   <div class="tabs">
     <% form_remote_tag :url => consulta_encerrados_unidade_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>

@@ -2,7 +2,7 @@
 <% title "UNIDADES", :id =>"unidades" %>
  <div class="tabs">
    <div id="caixa_titulo">
-    <font size="3"><strong>MANUTENÇÃO GERAL - CHAMADOS EM ABERTOS</strong></font><br/>
+    <font size="3"><strong>MANUTENÇÃO GERAL - CHAMADOS EM ABERTOS<%session[:encerrados]= 1 %></strong></font><br/>
    </div>
   <div class="tabs">
     <% form_remote_tag :url => consulta_abertos_unidade_path, :method => :get,:loading => "$('#status').show()" , :success => "$('#status').hide()" do %>

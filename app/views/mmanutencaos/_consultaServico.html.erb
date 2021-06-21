@@ -1,5 +1,13 @@
 <table width="100%" align="center" >
    <tr>
+       <%if session[:encerrados]==1%>
+           <td align= "right"><font size="2"><b class="label_busca3">Período:  Inicio:</b></font>&nbsp
+                 <%= datepicker_tag(:enc_ser, :inicio,{:size => 10},{ :dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
+                  &nbsp&nbsp
+                 <font size="2"><b class="label_busca3">Fim:</b></font>&nbsp
+                  <%= datepicker_tag(:enc_ser, :fim,{:size => 10},{ :dateFormat => "'dd-mm-yy'", :changeYear => true, :changeMonth => true, :yearRange => "'-90:+0'", :buttonImage => "'/stylesheets/images/datepicker.gif'",:showOn =>  "'both'" }) %>
+           </td>
+       <%end%>
      <td colspan="2"align="right"><font size="2"> <b class="label_busca2">Tipo Serviço:
         <%= collection_select :manutencao,:tipo, @servicos, :id, :servico, :include_blank => ' -- Selecionar -- ',:class=> "txt_busca2"  %></b></font>
          <%= submit_tag "Filtrar", :class => "btn_filtrar" %>
