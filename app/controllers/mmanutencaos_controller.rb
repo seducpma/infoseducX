@@ -51,6 +51,7 @@ end
 def consulta_encerrados_unidade
      if params[:type_of].to_i == 1    #Serviço
         tipo=  params[:manutencao][:tipo]
+        session[:tipo] = tipo
        session[:dataI]=params[:enc_ser][:inicio][6,4]+'-'+params[:enc_ser][:inicio][3,2]+'-'+params[:enc_ser][:inicio][0,2]
        session[:dataF]=params[:enc_ser][:fim][6,4]+'-'+params[:enc_ser][:fim][3,2]+'-'+params[:enc_ser][:fim][0,2]
         @mmanutencaos = Mmanutencao.find_by_sql("SELECT mma.id, mma.unidade_id, mma.situacao_manutencao_id, mma.funcionario_id, mma.ffuncionario, mma.chefia_id, mma.user_id, mma.descricao, mma.data_sol, mma.data_ate, mma.data_enc, mma.forma, mma.solicitante, mma.procedimentos, mma.executado, mma.justificativa, mma.obs  FROM mmanutencaos mma  INNER JOIN mmanutencaos_tipos_manutencaos tma ON tma.mmanutencao_id = mma.id WHERE (situacao_manutencao_id = 2 or situacao_manutencao_id = 9) and tma.tipos_manutencao_id ="+tipo.to_s+" and   data_sol BETWEEN '"+session[:dataI].to_s+"'  AND '"+session[:dataF].to_s+"' order by data_enc DESC ")
@@ -112,8 +113,13 @@ end
 
 def consulta_abertos_unidade
      if params[:type_of].to_i == 1   #serviço
+         session[:impressao_abertos]=1
         session[:type_of] = 1
         session[:tipo]=  params[:manutencao][:tipo]
+        session[:servico]=  TiposManutencao.find_by_id(session[:tipo]).servico
+
+
+
         session[:dataI]=params[:enc_ser][:inicio][6,4]+'-'+params[:enc_ser][:inicio][3,2]+'-'+params[:enc_ser][:inicio][0,2]
         session[:dataF]=params[:enc_ser][:fim][6,4]+'-'+params[:enc_ser][:fim][3,2]+'-'+params[:enc_ser][:fim][0,2]
 
