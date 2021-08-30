@@ -134,7 +134,7 @@
 
 
 
-<%#=$horas %> |<%#=$horas2 %>
+<%#=$horas %> <%#=$horas2 %>
    </table>
 
 </fieldset>
@@ -145,7 +145,7 @@
                <!--
                <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"><font size="2"><b> <----- CLIQUE AQUI PARA FAZER SUA INSCRIÇÃO <b></font></td>
                -->
-               <td align="right">  <%if $horas > $horas2 %> <%= f.submit "INSCREVER" %> <%else%>  <b>BOTÂO DE CONFIRMAÇÂO</b> estará disponível após da 21:30 horas <%end%></td>
+               <td align="right">  <%if $horas > $horas2 %> <%= f.submit "INSCREVER" %> <%else%>  <b>BOTÃO DE CONFIRMAÇÃO</b> estará disponível após da 21:30 horas <%end%></td>
       <% end %>
                <td width="2%" align="right"><%#= button_to(' CONSULTAR INSCRIÇÃO ', consultas_inscricaos_path, :method => "get", :title => "Voltar")%></td>
                <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
