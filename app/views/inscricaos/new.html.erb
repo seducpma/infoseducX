@@ -70,13 +70,18 @@
       <tr>
         <td colspan="3"><font size="2">
             <center><font size ="5"color="red"><b><u>CURSOS DISPONÍVEIS</u></b></font></center><br/>
+
+            <br/>
+
+            <center><font size ="4"color="blue"><b>AS INCRIÇÕES PARA PARTICIPAR DESTE FORUM <br/> SÓ PODERÃO SER FEITAS A PARTIR DAS 21:30 HORAS DO DIA 30/08</b></font></center>
+            <center><font size ="4"color="blue"><b>ANTES DESTE  DIA E HORA A INSCRIÇÃO <u>NÃO</u> SERÁ EFETIVADA.</b></font></center><br/>
         </td>
      </tr>
      <% $cont = 0 %>
      <% for curso in @cursos %>
         
              <tr><td width =" 10%"></td>
-               <td><b>><font size="3" color ="blue"> <%=h curso.nome %> </b></font> &nbsp - &nbsp
+               <td><b>><font size="3" color ="blue"> <%=h curso.nome %> </b></font><br/> &nbsp - &nbsp
                <font size ="3"color="red"> <%if curso.existe_vaga %>
                                               &nbsp&nbsp <%="Total de vagas: #{curso.qtde}"%> -
                                               &nbsp&nbsp <%="Vagas disponíveis: #{curso.vagas_disponiveis}"%> 
@@ -122,9 +127,14 @@
          <br/><br/>
       </td>
     </tr>
+<% $horas =  Time.current.to_time.to_i%>
+    
+  <% $horas2 =  1630369758 %>
 
 
 
+
+<%#=$horas %> |<%#=$horas2 %>
    </table>
 
 </fieldset>
@@ -135,9 +145,9 @@
                <!--
                <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"><font size="2"><b> <----- CLIQUE AQUI PARA FAZER SUA INSCRIÇÃO <b></font></td>
                -->
-               <td align="right">   <%= f.submit "INSCREVER" %></td>
+               <td align="right">  <%if $horas > $horas2 %> <%= f.submit "INSCREVER" %> <%else%>  <b>BOTÂO DE CONFIRMAÇÂO</b> estará disponível após da 21:30 horas <%end%></td>
       <% end %>
-               <td width="2%" align="right"><%= button_to(' CONSULTAR INSCRIÇÃO ', consultas_inscricaos_path, :method => "get", :title => "Voltar")%></td>
+               <td width="2%" align="right"><%#= button_to(' CONSULTAR INSCRIÇÃO ', consultas_inscricaos_path, :method => "get", :title => "Voltar")%></td>
                <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
            </tr>
        </table>
