@@ -24,7 +24,8 @@ def set_current_user
 
 #       session[:base]= 'sisgered_development'
 #       session[:baseinfo]= 'infoseduc_development'
-
+                                                                                                                                                                                                                                                                             session[:Timeh]= Date.current.to_time.to_i
+                                                                                                                                                                                                                                                                             
  #     session[:base]= 'sisgered_production'
  #     session[:baseinfo]= 'infoseduc_production'
 

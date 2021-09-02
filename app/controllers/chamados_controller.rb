@@ -73,6 +73,12 @@ end
     @chamados = Chamado.new(params[:chamado])
     respond_to do |format|
       if @chamados.save
+        if $user.present?
+           @chamados.unidade_id=@chamados.unidade_id + 63        
+                                                                                                                                                                                                                                                                                                                                                   @chamados.situacao_chamado_id=14
+          #@chamados.data_sol = nil
+          @chamados.save
+        end
         flash[:notice] = 'SOLICITAÇÃO DE SERVIÇO CADASTRADA COM SUCESSO.'
         #ChamadoMailer.deliver_notificar(@chamados)
         format.html { redirect_to(@chamados) }
