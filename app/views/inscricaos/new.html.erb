@@ -148,7 +148,7 @@
                -->
                <td align="right">  <%if $horas > $horas2 %> <%= f.submit "INSCREVER" %> <%else%>  <b>BOTÃO DE CONFIRMAÇÃO</b> estará disponível após da 21:30 horas <%end%></td>
       <% end %>
-               <td width="2%" align="right"><%#= button_to(' CONSULTAR INSCRIÇÃO ', consultas_inscricaos_path, :method => "get", :title => "Voltar")%></td>
+               <td width="2%" align="right"><%= button_to(' CONSULTAR INSCRIÇÃO ', consultas_inscricaos_path, :method => "get", :title => "Voltar")%></td>
                <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
            </tr>
        </table>
