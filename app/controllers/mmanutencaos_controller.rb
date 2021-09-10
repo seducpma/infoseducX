@@ -978,8 +978,8 @@ def estatisticasMANTAt
      @mmanutencao.save
         if @mmanutencao.situacao_manutencao_id  == 9
             session[:id_manutencao] =@mmanutencao.id
-            #session[:email] =@mmanutencao.unidade.email
-            session[:email] ='naor@seducpma.com'
+            session[:email] =@mmanutencao.unidade.email
+            #session[:email] ='naor@seducpma.com'
            
           format.html { redirect_to(tela_email_devolucao_path) }
         else if @mmanutencao.chefia_id  == 6
@@ -997,7 +997,7 @@ def estatisticasMANTAt
         format.html { render :action => "edit" }
         format.xml  { render :xml => @mmanutencao.errors, :status => :unprocessable_entity }
    end
-       t=0
+      
   end
  end
 
