@@ -978,24 +978,28 @@ def estatisticasMANTAt
      @mmanutencao.save
         if @mmanutencao.situacao_manutencao_id  == 9
             session[:id_manutencao] =@mmanutencao.id
-            session[:email] =@mmanutencao.unidade.email
-            #session[:email] ='naor@seducpma.com'
+            #session[:email] =@mmanutencao.unidade.email
+            session[:email] ='naor@seducpma.com'
            
           format.html { redirect_to(tela_email_devolucao_path) }
-        else
-
-
-            flash[:notice] = 'CADASTRADO COM SUCESSO.'
-            format.html { redirect_to(@mmanutencao) }
-            format.xml  { head :ok }
+        else if @mmanutencao.chefia_id  == 6
+               session[:id_manutencao] =@mmanutencao.id
+               session[:email] ='seducontatos@gmail.com, wadsonmotacompras@gmail.com'
+               #session[:email] ='naor@seducpma.com, naorgarciaf@hotmail.com'
+               format.html { redirect_to(tela_email_devolucao_compra_path) }
+             else
+                flash[:notice] = 'CADASTRADO COM SUCESSO.'
+                format.html { redirect_to(@mmanutencao) }
+                format.xml  { head :ok }
+            end
         end
-      else
+   else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @mmanutencao.errors, :status => :unprocessable_entity }
-      end
+   end
        t=0
-    end
   end
+ end
 
   def destroy
     @mmanutencao = Mmanutencao.find(params[:id])

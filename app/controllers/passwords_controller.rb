@@ -40,8 +40,34 @@ class PasswordsController < ApplicationController
   end
 
 
+  def tela_email_devolucao_compra
+   @mmanutencao = Mmanutencao.find(session[:id_manutencao])
+   ww= session[:email]
+  session[:idprotocolo]= @mmanutencao.id
+  end
+
+
+
+
 
    def email_devolucao
+t=0
+  #   participante = Participante.find_by_matricula(params[:matricula])
+       wwa=email=session[:email]
+t=0
+      if !session[:id_manutencao].nil?
+       @mmanutencao= Mmanutencao.find(session[:id_manutencao])
+       @mmanutencao.data3= Time.now
+       @mmanutencao.save
+       t=0
+      end
+       #InscricaoMailer.deliver_confirmacao_inscricao(@inscricao,@inscricao.participante)
+       t=0
+       MmanutencaoMailer.deliver_devolucao_email(@mmanutencao,email)
+  end
+
+
+   def email_devolucao_compra
 t=0
   #   participante = Participante.find_by_matricula(params[:matricula])
        wwa=email=session[:email]

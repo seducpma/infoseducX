@@ -110,6 +110,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.tela_email_devolucao '/tela_email_devolucao', :controller => 'passwords', :action => 'tela_email_devolucao'
 
+  map.tela_email_devolucao_compra '/tela_email_devolucao_compra', :controller => 'passwords', :action => 'tela_email_devolucao_compra'
+
 
   
 
