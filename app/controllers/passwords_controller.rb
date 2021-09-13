@@ -185,4 +185,11 @@ t=0
 
   def update
   end
+
+
+
+   def imp_manutencao
+    @mmanutencao= Mmanutencao.find(session[:idmanutencao])
+   render :layout => "impressao"
+  end
 end

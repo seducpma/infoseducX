@@ -27,6 +27,8 @@
                                                  <td align="left" width="15%"><b>Nº Ordem :  </b></td>
                                                  <td align="left"><%=h @mmanutencao.id%>
                                                                   <%session[:idmanutencao] = @mmanutencao.id%>
+                                                                  <%session[:idmanutencao]= @mmanutencao.id%>
+                                                   !! <%=session[:idmanutencao]%>
                                                  </td>
                                            </tr>
                                            <tr>
@@ -94,7 +96,8 @@
 
                                 <tr>
                                   <td colspan="2"align="right">
-                                          <%= link_to image_tag("/stylesheets/images/imprimir1.png"), onclick="javascript:MM_openBrWindow('#{imp_manutencao_mmanutencaos_path(session[:idmanutencao])}','manutencao', 'scrollbars=yes');", :title => "Imprimir OS Manutencao" %>
+                                          <%#= link_to image_tag("/stylesheets/images/imprimir1.png"), onclick="javascript:MM_openBrWindow('#{imp_manutencao_mmanutencaos_path(session[:idmanutencao])}','manutencao', 'scrollbars=yes');", :title => "Imprimir OS Manutencao" %>
+                                          <%= button_to("Imprimir",  {:contoller => 'mmanutencaos', :action => "imp_manutencao", :id =>session[:idmanutencao]}, :method => "get", :title => "Imprimir") %>
                                     </td>
                                 </tr>
                            </table>

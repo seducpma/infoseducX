@@ -1,0 +1,139 @@
+
+<table aligh="center">
+      <tr>
+        <td width="10%">
+             <%= image_tag("/stylesheets/images/logo.png") %>
+        </td>
+        <td align="center">
+          <font size="4"><strong><u><center>PREFEITURA MUNICIPAL DE AMERICANA </u></center></strong></u></font><br/>
+          <font size="4"><strong><u><center>SECRETARIA DE EDUCAÇÃO</u></center></strong></u></font><br/>
+          <font size="3"><strong><center>ORDEM DE SERVIÇO DE MANUTENÇÃO</center></strong></u></font>
+
+        </td>
+    </tr>
+</table>
+<table  class ="invisible_to_print " width="100%" >
+   <tr  class ="invisible_to_print ">
+     <td align="right" class ="invisible_to_print "><%= button_to "Imprimir", onclick="javascript:window.print()", :title => "Imprimir" %></td>
+  </tr>
+ </table>
+<table aligh="center" width="100%">
+    <tr>
+      <td colspan="2" align="center">
+               <table  border="1" cellspacing="0" cellpadding="1" width="100%" style="border-color: white">
+                   <tr>
+                      <th> Ordem</th>
+                      <th> Protocolo</th>
+                      <th width ="10%"><font size="3"><b> Solicitação</b></font></th >
+                      <th width ="15%"><font size="3"><b> Solicitante</b></font></th>
+                      <th width ="25%"> <font size="3"><b>Unidade</b></font></th>
+                      <th width ="10%"><font size="3"><b> Encaminhamento</b></font></th>
+                      <th width ="10%"><font size="3"><b> Para</b></font></th>
+                      <th width ="10%"><font size="3"><b> Status</b></font></th>
+                   </tr>
+                      <tr>
+                       <td width="3%" align="center"><%= text_field_tag($ordem,nil,:size => 1) %></td>
+                       <td width="3%" align="center"><%=h @mmanutencao.id %></td>
+                       <td align="center"><%=h @mmanutencao.data_sol.strftime("%d/%m/%Y")%></td>
+                       <td align="center"><%=h @mmanutencao.solicitante %></td>
+                       <td align="center"><%=h @mmanutencao.unidade.tipo.nome %> <%=h @mmanutencao.unidade.nome %></td>
+                       <td align="center"><%= "#{Time.now.strftime("%d/%m/%Y")}" %></td>
+                       <td align="center"><%if !@mmanutencao.chefia_id.nil?%>
+                                          <%=h @mmanutencao.chefia.nome %></td>
+                                     <%else%>
+                                           <b> EM ABERTO</b>
+                                     <%end%>
+                       </td>
+                       <td align="center"><%=h @mmanutencao.situacao %></td>
+
+
+
+                     </tr>
+               <tr>
+                  <td colspan="2"> Endereço:</font></td>
+                  <td colspan="6">
+                      <%=h @mmanutencao.unidade.endereco%>,
+                      <%=h @mmanutencao.unidade.num %> -
+
+                      <%=h @mmanutencao.unidade.bairro%> -
+                      <b>Fone:</b> <%=h @mmanutencao.unidade.fone%></font></td>
+                 </tr>
+                   <tr>
+                     <td align="center"colspan="2"><b>Problema</b></font></td>
+                      <td colspan="6" align="left"> <% @mmanutencao.tipos_manutencaos.each do |servico| %>
+                              <%=h servico.servico%>:
+                             <% end %> - <%=h @mmanutencao.descricao %><br/></font> <br/>
+                      </td>
+                   </tr>
+                     <tr>
+                       <th colspan="2"><br/><font size="3"><b>Justificativa </b></font></th>
+                       <td colspan="6"  align="left"><br/><%=h @mmanutencao.justificativa %><br/><br/></td>
+                    </tr>
+                   <tr >
+                     <th colspan="2"> <b>Procedimento à realizar</b></font></th>
+                     <td  colspan="4" align="left"><br/><%=h @mmanutencao.procedimentos %><br/><br/></td>
+                     <td  colspan="2" align="left" valign="top"> <b>Foto: <br/></b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <%= image_tag @mmanutencao.photo.url(:original) %></td>
+                  </tr>
+                 <tr>
+                        <th colspan="2"><br/><font size="3"><b>Procedimento realizado</b></font></th>
+                        <td colspan="6" style="padding-bottom:5px">
+                           <br/><br/><br/>
+
+                        </td>
+                      </tr>
+                <tr>
+                  <th colspan="2"><b>Material Utilizado</b></th>
+                  <td colspan="6" style="padding-bottom:5px">
+                       <br/><br/><br/><br/>
+                 <br/></td>
+                </tr>
+                <tr>
+                  <th  colspan="2" ><b>Nome do executor</b></th>
+                  <td colspan="3" style="padding-bottom:5px"><br/><br/></td>
+                  <th><b>Matrícula</b></th>
+                  <td colspan="4" style="padding-bottom:5px"><br/><br/></td>
+                </tr>
+
+                <tr>
+                  <th colspan="2"><b>Observações</b></th>
+                  <td colspan="6" style="padding-bottom:5px"><br/><br/></td>
+                </tr>
+                <tr>
+                  <th colspan="2"><b>Assinatura aceite </br>
+                      <font size ="1"> (Unidade Escolar)</b> </font></th>
+                  <td colspan="3" style="padding-bottom:5px"><br/><br/></td>
+                  <th><b>Data</b></th>
+                  <td colspan="4" style="padding-bottom:5px"><br/><br/></td>
+                </tr>
+                <tr>
+                  <th colspan="2"><b>Nome</b></th>
+                  <td colspan="3" style="padding-bottom:5px"><br/><br/></td>
+                  <th><b>Matrícula</b></th>
+                  <td colspan="4" style="padding-bottom:5px"><br/><br/></td>
+                </tr>
+
+
+                 </table>
+
+   <tr>
+     <td colspan="2" >
+         <table  width="90%" aligh="center" >
+          <tr>
+            <td align="right" colspan="2">    <%= "Americana, #{Time.now.strftime("%d de %B de %Y")}" %></td>
+
+          </tr>
+         <tr>
+           <td colspan="2">
+             OBS:<%= text_field_tag(:obs1,nil,:size => 80 ) %>
+           </td>
+         </tr>
+
+
+      </table>
+     </td>
+   </tr>
+ </table>
+
+
+
+

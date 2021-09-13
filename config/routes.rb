@@ -42,6 +42,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :aulas_faltas, :collection => { :aviso => :get, :relatorio_falta_dia=>:get, :relatorio_falta_mes=>:get, :show=>:get, :index2=>:get , :index3=>:get, :index4=>:get ,   :relatorio_falta_mes_professor => :get , :relatorio_falta_mes_funcionario => :get}
   map.resources :servicos_internos, :collection => {:consulta => :get, :consultaint=>:get}
   map.resources :mmanutencaos,  :collection => {:protocolo => :get, :consultas => :get, :selected_print => :get,:imprimir_manutencao => :get,:imp_manutencao => :get,:imp_show => :get ,:encerrados => :get, :busca_protocolo => :get , :estatistica => :get, :estatisticasM => :get, :estatisticasMA => :get, :estatisticasME => :get, :estatisticasMAt => :get, :estatisticasMANT => :get, :estatisticasMANTA => :get, :estatisticasMANTE => :get, :estatisticasMANTAt => :get, :consulta_unidade => :get , :relatorios => :get }
+
+  map.resource :downloads  ,  :collection => {:imp_manutencao => :get}
+
   map.resources :mmanutencaos_tipos_manutencaos
   map.resources :justificativas
   map.resources :pontos
@@ -111,6 +114,8 @@ ActionController::Routing::Routes.draw do |map|
   map.tela_email_devolucao '/tela_email_devolucao', :controller => 'passwords', :action => 'tela_email_devolucao'
 
   map.tela_email_devolucao_compra '/tela_email_devolucao_compra', :controller => 'passwords', :action => 'tela_email_devolucao_compra'
+
+  #map.imp_manutencao1 '/imp_manutencao1', :controller => 'mmanutencaos', :action => 'imp_manutencao'
 
 
   
