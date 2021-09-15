@@ -128,14 +128,33 @@
          <br/><br/>
       </td>
     </tr>
-<% $horas =  Time.current.to_time.to_i%>
+<% $horas =  (Time.current.to_time).to_i%>
+
+  <%# $horas3 =  Date.current%>
     
-  <% $horas2 =  1630369758 %>
+  <% $horas2 = 1631829599 %>  <!-- dia 16/9 as 19 hs-->
+  <%# $horas2 = 1631711509 %> <!-- dia 15/9 as 10 hs-->
+        <br/><br/><br/><br/><br/><br/>
+<!--
+         1631829191 ||2021-09-16 ||1631818800
 
 
+18:54    1631829264 ||2021-09-16 ||1631818800   16
+
+18:55    1631829306 ||2021-09-16 ||1631818800    15
+
+18:56    1631829406 ||2021-09-16 ||1631818800  <<<<<tr
+18:59   1631829529 ||2021-09-16 ||1631818800    16
+
+19:00   1631829600 ||2021-09-16 ||1631818800     16
 
 
-<%#=$horas %> <%#=$horas2 %>
+        1631710744 ||2021-09-15 ||1631818800 15
+
+<%#=$horas %> ||<%#=$horas3 %> ||<%#=$horas2 %>
+-->
+
+<%=$horas %> ||<%#=$horas3 %> ||<%=$horas2 %>
    </table>
 
 </fieldset>
@@ -146,7 +165,7 @@
                <!--
                <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"><font size="2"><b> <----- CLIQUE AQUI PARA FAZER SUA INSCRIÇÃO <b></font></td>
                -->
-               <td align="right">  <%if $horas > $horas2 %> <%= f.submit "INSCREVER" %> <%else%>  <b>BOTÃO DE CONFIRMAÇÃO</b> estará disponível após da 21:30 horas <%end%></td>
+               <td align="right">  <%if $horas > $horas2 %> <%= f.submit "INSCREVER" %> <%else%>  <b>BOTÃO DE CONFIRMAÇÃO</b> estará disponível após 16/9/2021 às 19:00 horas <%end%></td>
       <% end %>
                <td width="2%" align="right"><%= button_to(' CONSULTAR INSCRIÇÃO ', consultas_inscricaos_path, :method => "get", :title => "Voltar")%></td>
                <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
