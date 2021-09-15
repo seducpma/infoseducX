@@ -15753,3 +15753,994 @@ ActionController::RoutingError (No route matches "/stylesheets/style.css" with {
   
 
 Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2021-09-15 10:22:54) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 13ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2021-09-15 10:22:55) [GET]
+  [4;36;1mCurso Load (0.6ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;35;1mCurso Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+Completed in 167ms (View: 15, DB: 2) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InscricaosController#new (for 127.0.0.1 at 2021-09-15 10:22:58) [GET]
+  [4;36;1mCurso Load (1.0ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;35;1mParticipante Load (0.7ms)[0m   [0mSELECT * FROM `participantes` WHERE (desligado = 0 and funcao is not null) ORDER BY nome ASC[0m
+  [4;36;1mParticipante Load (0.7ms)[0m   [0;1mSELECT * FROM `participantes` WHERE (desligado = 0 ) ORDER BY nome ASC[0m
+  [4;35;1mCurso Load (1.0ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;36;1mInscricao Load (0.7ms)[0m   [0;1mSELECT * FROM `inscricaos` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.2ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mInscricao Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `inscricaos`[0m
+  [4;35;1mInscricao Load (0.1ms)[0m   [0mSELECT * FROM `inscricaos` WHERE (`inscricaos`.`participante_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/inscricao
+Rendering inscricaos/new
+ERROR: compiling _run_erb_app47views47inscricaos47new46html46erb RAISED compile error
+/home/desenvolvimento/infoseducx/app/views/inscricaos/new.html.erb:132: syntax error, unexpected ';', expecting ')'
+...ime.parce('sep 15 2021 10:12'; @output_buffer.concat "\n  "
+                              ^
+Function body:           def _run_erb_app47views47inscricaos47new46html46erb(local_assigns)
+            old_output_buffer = output_buffer;;@output_buffer = '';  __in_erb_template=true ; @cursos = Curso.find(:all, :conditions => ['status = 0 ']); @output_buffer.concat "\n"
+; @cursosativos = Curso.find(:all, :conditions => ['status = 0 AND vagas_disponiveis > 0']); @output_buffer.concat "\n<div id=\"interno6\">\n"
+
+;  title "CLASSES".singularize ; @output_buffer.concat "\n<div class=\"tabs\">\n <div id=\"caixa_titulo\">\n     <font size=\"3\"><strong>SISTEMA DE INSCRI\303\207\303\203O ON LINE </strong></font><br/>\n </div>\n      <div class=\"tabs\">\n\n"
+
+
+
+
+
+
+;  form_for(@inscricao) do |f| ; @output_buffer.concat "\n"
+; @output_buffer.concat(( f.error_messages ).to_s); @output_buffer.concat "\n<font  size=\"2\">\n <table width=\"100%\" align=\"center\"  bgcolor=\"#F5F5F5\" >\n   <tr   bgcolor =\"#E6E2D\">\n        <th align=\"center\">\n           <font  size=5 color=\"black\">  <b> CADASTRO DE INSCRI\303\207\303\203O PARA PARTICIPAR EM CURSOS / PALESTRAS E ATIVIDADES DE QUALIFICA\303\207\303\203O E APERFEI\303\207OAMENTO OFERIDOS PELA SEDUC</b></font>\n        </th>\n      </tr>\n  <tr>\n  <td colspan=\"2\">\n   <fieldset><legend><font size =\"4\"><b></b></font></legend>\n       <table width=\"100%\">\n             <tr>\n                 <td colspan=\"2\" align=\"center\"><font  size=4 color=\"RED\"> <b><u> FAVOR LER ATENTAMENTE TODAS AS INSTRU\303\207\303\225ES ANTES DE EFETUAR SUA INSCRI\303\207\303\203O</b></u></font><br/></td>\n              </tr>\n              <tr>\n                  <td colspan=\"2\" ><br/></td>\n              </tr>\n              <tr>\n                <td  colspan=\"2\" align=\"center\"> <font size =\"3\"><br/><b>Participante:</b></font>\n                   "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+; @output_buffer.concat(( f.collection_select :participante_id, @participantesInscricao, :id, :nome, :include_blank => ' -- Selecionar seu nome -- ' ).to_s); @output_buffer.concat "</b></font></td>\n               </tr>\n\n          "
+
+
+; @output_buffer.concat(( observe_field  :inscricao_participante_id,
+              :with => :inscricao_participante_id,
+               :url => { :action => 'sel_participa' } ).to_s); @output_buffer.concat "\n\n              <tr><td ><br/></td></tr>\n\n\n               <tr>\n                   <td valign=\"middle\"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b><font color =\"red\" size=\"2\"> <u>ATEN\303\207\303\203O:</u> SE SEU NOME N\303\203O CONSTAR NA LISTA ACIMA FAVOR CADASTRAR.</b>  ===========></td>\n                   <td valign=\"bottom\">"
+
+
+
+
+
+
+; @output_buffer.concat(( link_to image_tag("/stylesheets/images/participante.png", :size => "180x30"), new_participante_path, :title => "Cadastrar Participante" ).to_s); @output_buffer.concat " </b></td>\n               </tr>\n\n\n\n\n              <tr>\n                <td colspan=\"4\">\n                 "
+
+
+
+
+
+
+
+; if @participante.present?; @output_buffer.concat "\n                  Matricula: "
+; @output_buffer.concat((h @participante.matricula ).to_s); @output_buffer.concat "<br/>\n                  Nome:"
+; @output_buffer.concat((h @participante.nome ).to_s); @output_buffer.concat "<br/>\n                  Cidade:"
+; @output_buffer.concat((h @participante.cidade ).to_s); @output_buffer.concat "<br/>\n                  Email:"
+; @output_buffer.concat((h @participante.email ).to_s); @output_buffer.concat "<br/>\n                    Observa\303\247\303\265es: "
+; @output_buffer.concat((h @participante.obs ).to_s); @output_buffer.concat "<br/>\n                "
+; else; @output_buffer.concat "\n                  <div id=\"informacoes\"></div>\n                "
+
+; end; @output_buffer.concat "\n                </td>\n              </tr>\n    </table>\n\n       <table align=\"center\" width=\"100%\" >\n\n<!--\n    <tr><td>&nbsp&nbsp<b> N\303\203O H\303\201 CURSOS OFERECIDOS NO MOMENTO</b></td></tr>\n-->\n      <tr>\n        <td colspan=\"3\"><font size=\"2\">\n            <center><font size =\"5\"color=\"red\"><b><u>CURSOS DISPON\303\215VEIS</u></b></font></center><br/>\n\n            <br/>\n\n           <!-- <center><font size =\"4\"color=\"blue\"><b>AS INCRI\303\207\303\225ES PARA PARTICIPAR DESTE FORUM <br/> S\303\223 PODER\303\203O SER FEITAS A PARTIR DAS 21:30 HORAS DO DIA 30/08</b></font></center>\n            <center><font size =\"4\"color=\"blue\"><b>ANTES DESTE  DIA E HORA A INSCRI\303\207\303\203O <u>N\303\203O</u> SER\303\201 EFETIVADA.</b></font></center><br/>\n           -->\n        </td>\n     </tr>\n     "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;  $cont = 0 ; @output_buffer.concat "\n     "
+;  for curso in @cursos ; @output_buffer.concat "\n        \n             <tr><td width =\" 10%\"></td>\n               <td><b>><font size=\"3\" color =\"blue\"> "
+
+
+; @output_buffer.concat((h curso.nome ).to_s); @output_buffer.concat " </b></font><br/> &nbsp - &nbsp\n               <font size =\"3\"color=\"red\"> "
+; if curso.existe_vaga ; @output_buffer.concat "\n                                              &nbsp&nbsp "
+; @output_buffer.concat(("Total de vagas: #{curso.qtde}").to_s); @output_buffer.concat " -\n                                              &nbsp&nbsp "
+; @output_buffer.concat(("Vagas disponíveis: #{curso.vagas_disponiveis}").to_s); @output_buffer.concat " \n                                          "
+; else; @output_buffer.concat "\n                                              "
+; if curso.vagas_disponiveis==0; @output_buffer.concat "\n                                                  &nbsp&nbsp <b>TODAS AS "
+; @output_buffer.concat(("#{curso.qtde}").to_s); @output_buffer.concat " VAGAS EST\303\203O COMPLETAS.</b>\n                                              "
+; else; @output_buffer.concat "\n                                                  &nbsp&nbsp <b>INSCRI\303\207\303\225ES ENCERRADAS! </b>\n                                               "
+
+; end; @output_buffer.concat "\n                                        \n                                               "
+
+; end; @output_buffer.concat "\n\n                                 "
+
+;  $cont = $cont + 1 ; @output_buffer.concat "\n               </font><br/>\n\n\n\n\n\n               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Respons\303\241vel/Ministrante:</u> "
+
+
+
+
+
+
+; @output_buffer.concat((h curso.ministrante ).to_s); @output_buffer.concat "<br/>\n                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>P\303\272blico Alvo:</u> "
+; @output_buffer.concat((h curso.publico ).to_s); @output_buffer.concat "<br/>\n                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Ementa:</u> "
+; @output_buffer.concat((h curso.ementa).to_s); @output_buffer.concat "<br/>\n                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontro(s):</u> Dia(s) "
+; @output_buffer.concat((h curso.datas ).to_s); @output_buffer.concat " &nbsp - &nbsp <u>Carga Hor\303\241ria: "; @output_buffer.concat((h curso.carga_horaria).to_s); @output_buffer.concat " </u><br/>\n                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Hor\303\241rio:</u> "
+; @output_buffer.concat((h curso.horario ).to_s); @output_buffer.concat "\n                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Local:</u> "
+; @output_buffer.concat((h curso.local ).to_s); @output_buffer.concat "<br/>\n                     "
+; if curso.obs.present?; @output_buffer.concat "\n                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font size =\"3\"color=\"red\"><b><u>OBS:</u> "
+; @output_buffer.concat((h curso.obs ).to_s); @output_buffer.concat "</b></font><br/>\n                     "
+; end; @output_buffer.concat "\n\n         ---------------------------------------------------------------------------------------------------------------\n               </td>\n             </tr>\n        \n     "
+
+
+
+
+
+; end; @output_buffer.concat "\n    <!--\n      <tr>\n        <td colspan=\"2\" align=\"center\"><b><u>OBS:</u></b>  Entrada Gratuita - condicionada a apresenta\303\247\303\243o de holerite recente. </td>\n     </tr>-->\n\n    <tr>\n      <td colspan=\"2\" align=\"left\"><br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp\n         <font size=\"3\"><b>Curso: "
+
+
+
+
+
+
+
+; @output_buffer.concat(( f.collection_select :curso_id, @cursosativos, :id, :nome, :include_blank => ' -- Selecionar curso -- ' ).to_s); @output_buffer.concat " </font>    </b>\n         <br/><br/>\n      </td>\n    </tr>\n"
+
+
+
+; @output_buffer.concat "\n"
+;  $horas =  Time.parce('sep 15 2021 10:12'; @output_buffer.concat "\n  "
+; @output_buffer.concat "\n    \n  "
+
+;  $horas2 = 1631829599 ; @output_buffer.concat "  <!-- dia 16/9 as 19 hs-->\n  "
+; @output_buffer.concat " <!-- dia 15/9 as 10 hs-->\n        <br/><br/><br/><br/><br/><br/>\n<!--\n         1631829191 ||2021-09-16 ||1631818800\n\n\n18:54    1631829264 ||2021-09-16 ||1631818800   16\n\n18:55    1631829306 ||2021-09-16 ||1631818800    15\n\n18:56    1631829406 ||2021-09-16 ||1631818800  <<<<<tr\n18:59   1631829529 ||2021-09-16 ||1631818800    16\n\n19:00   1631829600 ||2021-09-16 ||1631818800     16\n\n\n        1631710744 ||2021-09-15 ||1631818800 15\n\n"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+; @output_buffer.concat(($horas ).to_s); @output_buffer.concat " ||"; @output_buffer.concat " ||"; @output_buffer.concat "\n-->\n\n"
+
+
+; @output_buffer.concat(($horas ).to_s); @output_buffer.concat " ||"; @output_buffer.concat " ||"; @output_buffer.concat(($horas2 ).to_s); @output_buffer.concat "\n   </table>\n\n</fieldset>\n\n         <table width=\"100%\" align=\"left\">\n           <tr>\n\n               <!--\n               <td align=\"left\"><input type=\"image\" src=\"/stylesheets/images/salvar.png\" title=\"Gravar\"><font size=\"2\"><b> <----- CLIQUE AQUI PARA FAZER SUA INSCRI\303\207\303\203O <b></font></td>\n               -->\n               <td align=\"right\">  "
+
+
+
+
+
+
+
+
+
+
+; if $horas > $horas2 ; @output_buffer.concat " "; @output_buffer.concat(( f.submit "INSCREVER" ).to_s); @output_buffer.concat " "; else; @output_buffer.concat "  <b>BOT\303\203O DE CONFIRMA\303\207\303\203O</b> estar\303\241 dispon\303\255vel ap\303\263s 16/9/2021 \303\240s 19:00 horas "; end; @output_buffer.concat "</td>\n      "
+;  end ; @output_buffer.concat "\n               <td width=\"2%\" align=\"right\">"
+; @output_buffer.concat(( button_to(' CONSULTAR INSCRIÇÃO ', consultas_inscricaos_path, :method => "get", :title => "Voltar")).to_s); @output_buffer.concat "</td>\n               <td width=\"2%\" align=\"right\">"
+; @output_buffer.concat(( button_to('Fechar', home_path, :method => "get", :title => "Fechar")).to_s); @output_buffer.concat "</td>\n           </tr>\n       </table>\n\n    </td>\n  </tr>\n  </table>\n</font>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    </div>\n</div>\n<br/>\n<script>\n    $(\"#demo input[title]\").tooltip();\n  </script>\n</font>\n</div>"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+; @output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /home/desenvolvimento/infoseducx/app/views/inscricaos/new.html.erb:204:in `compile!'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:61:in `compile'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:28:in `render'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:265:in `render'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:348:in `_render_with_layout'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:262:in `render'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1250:in `render_for_file'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:951:in `render_without_benchmark'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+/var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:135:in `send'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:135:in `custom'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:179:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:179:in `respond'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:173:in `each'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:173:in `respond'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:107:in `respond_to'
+/home/desenvolvimento/infoseducx/app/controllers/inscricaos_controller.rb:68:in `new'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1331:in `send'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1331:in `perform_action_without_filters'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:617:in `call_filters'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/flash.rb:146:in `perform_action'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `send'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `process_without_filters'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:606:in `process'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:391:in `process'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:386:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:437:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+/var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+/var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+/var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+/var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+/var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:64:in `process'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:34:in `run'
+/var/lib/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+/home/desenvolvimento/infoseducx/app/views/inscricaos/new.html.erb:132: syntax error, unexpected ';', expecting ')'
+...ime.parce('sep 15 2021 10:12'; @output_buffer.concat "\n  "
+                              ^) on line #132 of app/views/inscricaos/new.html.erb:
+129:       </td>
+130:     </tr>
+131: <%# $horas =  (Time.current.to_time).to_i%>
+132: <% $horas =  Time.parce('sep 15 2021 10:12'%>
+133:   <%# $horas3 =  Date.current%>
+134:     
+135:   <% $horas2 = 1631829599 %>  <!-- dia 16/9 as 19 hs-->
+
+    app/views/inscricaos/new.html.erb:204:in `compile!'
+    app/controllers/inscricaos_controller.rb:68:in `new'
+
+Rendered rescues/_trace (27.5ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InscricaosController#new (for 127.0.0.1 at 2021-09-15 10:23:35) [GET]
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;35;1mParticipante Load (0.6ms)[0m   [0mSELECT * FROM `participantes` WHERE (desligado = 0 and funcao is not null) ORDER BY nome ASC[0m
+  [4;36;1mParticipante Load (0.6ms)[0m   [0;1mSELECT * FROM `participantes` WHERE (desligado = 0 ) ORDER BY nome ASC[0m
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;36;1mInscricao Load (0.6ms)[0m   [0;1mSELECT * FROM `inscricaos` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.2ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mInscricao Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `inscricaos`[0m
+  [4;35;1mInscricao Load (0.1ms)[0m   [0mSELECT * FROM `inscricaos` WHERE (`inscricaos`.`participante_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/inscricao
+Rendering inscricaos/new
+  [4;36;1mCurso Load (0.4ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 ) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;36;1mParticipante Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `participantes`[0m
+  [4;35;1mCurso Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+
+ActionView::TemplateError (comparison of Time with 1631829599 failed) on line #168 of app/views/inscricaos/new.html.erb:
+165:                <!--
+166:                <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"><font size="2"><b> <----- CLIQUE AQUI PARA FAZER SUA INSCRIÇÃO <b></font></td>
+167:                -->
+168:                <td align="right">  <%if $horas > $horas2 %> <%= f.submit "INSCREVER" %> <%else%>  <b>BOTÃO DE CONFIRMAÇÃO</b> estará disponível após 16/9/2021 às 19:00 horas <%end%></td>
+169:       <% end %>
+170:                <td width="2%" align="right"><%= button_to(' CONSULTAR INSCRIÇÃO ', consultas_inscricaos_path, :method => "get", :title => "Voltar")%></td>
+171:                <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+
+    app/views/inscricaos/new.html.erb:168:in `>'
+    app/views/inscricaos/new.html.erb:168
+    searchlogic (2.4.14) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.14) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/inscricaos/new.html.erb:11
+    app/controllers/inscricaos_controller.rb:68:in `new'
+
+Rendered rescues/_trace (175.4ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InscricaosController#new (for 127.0.0.1 at 2021-09-15 10:24:04) [GET]
+  [4;36;1mCurso Load (0.4ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;35;1mParticipante Load (1.2ms)[0m   [0mSELECT * FROM `participantes` WHERE (desligado = 0 and funcao is not null) ORDER BY nome ASC[0m
+  [4;36;1mParticipante Load (0.7ms)[0m   [0;1mSELECT * FROM `participantes` WHERE (desligado = 0 ) ORDER BY nome ASC[0m
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;36;1mInscricao Load (0.8ms)[0m   [0;1mSELECT * FROM `inscricaos` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.2ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mInscricao Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `inscricaos`[0m
+  [4;35;1mInscricao Load (0.1ms)[0m   [0mSELECT * FROM `inscricaos` WHERE (`inscricaos`.`participante_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/inscricao
+Rendering inscricaos/new
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 ) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;36;1mParticipante Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `participantes`[0m
+  [4;35;1mCurso Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+  [4;36;1mInformativo Load (0.8ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2021-09-15 13:24:05' AND ends_at >= '2021-09-15 13:24:05') [0m
+Completed in 434ms (View: 169, DB: 7) | 200 OK [http://localhost/inscricaos/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2021-09-15 10:24:05) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InscricaosController#new (for 127.0.0.1 at 2021-09-15 10:24:41) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;36;1mParticipante Load (0.5ms)[0m   [0;1mSELECT * FROM `participantes` WHERE (desligado = 0 and funcao is not null) ORDER BY nome ASC[0m
+  [4;35;1mParticipante Load (0.6ms)[0m   [0mSELECT * FROM `participantes` WHERE (desligado = 0 ) ORDER BY nome ASC[0m
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;35;1mInscricao Load (0.6ms)[0m   [0mSELECT * FROM `inscricaos` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mInscricao Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `inscricaos`[0m
+  [4;36;1mInscricao Load (0.0ms)[0m   [0;1mSELECT * FROM `inscricaos` WHERE (`inscricaos`.`participante_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/inscricao
+Rendering inscricaos/new
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0 ) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;35;1mParticipante Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `participantes`[0m
+  [4;36;1mCurso Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `cursos`[0m
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2021-09-15 13:24:41' AND ends_at >= '2021-09-15 13:24:41') [0m
+Completed in 387ms (View: 33, DB: 6) | 200 OK [http://localhost/inscricaos/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2021-09-15 10:24:42) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InscricaosController#new (for 127.0.0.1 at 2021-09-15 10:27:43) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;35;1mParticipante Load (0.6ms)[0m   [0mSELECT * FROM `participantes` WHERE (desligado = 0 and funcao is not null) ORDER BY nome ASC[0m
+  [4;36;1mParticipante Load (0.7ms)[0m   [0;1mSELECT * FROM `participantes` WHERE (desligado = 0 ) ORDER BY nome ASC[0m
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;36;1mInscricao Load (0.7ms)[0m   [0;1mSELECT * FROM `inscricaos` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.2ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mInscricao Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `inscricaos`[0m
+  [4;35;1mInscricao Load (0.1ms)[0m   [0mSELECT * FROM `inscricaos` WHERE (`inscricaos`.`participante_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/inscricao
+Rendering inscricaos/new
+ERROR: compiling _run_erb_app47views47inscricaos47new46html46erb RAISED compile error
+/home/desenvolvimento/infoseducx/app/views/inscricaos/new.html.erb:138: syntax error, unexpected ';', expecting ')'
+...ime.parse("2021-09-16 11:11" ; @output_buffer.concat "  <!--...
+                              ^
+Function body:           def _run_erb_app47views47inscricaos47new46html46erb(local_assigns)
+            old_output_buffer = output_buffer;;@output_buffer = '';  __in_erb_template=true ; @cursos = Curso.find(:all, :conditions => ['status = 0 ']); @output_buffer.concat "\n"
+; @cursosativos = Curso.find(:all, :conditions => ['status = 0 AND vagas_disponiveis > 0']); @output_buffer.concat "\n<div id=\"interno6\">\n"
+
+;  title "CLASSES".singularize ; @output_buffer.concat "\n<div class=\"tabs\">\n <div id=\"caixa_titulo\">\n     <font size=\"3\"><strong>SISTEMA DE INSCRI\303\207\303\203O ON LINE </strong></font><br/>\n </div>\n      <div class=\"tabs\">\n\n"
+
+
+
+
+
+
+;  form_for(@inscricao) do |f| ; @output_buffer.concat "\n"
+; @output_buffer.concat(( f.error_messages ).to_s); @output_buffer.concat "\n<font  size=\"2\">\n <table width=\"100%\" align=\"center\"  bgcolor=\"#F5F5F5\" >\n   <tr   bgcolor =\"#E6E2D\">\n        <th align=\"center\">\n           <font  size=5 color=\"black\">  <b> CADASTRO DE INSCRI\303\207\303\203O PARA PARTICIPAR EM CURSOS / PALESTRAS E ATIVIDADES DE QUALIFICA\303\207\303\203O E APERFEI\303\207OAMENTO OFERIDOS PELA SEDUC</b></font>\n        </th>\n      </tr>\n  <tr>\n  <td colspan=\"2\">\n   <fieldset><legend><font size =\"4\"><b></b></font></legend>\n       <table width=\"100%\">\n             <tr>\n                 <td colspan=\"2\" align=\"center\"><font  size=4 color=\"RED\"> <b><u> FAVOR LER ATENTAMENTE TODAS AS INSTRU\303\207\303\225ES ANTES DE EFETUAR SUA INSCRI\303\207\303\203O</b></u></font><br/></td>\n              </tr>\n              <tr>\n                  <td colspan=\"2\" ><br/></td>\n              </tr>\n              <tr>\n                <td  colspan=\"2\" align=\"center\"> <font size =\"3\"><br/><b>Participante:</b></font>\n                   "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+; @output_buffer.concat(( f.collection_select :participante_id, @participantesInscricao, :id, :nome, :include_blank => ' -- Selecionar seu nome -- ' ).to_s); @output_buffer.concat "</b></font></td>\n               </tr>\n\n          "
+
+
+; @output_buffer.concat(( observe_field  :inscricao_participante_id,
+              :with => :inscricao_participante_id,
+               :url => { :action => 'sel_participa' } ).to_s); @output_buffer.concat "\n\n              <tr><td ><br/></td></tr>\n\n\n               <tr>\n                   <td valign=\"middle\"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b><font color =\"red\" size=\"2\"> <u>ATEN\303\207\303\203O:</u> SE SEU NOME N\303\203O CONSTAR NA LISTA ACIMA FAVOR CADASTRAR.</b>  ===========></td>\n                   <td valign=\"bottom\">"
+
+
+
+
+
+
+; @output_buffer.concat(( link_to image_tag("/stylesheets/images/participante.png", :size => "180x30"), new_participante_path, :title => "Cadastrar Participante" ).to_s); @output_buffer.concat " </b></td>\n               </tr>\n\n\n\n\n              <tr>\n                <td colspan=\"4\">\n                 "
+
+
+
+
+
+
+
+; if @participante.present?; @output_buffer.concat "\n                  Matricula: "
+; @output_buffer.concat((h @participante.matricula ).to_s); @output_buffer.concat "<br/>\n                  Nome:"
+; @output_buffer.concat((h @participante.nome ).to_s); @output_buffer.concat "<br/>\n                  Cidade:"
+; @output_buffer.concat((h @participante.cidade ).to_s); @output_buffer.concat "<br/>\n                  Email:"
+; @output_buffer.concat((h @participante.email ).to_s); @output_buffer.concat "<br/>\n                    Observa\303\247\303\265es: "
+; @output_buffer.concat((h @participante.obs ).to_s); @output_buffer.concat "<br/>\n                "
+; else; @output_buffer.concat "\n                  <div id=\"informacoes\"></div>\n                "
+
+; end; @output_buffer.concat "\n                </td>\n              </tr>\n    </table>\n\n       <table align=\"center\" width=\"100%\" >\n\n<!--\n    <tr><td>&nbsp&nbsp<b> N\303\203O H\303\201 CURSOS OFERECIDOS NO MOMENTO</b></td></tr>\n-->\n      <tr>\n        <td colspan=\"3\"><font size=\"2\">\n            <center><font size =\"5\"color=\"red\"><b><u>CURSOS DISPON\303\215VEIS</u></b></font></center><br/>\n\n            <br/>\n\n           <!-- <center><font size =\"4\"color=\"blue\"><b>AS INCRI\303\207\303\225ES PARA PARTICIPAR DESTE FORUM <br/> S\303\223 PODER\303\203O SER FEITAS A PARTIR DAS 21:30 HORAS DO DIA 30/08</b></font></center>\n            <center><font size =\"4\"color=\"blue\"><b>ANTES DESTE  DIA E HORA A INSCRI\303\207\303\203O <u>N\303\203O</u> SER\303\201 EFETIVADA.</b></font></center><br/>\n           -->\n        </td>\n     </tr>\n     "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;  $cont = 0 ; @output_buffer.concat "\n     "
+;  for curso in @cursos ; @output_buffer.concat "\n        \n             <tr><td width =\" 10%\"></td>\n               <td><b>><font size=\"3\" color =\"blue\"> "
+
+
+; @output_buffer.concat((h curso.nome ).to_s); @output_buffer.concat " </b></font><br/> &nbsp - &nbsp\n               <font size =\"3\"color=\"red\"> "
+; if curso.existe_vaga ; @output_buffer.concat "\n                                              &nbsp&nbsp "
+; @output_buffer.concat(("Total de vagas: #{curso.qtde}").to_s); @output_buffer.concat " -\n                                              &nbsp&nbsp "
+; @output_buffer.concat(("Vagas disponíveis: #{curso.vagas_disponiveis}").to_s); @output_buffer.concat " \n                                          "
+; else; @output_buffer.concat "\n                                              "
+; if curso.vagas_disponiveis==0; @output_buffer.concat "\n                                                  &nbsp&nbsp <b>TODAS AS "
+; @output_buffer.concat(("#{curso.qtde}").to_s); @output_buffer.concat " VAGAS EST\303\203O COMPLETAS.</b>\n                                              "
+; else; @output_buffer.concat "\n                                                  &nbsp&nbsp <b>INSCRI\303\207\303\225ES ENCERRADAS! </b>\n                                               "
+
+; end; @output_buffer.concat "\n                                        \n                                               "
+
+; end; @output_buffer.concat "\n\n                                 "
+
+;  $cont = $cont + 1 ; @output_buffer.concat "\n               </font><br/>\n\n\n\n\n\n               &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Respons\303\241vel/Ministrante:</u> "
+
+
+
+
+
+
+; @output_buffer.concat((h curso.ministrante ).to_s); @output_buffer.concat "<br/>\n                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>P\303\272blico Alvo:</u> "
+; @output_buffer.concat((h curso.publico ).to_s); @output_buffer.concat "<br/>\n                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Ementa:</u> "
+; @output_buffer.concat((h curso.ementa).to_s); @output_buffer.concat "<br/>\n                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Encontro(s):</u> Dia(s) "
+; @output_buffer.concat((h curso.datas ).to_s); @output_buffer.concat " &nbsp - &nbsp <u>Carga Hor\303\241ria: "; @output_buffer.concat((h curso.carga_horaria).to_s); @output_buffer.concat " </u><br/>\n                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Hor\303\241rio:</u> "
+; @output_buffer.concat((h curso.horario ).to_s); @output_buffer.concat "\n                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<u>Local:</u> "
+; @output_buffer.concat((h curso.local ).to_s); @output_buffer.concat "<br/>\n                     "
+; if curso.obs.present?; @output_buffer.concat "\n                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<font size =\"3\"color=\"red\"><b><u>OBS:</u> "
+; @output_buffer.concat((h curso.obs ).to_s); @output_buffer.concat "</b></font><br/>\n                     "
+; end; @output_buffer.concat "\n\n         ---------------------------------------------------------------------------------------------------------------\n               </td>\n             </tr>\n        \n     "
+
+
+
+
+
+; end; @output_buffer.concat "\n    <!--\n      <tr>\n        <td colspan=\"2\" align=\"center\"><b><u>OBS:</u></b>  Entrada Gratuita - condicionada a apresenta\303\247\303\243o de holerite recente. </td>\n     </tr>-->\n\n    <tr>\n      <td colspan=\"2\" align=\"left\"><br/>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp\n         <font size=\"3\"><b>Curso: "
+
+
+
+
+
+
+
+; @output_buffer.concat(( f.collection_select :curso_id, @cursosativos, :id, :nome, :include_blank => ' -- Selecionar curso -- ' ).to_s); @output_buffer.concat " </font>    </b>\n         <br/><br/>\n      </td>\n    </tr>\n\n    <!--   comparara\303\247\303\243o entre data to_i  -->\n\n"
+
+
+
+
+
+
+; @output_buffer.concat "\n"
+;  $horas =  (Time.parse("sep 15 2021 10:12")).to_i; @output_buffer.concat "\n  "
+; @output_buffer.concat "\n    \n  "
+
+;  $horas2 = Time.parse("2021-09-16 11:11" ; @output_buffer.concat "  <!-- dia 16/9 as 19 hs-->\n\n  "
+
+; @output_buffer.concat " <!-- dia 15/9 as 10 hs-->\n        <br/><br/><br/><br/><br/><br/>\n<!--\n         1631829191 ||2021-09-16 ||1631818800\n\n\n18:54    1631829264 ||2021-09-16 ||1631818800   16\n\n18:55    1631829306 ||2021-09-16 ||1631818800    15\n\n18:56    1631829406 ||2021-09-16 ||1631818800  <<<<<tr\n18:59   1631829529 ||2021-09-16 ||1631818800    16\n\n19:00   1631829600 ||2021-09-16 ||1631818800     16\n\n\n        1631710744 ||2021-09-15 ||1631818800 15\n\n"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+; @output_buffer.concat(($horas ).to_s); @output_buffer.concat " ||"; @output_buffer.concat " ||"; @output_buffer.concat "\n-->\n\n"
+
+
+; @output_buffer.concat(($horas ).to_s); @output_buffer.concat " ||"; @output_buffer.concat " ||"; @output_buffer.concat(($horas2 ).to_s); @output_buffer.concat "\n   </table>\n\n</fieldset>\n\n         <table width=\"100%\" align=\"left\">\n           <tr>\n\n               <!--\n               <td align=\"left\"><input type=\"image\" src=\"/stylesheets/images/salvar.png\" title=\"Gravar\"><font size=\"2\"><b> <----- CLIQUE AQUI PARA FAZER SUA INSCRI\303\207\303\203O <b></font></td>\n               -->\n               <td align=\"right\">  "
+
+
+
+
+
+
+
+
+
+
+; @output_buffer.concat " "; @output_buffer.concat(( f.submit "INSCREVER" ).to_s); @output_buffer.concat " "; @output_buffer.concat "  <b>BOT\303\203O DE CONFIRMA\303\207\303\203O</b> estar\303\241 dispon\303\255vel ap\303\263s 16/9/2021 \303\240s 19:00 horas "; @output_buffer.concat "</td>\n      "
+;  end ; @output_buffer.concat "\n               <td width=\"2%\" align=\"right\">"
+; @output_buffer.concat(( button_to(' CONSULTAR INSCRIÇÃO ', consultas_inscricaos_path, :method => "get", :title => "Voltar")).to_s); @output_buffer.concat "</td>\n               <td width=\"2%\" align=\"right\">"
+; @output_buffer.concat(( button_to('Fechar', home_path, :method => "get", :title => "Fechar")).to_s); @output_buffer.concat "</td>\n           </tr>\n       </table>\n\n    </td>\n  </tr>\n  </table>\n</font>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    </div>\n</div>\n<br/>\n<script>\n    $(\"#demo input[title]\").tooltip();\n  </script>\n</font>\n</div>"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+; @output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /home/desenvolvimento/infoseducx/app/views/inscricaos/new.html.erb:208:in `compile!'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:61:in `compile'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_view/renderable.rb:28:in `render'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_view/template.rb:205:in `render_template'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:265:in `render'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:348:in `_render_with_layout'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_view/base.rb:262:in `render'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1250:in `render_for_file'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:951:in `render_without_benchmark'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+/var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:51:in `render'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:135:in `send'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:135:in `custom'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:179:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:179:in `respond'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:173:in `each'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:173:in `respond'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/mime_responds.rb:107:in `respond_to'
+/home/desenvolvimento/infoseducx/app/controllers/inscricaos_controller.rb:68:in `new'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1331:in `send'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:1331:in `perform_action_without_filters'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:617:in `call_filters'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/var/lib/gems/1.8/gems/activesupport-2.3.5/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/flash.rb:146:in `perform_action'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `send'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:532:in `process_without_filters'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/filters.rb:606:in `process'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:391:in `process'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/base.rb:386:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/routing/route_set.rb:437:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:87:in `dispatch'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:121:in `_call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+/var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:29:in `call'
+/var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:9:in `cache'
+/var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/query_cache.rb:28:in `call'
+/var/lib/gems/1.8/gems/activerecord-2.3.5/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/string_coercion.rb:25:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/head.rb:9:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/methodoverride.rb:24:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/params_parser.rb:15:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/session/cookie_store.rb:93:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/failsafe.rb:26:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `synchronize'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/lock.rb:11:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:114:in `call'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/reloader.rb:34:in `run'
+/var/lib/gems/1.8/gems/actionpack-2.3.5/lib/action_controller/dispatcher.rb:108:in `call'
+/var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/static.rb:31:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:46:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `each'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/urlmap.rb:40:in `call'
+/var/lib/gems/1.8/gems/rails-2.3.5/lib/rails/rack/log_tailer.rb:17:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/content_length.rb:13:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/chunked.rb:15:in `call'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:64:in `process'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+/var/lib/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+/var/lib/gems/1.8/gems/rack-1.0.1/lib/rack/handler/mongrel.rb:34:in `run'
+/var/lib/gems/1.8/gems/rails-2.3.5/lib/commands/server.rb:111
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/usr/local/lib/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+/home/desenvolvimento/infoseducx/app/views/inscricaos/new.html.erb:138: syntax error, unexpected ';', expecting ')'
+...ime.parse("2021-09-16 11:11" ; @output_buffer.concat "  <!--...
+                              ^) on line #138 of app/views/inscricaos/new.html.erb:
+135: <% $horas =  (Time.parse("sep 15 2021 10:12")).to_i%>
+136:   <%# $horas3 =  Date.current%>
+137:     
+138:   <% $horas2 = Time.parse("2021-09-16 11:11" %>  <!-- dia 16/9 as 19 hs-->
+139: 
+140:   <%# $horas2 = 1631711509 %> <!-- dia 15/9 as 10 hs-->
+141:         <br/><br/><br/><br/><br/><br/>
+
+    app/views/inscricaos/new.html.erb:208:in `compile!'
+    app/controllers/inscricaos_controller.rb:68:in `new'
+
+Rendered rescues/_trace (24.4ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InscricaosController#new (for 127.0.0.1 at 2021-09-15 10:27:59) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;35;1mParticipante Load (0.6ms)[0m   [0mSELECT * FROM `participantes` WHERE (desligado = 0 and funcao is not null) ORDER BY nome ASC[0m
+  [4;36;1mParticipante Load (0.9ms)[0m   [0;1mSELECT * FROM `participantes` WHERE (desligado = 0 ) ORDER BY nome ASC[0m
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;36;1mInscricao Load (0.6ms)[0m   [0;1mSELECT * FROM `inscricaos` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.2ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mInscricao Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `inscricaos`[0m
+  [4;35;1mInscricao Load (0.1ms)[0m   [0mSELECT * FROM `inscricaos` WHERE (`inscricaos`.`participante_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/inscricao
+Rendering inscricaos/new
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 ) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;36;1mParticipante Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `participantes`[0m
+  [4;35;1mCurso Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2021-09-15 13:27:59' AND ends_at >= '2021-09-15 13:27:59') [0m
+Completed in 269ms (View: 33, DB: 6) | 200 OK [http://localhost/inscricaos/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2021-09-15 10:27:59) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InscricaosController#new (for 127.0.0.1 at 2021-09-15 10:31:01) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;36;1mParticipante Load (0.5ms)[0m   [0;1mSELECT * FROM `participantes` WHERE (desligado = 0 and funcao is not null) ORDER BY nome ASC[0m
+  [4;35;1mParticipante Load (0.7ms)[0m   [0mSELECT * FROM `participantes` WHERE (desligado = 0 ) ORDER BY nome ASC[0m
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;35;1mInscricao Load (0.7ms)[0m   [0mSELECT * FROM `inscricaos` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mInscricao Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `inscricaos`[0m
+  [4;36;1mInscricao Load (0.1ms)[0m   [0;1mSELECT * FROM `inscricaos` WHERE (`inscricaos`.`participante_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/inscricao
+Rendering inscricaos/new
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0 ) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;35;1mParticipante Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `participantes`[0m
+  [4;36;1mCurso Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `cursos`[0m
+
+ActionView::TemplateError (comparison of Fixnum with Time failed) on line #173 of app/views/inscricaos/new.html.erb:
+170:                <!--
+171:                <td align="left"><input type="image" src="/stylesheets/images/salvar.png" title="Gravar"><font size="2"><b> <----- CLIQUE AQUI PARA FAZER SUA INSCRIÇÃO <b></font></td>
+172:                -->
+173:                <td align="right">  <%if $horas > $horas2 %> <%= f.submit "INSCREVER" %> <%else%>  <b>BOTÃO DE CONFIRMAÇÃO</b> estará disponível após 16/9/2021 às 19:00 horas <%end%></td>
+174:       <% end %>
+175:                <td width="2%" align="right"><%= button_to(' CONSULTAR INSCRIÇÃO ', consultas_inscricaos_path, :method => "get", :title => "Voltar")%></td>
+176:                <td width="2%" align="right"><%= button_to('Fechar', home_path, :method => "get", :title => "Fechar")%></td>
+
+    app/views/inscricaos/new.html.erb:173:in `>'
+    app/views/inscricaos/new.html.erb:173
+    searchlogic (2.4.14) lib/searchlogic/rails_helpers.rb:72:in `fields_for'
+    searchlogic (2.4.14) lib/searchlogic/rails_helpers.rb:61:in `form_for'
+    app/views/inscricaos/new.html.erb:11
+    app/controllers/inscricaos_controller.rb:68:in `new'
+
+Rendered rescues/_trace (154.0ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InscricaosController#new (for 127.0.0.1 at 2021-09-15 10:31:26) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;36;1mParticipante Load (0.6ms)[0m   [0;1mSELECT * FROM `participantes` WHERE (desligado = 0 and funcao is not null) ORDER BY nome ASC[0m
+  [4;35;1mParticipante Load (0.7ms)[0m   [0mSELECT * FROM `participantes` WHERE (desligado = 0 ) ORDER BY nome ASC[0m
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;35;1mInscricao Load (0.7ms)[0m   [0mSELECT * FROM `inscricaos` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mInscricao Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `inscricaos`[0m
+  [4;36;1mInscricao Load (0.1ms)[0m   [0;1mSELECT * FROM `inscricaos` WHERE (`inscricaos`.`participante_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/inscricao
+Rendering inscricaos/new
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0 ) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;35;1mParticipante Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `participantes`[0m
+  [4;36;1mCurso Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `cursos`[0m
+  [4;35;1mInformativo Load (0.5ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2021-09-15 13:31:26' AND ends_at >= '2021-09-15 13:31:26') [0m
+Completed in 397ms (View: 33, DB: 6) | 200 OK [http://localhost/inscricaos/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2021-09-15 10:31:27) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InscricaosController#new (for 127.0.0.1 at 2021-09-15 10:32:03) [GET]
+  [4;36;1mCurso Load (0.4ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;35;1mParticipante Load (0.6ms)[0m   [0mSELECT * FROM `participantes` WHERE (desligado = 0 and funcao is not null) ORDER BY nome ASC[0m
+  [4;36;1mParticipante Load (0.7ms)[0m   [0;1mSELECT * FROM `participantes` WHERE (desligado = 0 ) ORDER BY nome ASC[0m
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;36;1mInscricao Load (0.7ms)[0m   [0;1mSELECT * FROM `inscricaos` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.2ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mInscricao Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `inscricaos`[0m
+  [4;35;1mInscricao Load (0.1ms)[0m   [0mSELECT * FROM `inscricaos` WHERE (`inscricaos`.`participante_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/inscricao
+Rendering inscricaos/new
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 ) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;36;1mParticipante Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `participantes`[0m
+  [4;35;1mCurso Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+  [4;36;1mInformativo Load (0.5ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2021-09-15 13:32:04' AND ends_at >= '2021-09-15 13:32:04') [0m
+Completed in 387ms (View: 32, DB: 6) | 200 OK [http://localhost/inscricaos/new]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2021-09-15 10:32:04) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InscricaosController#new (for 127.0.0.1 at 2021-09-15 10:32:22) [GET]
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;36;1mParticipante Load (0.6ms)[0m   [0;1mSELECT * FROM `participantes` WHERE (desligado = 0 and funcao is not null) ORDER BY nome ASC[0m
+  [4;35;1mParticipante Load (0.6ms)[0m   [0mSELECT * FROM `participantes` WHERE (desligado = 0 ) ORDER BY nome ASC[0m
+  [4;36;1mCurso Load (0.1ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;35;1mInscricao Load (0.6ms)[0m   [0mSELECT * FROM `inscricaos` [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mUnidade Load (0.1ms)[0m   [0;1mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;35;1mInscricao Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `inscricaos`[0m
+  [4;36;1mInscricao Load (0.1ms)[0m   [0;1mSELECT * FROM `inscricaos` WHERE (`inscricaos`.`participante_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/inscricao
+Rendering inscricaos/new
+  [4;35;1mCurso Load (0.1ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0 ) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;35;1mParticipante Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `participantes`[0m
+  [4;36;1mCurso Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `cursos`[0m
+  [4;35;1mInformativo Load (0.6ms)[0m   [0mSELECT * FROM `informativos` WHERE (starts_at <= '2021-09-15 13:32:22' AND ends_at >= '2021-09-15 13:32:22') [0m
+Completed in 257ms (View: 26, DB: 6) | 200 OK [http://localhost/inscricaos/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2021-09-15 10:32:23) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing InscricaosController#new (for 127.0.0.1 at 2021-09-15 10:32:31) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;35;1mParticipante Load (0.6ms)[0m   [0mSELECT * FROM `participantes` WHERE (desligado = 0 and funcao is not null) ORDER BY nome ASC[0m
+  [4;36;1mParticipante Load (0.7ms)[0m   [0;1mSELECT * FROM `participantes` WHERE (desligado = 0 ) ORDER BY nome ASC[0m
+  [4;35;1mCurso Load (0.2ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0) ORDER BY nome ASC[0m
+  [4;36;1mInscricao Load (0.7ms)[0m   [0;1mSELECT * FROM `inscricaos` [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUnidade Load (0.1ms)[0m   [0mSELECT * FROM `unidades` ORDER BY nome ASC[0m
+  [4;36;1mInscricao Columns (1.6ms)[0m   [0;1mSHOW FIELDS FROM `inscricaos`[0m
+  [4;35;1mInscricao Load (0.1ms)[0m   [0mSELECT * FROM `inscricaos` WHERE (`inscricaos`.`participante_id` IS NULL) LIMIT 1[0m
+Rendering template within layouts/inscricao
+Rendering inscricaos/new
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0 ) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `cursos` WHERE (status = 0 AND vagas_disponiveis > 0) [0m
+  [4;36;1mParticipante Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `participantes`[0m
+  [4;35;1mCurso Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+  [4;36;1mInformativo Load (0.7ms)[0m   [0;1mSELECT * FROM `informativos` WHERE (starts_at <= '2021-09-15 13:32:31' AND ends_at >= '2021-09-15 13:32:31') [0m
+Completed in 293ms (View: 39, DB: 7) | 200 OK [http://localhost/inscricaos/new]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2021-09-15 10:32:31) [GET]
+
+ActionController::RoutingError (No route matches "/stylesheets/style.css" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
