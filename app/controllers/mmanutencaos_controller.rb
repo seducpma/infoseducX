@@ -984,7 +984,7 @@ def estatisticasMANTAt
           format.html { redirect_to(tela_email_devolucao_path) }
         else if @mmanutencao.chefia_id  == 6
                session[:id_manutencao] =@mmanutencao.id
-               session[:email] ='seducontatos@gmail.com, wadsonmotacompras@gmail.com'
+               session[:email] ='seducontratos@gmail.com, wadsonmotacompras@gmail.com'
                #session[:email] ='naor@seducpma.com, naorgarciaf@hotmail.com'
                format.html { redirect_to(tela_email_devolucao_compra_path) }
              else
