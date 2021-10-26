@@ -16782,3 +16782,31 @@ Rendering template within layouts/login
 Rendering sessions/new
   [4;35;1mCurso Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
 Completed in 64ms (View: 30, DB: 2) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing HomeController#index (for 127.0.0.1 at 2021-10-26 08:22:10) [GET]
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 10ms (DB: 0) | 302 Found [http://localhost/]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2021-10-26 08:22:10) [GET]
+  [4;36;1mCurso Load (0.3ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;35;1mCurso Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+Completed in 44ms (View: 14, DB: 2) | 200 OK [http://localhost/session/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2021-10-26 08:23:46) [GET]
+  [4;36;1mCurso Load (0.2ms)[0m   [0;1mSELECT * FROM `cursos` WHERE (status = 0) [0m
+Rendering template within layouts/login
+Rendering sessions/new
+  [4;35;1mCurso Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `cursos`[0m
+Completed in 159ms (View: 24, DB: 1) | 200 OK [http://localhost/session/new]
