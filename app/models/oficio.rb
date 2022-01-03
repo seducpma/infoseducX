@@ -7,7 +7,8 @@ def geracodigo
     #self.codigo = [self.id-969].to_s + ("/2018")
     #self.codigo = [self.id-1360].to_s + ("/2019")
     #self.codigo = [self.id-1802].to_s + ("/2020")
-    self.codigo = [self.id-1904].to_s + ("/2021")
+    #self.codigo = [self.id-1904].to_s + ("/2021")
+    self.codigo = [self.id-1955].to_s + ("/2022")
 
     self.save
 

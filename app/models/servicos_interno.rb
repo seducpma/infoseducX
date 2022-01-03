@@ -8,7 +8,10 @@ def geracodigo
     #self.codigo = [self.id-1483].to_s + ("/2019")   # igual ao ultimo registro de 2018
     #self.codigo = [self.id-1757].to_s + ("/2020")   # igual ao ultimo registro de 2019
     #self.codigo = [self.id-1757].to_s + ("/2020")   # igual ao ultimo registro de 2020
-    self.codigo = [self.id-1841].to_s + ("/2021")   # igual ao ultimo registro de 2019
+    #self.codigo = [self.id-1841].to_s + ("/2021")   # igual ao ultimo registro de 2021
+    self.codigo = [self.id-1872].to_s + ("/2022")  
+
+
     self.save
 
 end
